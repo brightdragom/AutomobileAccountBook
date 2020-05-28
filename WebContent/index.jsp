@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>LoginTest</title>
+<title>LoginTest+</title>
 <style>
 body {
 	margin: 0;
