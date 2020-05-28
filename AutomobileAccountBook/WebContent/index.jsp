@@ -128,7 +128,7 @@ video {
 <body>
 
 	<video autoplay loop id="bgvid">
-		<source src="test.mp4" type="video/mp4">
+		<source src="img/test.mp4" type="video/mp4">
 	</video>
 	
 <div id="main">
