@@ -132,7 +132,7 @@ video {
 	
 <div id="main">
 		<h1 style="text-transform:uppercase;">Login</h1>
-		<form name="loginservice" action="/login" method="post" onsubmit="return inputBoxCheck()">
+		<form name="loginservice" action="/controller/login" method="post" onsubmit="return inputBoxCheck()">
 			<div class="InputBox">
 				<p class="PrintMSG">Please enter your login imformation.</p>
 				<div class="PrintMSG2">ID</div>
