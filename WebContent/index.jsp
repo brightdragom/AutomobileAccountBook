@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" 
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -126,13 +126,28 @@ video {
 </style>
 </head>
 <body>
+	<%
+		if (("1").equals(request.getParameter("error"))) {
+	%>
+
+	<SCRIPT LANGUAGE='JavaScript'>
+
+		alert('잘못 입력하셨습니다!');
+		
+		location.href="<%=request.getRequestURI()%>";
+	</SCRIPT>
+
+	<%
+		}
+	%>
 	<video autoplay loop id="bgvid">
 		<source src="img/test.mp4" type="video/mp4">
 	</video>
-	
-<div id="main">
-		<h1 style="text-transform:uppercase;">Login</h1>
-		<form name="loginservice" action="/controller/login" method="post" onsubmit="return inputBoxCheck()">
+
+	<div id="main">
+		<h1 style="text-transform: uppercase;">Login</h1>
+		<form name="loginservice" action="/AutomobileAccountBook/LoginAction" method="post"
+			onsubmit="return inputBoxCheck()">
 			<div class="InputBox">
 				<p class="PrintMSG">Please enter your login imformation.</p>
 				<div class="PrintMSG2">ID</div>
@@ -144,10 +159,12 @@ video {
 					<input actionfocus name="user_pw" type="text">
 				</div>
 			</div>
-			<input class="loginButton" id="loginb" value="login" type="submit" style="width: 100%;" />
+			<input class="loginButton" id="loginb" value="login" type="submit"
+				style="width: 100%;" />
 		</form>
 		<div style="text-align: center;">
-			<a href="/JoinMembership">회원가입</a> / <a href="/ForgetID">아이디찾기</a> / <a href="/ForgetPassword">비번찾기</a>
+			<a href="/JoinMembership">회원가입</a> / <a href="/ForgetID">아이디찾기</a> /
+			<a href="/ForgetPassword">비번찾기</a>
 		</div>
 		<small>© 20200527 Sunmoon OSSPTeam7</small>
 		</p>
