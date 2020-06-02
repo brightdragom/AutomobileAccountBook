@@ -1,9 +1,9 @@
 /build/
-#/.settings/
+/.settings/
 /.classpath
-#.project
+.project
 /WebContent/img/
-#/bin/
+/bin/
 
 # Created by https://www.gitignore.io/api/java,windows,eclipse
 # Edit at https://www.gitignore.io/?templates=java,windows,eclipse
