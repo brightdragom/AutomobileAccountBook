@@ -1,6 +1,6 @@
 /build/*
 /.settings/
 /.classpath
-./.project
+/.project
 /WebContent/img/
 /bin/
