@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class DBConnection {
-	private Connection conn; // connection:db에접근하게 해주는 객체
+	private Connection conn; // connection:db�뿉�젒洹쇳븯寃� �빐二쇰뒗 媛앹껜
 
 	private PreparedStatement pstmt;
 
@@ -15,11 +15,11 @@ public class DBConnection {
 	public DBConnection() {
 		try {
 
-			String dbURL = "jdbc:mysql://localhost:3306/demoweb?serverTimezone=UTC"; // localhost:3306 포트는 컴퓨터설치된 mysql주소
+			String dbURL = "jdbc:mysql://localhost:3306/demoweb?serverTimezone=UTC"; // localhost:3306 �룷�듃�뒗 而댄벂�꽣�꽕移섎맂 mysql二쇱냼
 
 			String dbID = "root";
 
-			String dbPassword = "1234";
+			String dbPassword = "5623";
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
@@ -27,7 +27,7 @@ public class DBConnection {
 
 		} catch (Exception e) {
 
-			e.printStackTrace(); // 오류가 무엇인지 출력
+			e.printStackTrace(); // �삤瑜섍� 臾댁뾿�씤吏� 異쒕젰
 
 		}
 
@@ -47,11 +47,11 @@ public class DBConnection {
 				if(rs.getString("pw").equals(pw)) {
 					return true;
 				}else{
-					System.out.println("아이디 o 비번 x");
+					System.out.println("�븘�씠�뵒 o 鍮꾨쾲 x");
 					return false;
 				}
 			}
-			System.out.println("아이디 x");
+			System.out.println("�븘�씠�뵒 x");
 			return false;
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
