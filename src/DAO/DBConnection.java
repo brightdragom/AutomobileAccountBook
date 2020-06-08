@@ -4,6 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import model.HousekeepingBook;
 
 public class DBConnection {
 	private Connection conn; // connection:db에접근하게 해주는 객체
@@ -41,6 +45,7 @@ public class DBConnection {
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, id);
+			System.out.println(" >>> SQL : "+ SQL +"<<<");
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
@@ -58,5 +63,62 @@ public class DBConnection {
 		}
 		System.out.println("db err");
 		return false;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public List<HousekeepingBook> getHousekeepingList(String id) {
+		String SQL = "select * from hb_book where writer = ?";
+		
+		ArrayList<HousekeepingBook> list = new ArrayList<>();
+		
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, id);
+			System.out.println(" >>> id : "+ id +"<<<");
+			System.out.println(" >>> SQL : "+ SQL +"<<<");
+			rs = pstmt.executeQuery();
+			HousekeepingBook item = null;
+			
+			while(rs.next()) {
+				item = new HousekeepingBook(rs.getString("line_no"), rs.getString("todate"), 
+						rs.getString("content"), rs.getInt("cost"), rs.getInt("mileage"), rs.getString("writer"));
+				list.add(item);
+				
+				System.out.println("생성 >>> "+item.getLine_no()+"|"+item.getContent());
+			}
+			System.out.println("list size = "+ list.size() + "\t");
+			return list;
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		System.out.println("db err");
+		return list;
 	}
 }
