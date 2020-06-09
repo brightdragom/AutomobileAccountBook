@@ -21,12 +21,12 @@ public class DBConnection {
 	public DBConnection() {
 		try {
 
-			String dbURL = "jdbc:mysql://localhost:3306/dbname?serverTimezone=UTC"; // localhost:3306 포트는 컴퓨터설치된 mysql주소
+			String dbURL = "jdbc:mysql://localhost:3306/demoweb?serverTimezone=UTC"; // localhost:3306 포트는 컴퓨터설치된 mysql주소
 
 
-			String dbID = "id";
+			String dbID = "root";
 
-			String dbPassword = "pw";
+			String dbPassword = "5623";
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
