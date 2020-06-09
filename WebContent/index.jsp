@@ -163,8 +163,8 @@ video {
 				style="width: 100%;" />
 		</form>
 		<div style="text-align: center;">
-			<a href="/JoinMembership">회원가입</a> / <a href="/ForgetID">아이디찾기</a> /
-			<a href="/ForgetPassword">비번찾기</a>
+			<a href="/AutomobileAccountBook/Register.jsp">회원가입</a> / <a href="/AutomobileAccountBook/FindId.jsp">아이디찾기</a> /
+			<a href="/AutomobileAccountBook/jsp이름">비번찾기</a>
 		</div>
 		<small>© 20200527 Sunmoon OSSPTeam7</small>
 		</p>
