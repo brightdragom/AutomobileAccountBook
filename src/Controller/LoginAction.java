@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DAO.DBConnection;
+import model.HousekeepingBook;
 
 
 /**
@@ -18,7 +20,7 @@ import DAO.DBConnection;
 @WebServlet("/LoginAction")
 public class LoginAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
+	private DBConnection db;
     public LoginAction() {
         super();
         // TODO Auto-generated constructor stub
@@ -30,12 +32,15 @@ public class LoginAction extends HttpServlet {
 		String pw = request.getParameter("user_pw");
 		
 		System.out.println("id : "+id+"\t pw : "+pw);
-		DBConnection db = new DBConnection();
+		db = new DBConnection();
 		
 		if(db.login(id, pw)) {
+			List<HousekeepingBook> list = db.getHousekeepingList(id);
+			System.out.println("list Size : "+list.size());
 			request.setAttribute("user_id", id);
 			request.setAttribute("user_pw", pw);
-			RequestDispatcher rd = request.getRequestDispatcher("testMainjsp.jsp");
+			request.setAttribute("item_list", list);
+			RequestDispatcher rd = request.getRequestDispatcher("housekeepingBook_view.jsp");
 			rd.forward(request, response);
 		}else {
 			response.sendRedirect(request.getHeader("referer")+"?error=1");		
