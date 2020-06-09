@@ -9,7 +9,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>아이디찾기</title>
+<title>비밀번호찾기</title>
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -24,7 +24,7 @@
 
 <body>
 
-	<form name="searchId" method="post" action="viaId.jsp">
+	<form name="searchId" method="post" action="viaPw.jsp">
 
 		<table width="1330px" border="0" height="430px" align="center">
 
@@ -44,7 +44,7 @@
 
 									<tr>
 
-										<td>아이디 찾기</td>
+										<td>비밀번호 찾기</td>
 
 										<td><div id="sub-title">| 회원정보에 등록한 정보로 인증.</td>
 
@@ -73,7 +73,7 @@
 
 												<tr>
 
-													<td><div id="middle-title">&nbsp;이름과 핸드폰 번호를
+													<td><div id="middle-title">&nbsp;아이디와 핸드폰 번호를
 															입력해주세요.</div></td>
 
 												</tr>
@@ -95,24 +95,24 @@
 
 													<td>이름</td>
 
-													<td><input type="text" name="name"></td>
+													<td><input type="text" name="userName"></td>
 
 												</tr>
 
-
-												<tr>
-
-					
-													<td>휴대폰</td>
-
-													<td><input type="text" name="phone1"
-														style="width: 70px"> - <input type="text"
-														name="phone2" style="width: 70px"> - <input
-														type="text" name="phone3" style="width: 70px"></td>
-
-												</tr>
+												
+													<tr>
 
 
+														<td>휴대폰</td>
+
+														<td><input type="text" name="phone1"
+															style="width: 70px"> - <input type="text"
+															name="phone2" style="width: 70px"> - <input
+															type="text" name="phone3" style="width: 70px"></td>
+
+													</tr>
+
+												
 											</table>
 										</td>
 

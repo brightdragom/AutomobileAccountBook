@@ -26,7 +26,7 @@ public class DBConnection {
 
 			String dbID = "id";
 
-			String dbPassword = "password";
+			String dbPassword = "pw";
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
@@ -126,6 +126,7 @@ public class DBConnection {
 		return list;
 	}
 //=======
+	
 	public int register (String id, String pw, String phone, String email, String part, String addr, String name) {
 		pstmt = null;
 		ResultSet re = null;
@@ -157,7 +158,7 @@ public class DBConnection {
 		
 		boolean findSuccess = false;
 		String id = null;
-		String SQL = "select * from user where name='" + "?" + "' and phone='" + "?'" ;
+		String SQL = "select id from user where name= ? and phone = ?" ;
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, name);
@@ -193,9 +194,9 @@ public class DBConnection {
 			
 			while (rs.next()) {
 
-				String id_db = rs.getString("id");
-				id = rs.getString(1);
-				findSuccess = (id != null) ? true : false;
+				String pw_db = rs.getString("pw");
+				pw = rs.getString(1);
+				findSuccess = (pw != null) ? true : false;
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
