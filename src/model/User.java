@@ -8,11 +8,29 @@ public class User {
 	private String name;
 	private String phone;
 	private String email;
-	private String part;
+	private String career;
 	private String addr;
-	
+	private String gender;
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 	public String getId() {
 		return id;
+	}
+	public User(String name, String id, String pw, String phone, String email, String career, String addr,
+			String gender) {
+		super();
+		this.id = id;
+		this.pw = pw;
+		this.name = name;
+		this.phone = phone;
+		this.email = email;
+		this.career = career;
+		this.addr = addr;
+		this.gender = gender;
 	}
 	public void setId(String id) {
 		this.id = id;
@@ -41,11 +59,11 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getPart() {
-		return part;
+	public String getCareer() {
+		return career;
 	}
-	public void setPart(String part) {
-		this.part = part;
+	public void setCareer(String career) {
+		this.career = career;
 	}
 	public String getAddr() {
 		return addr;

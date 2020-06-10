@@ -41,7 +41,7 @@ public class DBConnection {
 	}
 	
 	
-	public boolean login(String id, String pw) {
+	public User login(String id, String pw) {
 		
 		String SQL = "SELECT * FROM user where id = ?";
 		
@@ -53,19 +53,19 @@ public class DBConnection {
 			
 			if(rs.next()) {
 				if(rs.getString("pw").equals(pw)) {
-					return true;
+					return new User(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8));
 				}else{
-					System.out.println("�븘�씠�뵒 o 鍮꾨쾲 x");
-					return false;
+					System.out.println("Password erro");
+					return null;
 				}
 			}
 			System.out.println("�븘�씠�뵒 x");
-			return false;
+			return null;
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
 		System.out.println("db err");
-		return false;
+		return null;
 	}
 	
 //<<<<<<< HEAD

@@ -4,8 +4,18 @@
 <%@ page import="model.AutoAccountList"%>
 <%@ page import="java.util.List"%>
 <%@ page import="DAO.DBConnection"%>
+<%@ page import="model.User"%>
 <!DOCTYPE html>
 <html>
+<%
+	User user = (User)session.getAttribute("user");
+	if(user == null){
+		out.println("<script>alert('로그인을 먼저 해주세요'); history.back();</script>");
+		response.sendRedirect("index.jsp");
+	}else{
+		out.println("<script>alert('환영합니다.');</script>");
+	}
+%>
 <head>
 <meta charset="UTF-8">
 <title>HousekeepingBook_view_page</title>
@@ -22,11 +32,14 @@
 	function add_list_line(){
 		location.href="/AutomobileAccountBook/add_list_line.jsp";
 	}
+	function logout(){
+		location.href="/AutomobileAccountBook/logout.jsp"
+	}
 </script>
 </head>
 <body>
 	<div align="center">
-		<span> 가계부</span>
+		<span> 가계부 <%= user.getId() %></span>
 	</div>
 
 	<table width="500" border="0" align="center" cellpadding="0" cellspacing="1" >
@@ -78,9 +91,10 @@
 		</tr>
 	</table>
 	</div>
-	<div align="center"><input type="submit"/></div>
+	<div align="center"><input type="submit" value ="Edit"/></div>
 	</form>
 	<!-- <div align="center"><input type="button" value="add_list_line" onclick="add_list_line()"></div> -->
 	<div align="center"> <input type="button" name="add_list_line" value="add_list_line" onclick="add_list_line()"></div>
+	<div align="center"> <input type="button" name="logout" value="logout" onclick="logout()"></div>
 </body>
 </html>
