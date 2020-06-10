@@ -127,7 +127,7 @@ public class DBConnection {
 	}
 //=======
 	
-	public int register (String id, String pw, String phone, String email, String part, String addr, String name) {
+	public int register (String id, String pw, String phone, String email, String part, String addr, String name, String gender) {
 		pstmt = null;
 		ResultSet re = null;
 		String SQL = "INSERT INTO USER VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -140,6 +140,7 @@ public class DBConnection {
 			pstmt.setString(5, part);
 			pstmt.setString(6, addr);
 			pstmt.setString(7, name);
+			pstmt.setString(7, gender);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

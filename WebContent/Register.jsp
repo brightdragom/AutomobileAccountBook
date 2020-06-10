@@ -6,11 +6,26 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width" initial-scale="1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script type="text/javascript">
 	function registerCheckFunction() {
 		var id = $('#id').val();
-		$.ajax
+		$.ajax({
+			type: 'POST',
+			url: '/UserRegisterCheckServlet',
+			data: {id : id},
+			success: function(result) {
+				if(result == 1) {
+					$('#checkMessage').html('사용할 수 있는 아이디 입니다.');
+					$('#checkType').attr('class', 'modal-content panel-success');
+				}
+				else {
+					$('#checkMessage').html('사용할 수 없습니다.');
+					$('#checkType').attr('class', 'modal-content panel-warnings');
+				}
+				$('#checkModal').modal("show");
+			}
+		})
 	}
 </script>
 <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -55,7 +70,7 @@
 
 	<!-- 로그인 폼 -->
 
-	<div class="container">
+	<div class="container" style="padding-top: 2.5%;">
 
 		<div class="col-lg-4"></div>
 		<div class="col-lg-4">
@@ -65,7 +80,7 @@
 
 				<!-- 로그인 정보를 숨기면서 전송post -->
 
-				<form method="post" action="./userRegister">
+				<form Action="RegisterAction"  method="post">
 
 					<h3 style="text-align: center;">회원가입</h3>
 
@@ -129,6 +144,22 @@
 
 							</label> <label class="btn btn-primary"> <input type="radio"
 								name="part" autocomplete="off" value="운전자">운전자
+
+							</label>
+
+						</div>
+
+					</div>
+					
+					<div class="form-group" style="text-align: center;">
+
+						<div class="btn-group" data-toggle="buttons">
+
+							<label class="btn btn-primary active"> <input
+								type="radio" name="gender" autocomplete="off" value="M" checked>남자
+
+							</label> <label class="btn btn-primary"> <input type="radio"
+								name="gneder" autocomplete="off" value="F">여자
 
 							</label>
 
@@ -218,7 +249,7 @@
 	<div class="modal fade" id="checkModel" tabindex="-1" role="dialog"
 		aria-hidden="true">
 		<div class="vertical-aligment-helper">
-			<div class="modal-content panel-info %>">
+			<div id = "checkType" class="modal-content panel-info">
 				<div class="modal-header panel-headding">
 					<button type="button" class="close" data-dismiss="model">
 						<span aria-hidden="true">&times;</span> <span class="sr-only">Close</span>

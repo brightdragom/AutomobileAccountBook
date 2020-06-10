@@ -4,157 +4,101 @@
 <!DOCTYPE html>
 
 <html>
-
 <head>
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/javascript">
+</script>
+<link rel="stylesheet" href="css/bootstrap.min.css">
 <title>아이디찾기</title>
-
-<link href="css/bootstrap.min.css" rel="stylesheet">
-
-<script src="js/bootstrap.min.js"></script>
-
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
-
-
+<script src="https://code.jquery.com/jquery-3.1.1min.js"></script>
+<script src="js/bootstrap.js"></script>
+<style>
+.container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+</style>
 </head>
 
-<body>
 
-	<form name="searchId" method="post" action="viaId.jsp">
+<nav class="navbar navbar-default">
 
-		<table width="1330px" border="0" height="430px" align="center">
+	<div class="navbar-header">
 
-			<tr>
+		<button type="button" class="navbar-toggle collapsed"
+			data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+			aria-expaned="false">
 
-				<td>
+			<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+				class="icon-bar"></span>
 
-					<table width="450px" align="center" border="0"
-						style="color: black; background-color: #F6F6F6; font-size: 20px;">
+		</button>
 
-						<tr>
+		<a class="navbar-brand" href="index.jsp">로그인</a>
 
-							<td>
+	</div>
 
-								<table width="750px" align="center" border=0;
-									style="background-color: white; margin-top: 3%">
+	<div class="collapse navbar-collapse"
+		id="#bs-example-navbar-collapse-1">
 
-									<tr>
+		<ul class="nav navbar-nav">
 
-										<td>아이디 찾기</td>
+			<li><a href="FindId.jsp">아이디찾기</a></li>
 
-										<td><div id="sub-title">| 회원정보에 등록한 정보로 인증.</td>
+			<li><a href="FindPw.jsp">비밀번호찾기</a></li>
 
-										<td style="width: 300px"></td>
-
-									</tr>
-
-								</table>
-
-							</td>
-
-						</tr>
-
-						<tr>
-
-							<td>
-
-								<table width="600px" height="300px" align="center" border="0"
-									style="background-color: none; border: dotted 5px none;">
-
-									<tr>
-
-										<td>
-
-											<table width="400px" border="0" style="margin-top: 3%">
-
-												<tr>
-
-													<td><div id="middle-title">&nbsp;이름과 핸드폰 번호를
-															입력해주세요.</div></td>
-
-												</tr>
-
-											</table>
-
-										</td>
-
-									</tr>
-
-									<tr>
-
-										<td>
-
-											<table width="380px" align="center" border="0"
-												style="font-size: 19px">
-
-												<tr>
-
-													<td>이름</td>
-
-													<td><input type="text" name="name"></td>
-
-												</tr>
-
-
-												<tr>
-
-					
-													<td>휴대폰</td>
-
-													<td><input type="text" name="phone1"
-														style="width: 70px"> - <input type="text"
-														name="phone2" style="width: 70px"> - <input
-														type="text" name="phone3" style="width: 70px"></td>
-
-												</tr>
-
-
-											</table>
-										</td>
-
-									</tr>
+		</ul>
+	</div>
+</nav>
 
 
 
-									<tr>
 
-										<td>
+<!-- 로그인 폼 -->
 
-											<table width="150px" align="center" border="0"
-												style="margin-top: 1%">
+<div class="container">
 
-												<tr>
+	<div class="col-lg-4"></div>
+	<div class="col-lg-4">
 
-													<td><input type="submit" name="search" value="찾기"
-														class="btn btn-primary"> <input type="button"
-														name="cancel" value="취소" class="btn btn-primary"
-														onclick="location.href='index.jsp'"></td>
 
-												</tr>
+		<div class="jumbotron" style="padding-top: 20px;">
 
-											</table>
+			<form method="post" action="viaId.jsp">
+				<!-- 로그인 정보를 숨기면서 전송post -->
 
-										</td>
 
-									</tr>
 
-								</table>
+				<h3 style="text-align: center;">아이디 찾기</h3>
+				
 
-							</td>
 
-						</tr>
+				<div class="form-group">
 
-					</table>
 
-				</td>
-		</table>
+					<input type="text" class="form-control" placeholder="이름"
+						name="name" maxlength="20">
 
-	</form>
+				</div>
 
-</body>
+				<div class="form-group">
+
+
+					<input type="text" class="form-control"
+						placeholder="휴대폰 번호 ex)010-3887-9849" name="phone" maxlength="20">
+
+				</div>
+				<input type="submit" class="btn btn-primary form-control"
+					value="아이디찾기">
+			</form>
+		</div>
+
+	</div>
+</div>
+
 
 </html>
+
