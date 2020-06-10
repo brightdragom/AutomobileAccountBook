@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -11,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DAO.DBConnection;
-import model.HousekeepingBook;
+import model.AutoAccountList;
 
 
 /**
@@ -35,16 +36,18 @@ public class LoginAction extends HttpServlet {
 		db = new DBConnection();
 		
 		if(db.login(id, pw)) {
-			List<HousekeepingBook> list = db.getHousekeepingList(id);
+			List<AutoAccountList> list = db.getHousekeepingList(id);
 			System.out.println("list Size : "+list.size());
 			request.setAttribute("user_id", id);
 			request.setAttribute("user_pw", pw);
 			request.setAttribute("item_list", list);
+			request.setAttribute("db", db);
 			RequestDispatcher rd = request.getRequestDispatcher("housekeepingBook_view.jsp");
 			rd.forward(request, response);
 		}else {
 			response.sendRedirect(request.getHeader("referer")+"?error=1");		
 		}
+		
 	}
 
 }

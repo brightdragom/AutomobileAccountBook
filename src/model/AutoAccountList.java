@@ -1,7 +1,7 @@
 package model;
 
 
-public class HousekeepingBook {
+public class AutoAccountList {
 	private String line_no;
 	private String todate;
 	private String content;
@@ -9,7 +9,7 @@ public class HousekeepingBook {
 	private int mileage;
 	private String writer;
 	
-	public HousekeepingBook(String line_no, String todate, String content, int cost, int mileage, String writer) {
+	public AutoAccountList(String line_no, String todate, String content, int cost, int mileage, String writer) {
 		this.line_no = line_no;
 		this.todate = todate;
 		this.content = content;
@@ -18,7 +18,7 @@ public class HousekeepingBook {
 		this.writer = writer;
 	}
 	
-	public HousekeepingBook() {
+	public AutoAccountList() {
 		// TODO Auto-generated constructor stub
 	}
 

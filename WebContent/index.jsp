@@ -156,7 +156,7 @@ video {
 				</div>
 				<div class="PrintMSG2">PW</div>
 				<div>
-					<input actionfocus name="user_pw" type="text">
+					<input actionfocus name="user_pw" type="password">
 				</div>
 			</div>
 			<input class="loginButton" id="loginb" value="login" type="submit"

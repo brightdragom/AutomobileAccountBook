@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.HousekeepingBook;
+import model.AutoAccountList;
 import java.sql.SQLException;
 
 public class DBConnection {
@@ -21,12 +21,12 @@ public class DBConnection {
 	public DBConnection() {
 		try {
 
-			String dbURL = "jdbc:mysql://localhost:3306/dbname?serverTimezone=UTC"; // localhost:3306 포트는 컴퓨터설치된 mysql주소
+			String dbURL = "jdbc:mysql://localhost:3306/accountBook?serverTimezone=UTC"; // localhost:3306 포트는 컴퓨터설치된 mysql주소
 
 
-			String dbID = "id";
+			String dbID = "root";
 
-			String dbPassword = "password";
+			String dbPassword = "1234";
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
@@ -43,7 +43,7 @@ public class DBConnection {
 	
 	public boolean login(String id, String pw) {
 		
-		String SQL = "SELECT * FROM login where id = ?";
+		String SQL = "SELECT * FROM user where id = ?";
 		
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -70,37 +70,55 @@ public class DBConnection {
 	
 //<<<<<<< HEAD
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public List<HousekeepingBook> getHousekeepingList(String id) {
-		String SQL = "select * from hb_book where writer = ?";
+	public AutoAccountList findLine(String line_no) {
+
+		String SQL = "SELECT * FROM list where line_no = ?";
 		
-		ArrayList<HousekeepingBook> list = new ArrayList<>();
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, line_no);
+			System.out.println(" >>> SQL : "+ SQL +"<<<");
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				return new AutoAccountList(rs.getString(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getInt(5),rs.getString(6));
+			}
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		System.out.println("db err");
+		return null;
+	}
+	//수정할곳 -gy	
+	public AutoAccountList Edit_line(String line_no) {
+
+		String SQL = "SELECT * FROM list where line_no = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, line_no);
+			System.out.println(" >>> SQL : "+ SQL +"<<<");
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				return new AutoAccountList(rs.getString(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getInt(5),rs.getString(6));
+			}
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		System.out.println("db err");
+		return null;
+	}
+	
+	
+	
+	
+	
+	
+	public List<AutoAccountList> getHousekeepingList(String id) {
+		String SQL = "select * from list where writer = ?";
+		
+		ArrayList<AutoAccountList> list = new ArrayList<>();
 		
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -108,10 +126,10 @@ public class DBConnection {
 			System.out.println(" >>> id : "+ id +"<<<");
 			System.out.println(" >>> SQL : "+ SQL +"<<<");
 			rs = pstmt.executeQuery();
-			HousekeepingBook item = null;
+			AutoAccountList item = null;
 			
 			while(rs.next()) {
-				item = new HousekeepingBook(rs.getString("line_no"), rs.getString("todate"), 
+				item = new AutoAccountList(rs.getString("line_no"), rs.getString("todate"), 
 						rs.getString("content"), rs.getInt("cost"), rs.getInt("mileage"), rs.getString("writer"));
 				list.add(item);
 				
@@ -129,7 +147,7 @@ public class DBConnection {
 	public int register (String id, String pw, String phone, String email, String part, String addr, String name) {
 		pstmt = null;
 		ResultSet re = null;
-		String SQL = "INSERT INTO USER VALUES (?, ?, ?, ?, ?, ?, ?)";
+		String SQL = "INSERT INTO user VALUES (?, ?, ?, ?, ?, ?, ?)";
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, id);
