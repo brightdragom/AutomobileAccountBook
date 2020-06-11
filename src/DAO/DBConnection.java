@@ -25,7 +25,7 @@ public class DBConnection {
 
 			String dbID = "root";
 
-			String dbPassword = "1234";
+			String dbPassword = "5623";
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
 

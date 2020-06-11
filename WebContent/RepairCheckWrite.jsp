@@ -61,7 +61,7 @@
 
 				<div class="row">
 
-					<form method="post" action="/wirteAction">
+					<form method="post" action="/AutomobileAccountBook/wirteAction">
 
 						<table class="table table-striped"
 							style="text-align: center; border: 1px solid #dddddd">
