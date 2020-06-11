@@ -22,12 +22,12 @@ public class DBConnection {
 		try {
 
 			String dbURL = "jdbc:mysql://localhost:3306/accountBook?serverTimezone=UTC"; // localhost:3306 포트는 컴퓨터설치된
-
+			
 			String dbID = "root";
 
 			String dbPassword = "5623";
 
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Class.forName("com.mysql.jdbc.Driver");
 
 			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 
@@ -109,7 +109,7 @@ public class DBConnection {
 		System.out.println("db err");
 		return null;
 	}
-
+	
 	public List<AutoAccountList> getHousekeepingList(String id) {
 		String SQL = "select * from list where writer = ?";
 
@@ -125,7 +125,7 @@ public class DBConnection {
 			AutoAccountList item = null;
 
 			while (rs.next()) {
-				item = new AutoAccountList(rs.getString("line_no"), rs.getString("todate"), rs.getString("content"),
+				item = new AutoAccountList(rs.getString("line_no"), rs.getString("todate"), rs.getString("contents"),
 						rs.getInt("cost"), rs.getInt("mileage"), rs.getString("writer"));
 				list.add(item);
 
@@ -307,7 +307,7 @@ public class DBConnection {
 		return -1;
 
 	}
-
+	
 	public int write(String Title, String Content) {
 
 		String SQL = "INSERT INTO repaircheck VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -348,6 +348,49 @@ public class DBConnection {
 
 		return -1; // 데이터베이스 오류
 
+	}
+
+	public boolean Add_line(User user, AutoAccountList aal) {
+		int num = 0;
+		String SQL = "INSERT INTO list VALUES(?,?,?,?,?,?)";
+		String SQL2 = "Select MAX(line_no) from list";
+		try {
+			pstmt = conn.prepareStatement(SQL2);
+			System.out.println(" >>> SQL : " + SQL2 + "<<<");
+			rs = pstmt.executeQuery();
+			
+			String result = null;
+			//rs.getString("MAX(line_no)");
+			/*System.out.println(result);
+			int line_no = 0;
+			if(result != null) {
+				line_no = Integer.parseInt(result);
+			}*/
+			int line_no = 0;
+			
+			if(rs.next()) {
+				line_no = rs.getInt(1);
+			}
+			System.out.println("Max(line_no) : "+line_no++);
+			
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, line_no);
+			pstmt.setString(2, aal.getTodate());
+			pstmt.setString(3, aal.getContent());
+			pstmt.setInt(4, aal.getCost());
+			pstmt.setInt(5, aal.getMileage());
+			pstmt.setString(6, user.getId());
+			System.out.println(" >>> SQL : " + SQL2 + "<<<");
+			int result2 = pstmt.executeUpdate();
+			if(result2 >= 1) {
+				return true;
+			}else {
+				return false;
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return false;
 	}
 
 }
