@@ -43,8 +43,25 @@
     }
 </script>
 <style>
-
-
+.vertical-alignment-helper {
+    display: table;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+}
+ 
+.vertical-align-center {
+    display: table-cell;
+    vertical-align: middle;
+    pointer-events: none;
+}
+ 
+.modal-content {
+    width: inherit;
+    height: inherit;
+    margin: 0 auto;
+    pointer-events: none;
+}
 
 </style>
 <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -238,7 +255,7 @@
 
 	<div class="modal fade" id="messageModal" tabindex="-1" role="dialog"
 		aria-hidden="true">
-		<div class="vertical-aligment-helper">
+		<div class="vertical-alignment-helper">
 			<div class="modal-dialog vertical-align-center">
 				<div
 					class="modal-content
@@ -257,7 +274,7 @@
 					<div class="modal-body">
 						<%=messageContent%>
 					</div>
-					<div class="model-footer">
+					<div class="model-footer" align="right">
 						<button type="button" class="btn btn-primary" data-dismiss="modal">확인</button>
 					</div>
 				</div>
@@ -284,7 +301,7 @@
 					<h4 class="model-title">확인 메세지</h4>
 				</div>
 				<div class="modal-body" id="checkMessage"></div>
-				<div class="model-footer">
+				<div class="model-footer" align="right">
 					<button type="button" class="btn btn-primary" data-dismiss="modal">확인</button>
 				</div>
 			</div>
