@@ -15,6 +15,10 @@
 <meta name="viewport" content="width=device-width">
 
 <title>아이디 찾기</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.1.1min.js"></script>
+<script src="js/bootstrap.js"></script>
+
 
 </head>
 
@@ -32,6 +36,38 @@
    String id = db.findId(name, phone);
 
 %>
+<nav class="navbar navbar-default">
+
+		<div class="navbar-header">
+
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+				aria-expaned="false">
+
+				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+
+			</button>
+
+			<a class="navbar-brand" href="index.jsp">로그인</a>
+
+		</div>
+
+		<div class="collapse navbar-collapse"
+			id="#bs-example-navbar-collapse-1">
+
+			<ul class="nav navbar-nav">
+
+				<li><a href="FindId.jsp">아이디찾기</a></li>
+
+				<li><a href="FindPw.jsp">비밀번호찾기</a></li>
+
+			</ul>
+		</div>
+	</nav>
+
+
+
 
 <body>
 

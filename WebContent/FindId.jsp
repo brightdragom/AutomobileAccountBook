@@ -67,7 +67,7 @@
 
 		<div class="jumbotron" style="padding-top: 20px;">
 
-			<form method="post" action="viaId.jsp">
+			<form method="post" action="ViaId.jsp">
 				<!-- 로그인 정보를 숨기면서 전송post -->
 
 
