@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 
 <html>
@@ -13,9 +12,10 @@
 <title>아이디찾기</title>
 <script src="https://code.jquery.com/jquery-3.1.1min.js"></script>
 <script src="js/bootstrap.js"></script>
+
 <style>
-.container-fluid {
-  padding-right: 15px;
+.container {
+padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
@@ -67,20 +67,19 @@
 
 		<div class="jumbotron" style="padding-top: 20px;">
 
-			<form method="post" action="viaId.jsp">
+			<form method="post" action="ViaPw.jsp">
 				<!-- 로그인 정보를 숨기면서 전송post -->
 
 
 
-				<h3 style="text-align: center;">아이디 찾기</h3>
-				
+				<h3 style="text-align: center;">비밀번호 찾기</h3>
 
 
 				<div class="form-group">
 
 
-					<input type="text" class="form-control" placeholder="이름"
-						name="name" maxlength="20">
+					<input type="text" class="form-control" placeholder="아아디" name="id"
+						maxlength="20">
 
 				</div>
 

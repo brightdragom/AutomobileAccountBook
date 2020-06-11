@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>LoginTest+</title>
+<title>로그인</title>
 <style>
 body {
 	margin: 0;
@@ -165,8 +165,9 @@ video {
 				style="width: 100%;" />
 		</form>
 		<div style="text-align: center;">
-			<a href="/AutomobileAccountBook/Register.jsp">회원가입</a> / <a href="/AutomobileAccountBook/FindId.jsp">아이디찾기</a> /
-			<a href="/AutomobileAccountBook/jsp이름">비번찾기</a>
+			<a href="Register.jsp">회원가입</a> / 
+			<a href="FindPw.jsp">아이디찾기</a> /
+			<a href="FindPw.jsp">비번찾기</a>
 		</div>
 		<small>© 20200527 Sunmoon OSSPTeam7</small>
 		</p>

@@ -22,7 +22,6 @@ public class DBConnection {
 		try {
 
 			String dbURL = "jdbc:mysql://localhost:3306/accountBook?serverTimezone=UTC"; // localhost:3306 포트는 컴퓨터설치된
-																							// mysql주소
 
 			String dbID = "root";
 
@@ -141,8 +140,8 @@ public class DBConnection {
 		return list;
 	}
 
-//=======
-	public int register(String id, String pw, String phone, String email, String part, String addr, String name) {
+	public int register (String id, String pw, String phone, String email, String part, String addr, String name, String gender) {
+
 		pstmt = null;
 		ResultSet re = null;
 		String SQL = "INSERT INTO user VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -155,6 +154,7 @@ public class DBConnection {
 			pstmt.setString(5, part);
 			pstmt.setString(6, addr);
 			pstmt.setString(7, name);
+			pstmt.setString(7, gender);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -175,7 +175,8 @@ public class DBConnection {
 
 		boolean findSuccess = false;
 		String id = null;
-		String SQL = "select * from user where name='" + "?" + "' and phone='" + "?'";
+		String SQL = "select id from user where name= ? and phone = ?" ;
+
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, name);
@@ -211,9 +212,9 @@ public class DBConnection {
 
 			while (rs.next()) {
 
-				String id_db = rs.getString("id");
-				id = rs.getString(1);
-				findSuccess = (id != null) ? true : false;
+				String pw_db = rs.getString("pw");
+				pw = rs.getString(1);
+				findSuccess = (pw != null) ? true : false;
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
