@@ -27,7 +27,7 @@
 	<!-- 네비게이션  -->
 
 	<nav class="navbar navbar-default">
-	
+
 		<div class="navbar-header">
 
 			<button type="button" class="navbar-toggle collapsed"
@@ -43,72 +43,68 @@
 
 		</div>
 
-		<div class="collapse navbar-collapse"id="#bs-example-navbar-collapse-1">
+		<div class="collapse navbar-collapse"
+			id="#bs-example-navbar-collapse-1">
 
 			<ul class="nav navbar-nav">
 
 				<li><a href="/AutomobileAccountBook/housekeepingBook_view.jsp">가계부</a></li>
 
-				<li class="active"><a href="/AutomobileAccountBook/RepairCheck.jsp">수리현황</a></li>
+				<li class="active"><a
+					href="/AutomobileAccountBook/RepairCheck.jsp">수리현황</a></li>
 
 			</ul>
 
-			<!-- 수리현황 -->
+			<!-- 게시판 -->
 
 			<div class="container">
 
 				<div class="row">
 
-					<table class="table table-striped"
-						style="text-align: center; border: 1px solid #dddddd">
+					<form method="post" action="/wirteAction">
 
-						<thead>
+						<table class="table table-striped"
+							style="text-align: center; border: 1px solid #dddddd">
 
-							<tr>
+							<thead>
 
-								<th style="background-color: #eeeeee; text-align: center;">번호</th>
+								<tr>
 
-								<th style="background-color: #eeeeee; text-align: center;">제목</th>
+									<th colspan="2"
+										style="background-color: #eeeeee; text-align: center;">수리현황</th>
 
-								<th style="background-color: #eeeeee; text-align: center;">작성자</th>
+								</tr>
 
-								<th style="background-color: #eeeeee; text-align: center;">작성일</th>
+							</thead>
 
-							</tr>
+							<tbody>
 
-						</thead>
+								<tr>
 
-						<tbody>
+									<td><input type="text" class="form-control"
+										placeholder="글 제목" name="title" maxlength="50" /></td>
 
-							<tr>
+								</tr>
 
-								<td>1</td>
+								<tr>
 
-								<td>타이어교체</td>
+									<td><textarea class="form-control" placeholder="글 내용"
+											name="content" maxlength="2048" style="height: 350px;"></textarea></td>
 
-								<td>정비사</td>
+								</tr>
 
-								<td>2020-06-09</td>
+							</tbody>
 
-							</tr>
+						</table>
 
-						</tbody>
+						<input type="submit" class="btn btn-primary pull-right"
+							value="저장" />
 
-					</table>
-
-					<a href="/AutomobileAccountBook/RepairCheckWrite.jsp" class="btn btn-primary pull-right">글쓰기</a>
+					</form>
 
 				</div>
 
 			</div>
-
-
-
-
-
-
-
-
 
 			<!-- 애니매이션 담당 JQUERY -->
 
