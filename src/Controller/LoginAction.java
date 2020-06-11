@@ -39,14 +39,12 @@ public class LoginAction extends HttpServlet {
 		if(user != null) {
 			
 			List<AutoAccountList> list = db.getHousekeepingList(id);	//로그인 한 사람이 작성한 가계부 내용 가져오는 코드
-			//System.out.println("list Size : "+list.size());
-			request.setAttribute("item_list", list);
-			request.setAttribute("db", db);
 			
+			request.setAttribute("item_list", list);			
 			//세션 등록
 			HttpSession session = request.getSession(true);
 			session.setAttribute("user", user);
-			
+			session.setAttribute("db", db);
 			RequestDispatcher rd = request.getRequestDispatcher("housekeepingBook_view.jsp");
 			//RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 			rd.forward(request, response);

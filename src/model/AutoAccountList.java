@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Date;
 
 public class AutoAccountList {
 	private String line_no;
