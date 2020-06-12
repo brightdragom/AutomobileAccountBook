@@ -3,8 +3,6 @@
 <%
 	request.setCharacterEncoding("euc-kr");
 %>
-
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="model.AutoAccountList"%>
 <%@ page import="java.util.List"%>
@@ -25,21 +23,9 @@
 <head>
 <meta charset="UTF-8">
 <title>HousekeepingBook_view_page</title>
-<!-- 
-<script type="text/javascript">
-	function add_list_line(){
-		var inputStr = prompt('추가할 항목을 입력하시오.','날짜','사용내역','비용','현재KM');
-		alert(inputStr);
-	}
-</script>
- -->
-
 <script type="text/javascript">
 	function add_list_line() {
 		location.href = "/AutomobileAccountBook/main/add_list_line.jsp";
-	}
-	function edit() {
-		location.href = "/AutomobileAccountBook/Edit";
 	}
 	function logout() {
 		location.href = "/AutomobileAccountBook/login/logout.jsp"
@@ -64,10 +50,10 @@
 			<td><span> 현재Km </span></td>
 		</tr>
 	</table>
+	<form action="/AutomobileAccountBook/Delete" method="post">
 		<div
 			style="max-height: 500px; width: 100%; overflow-x: hidden; overflow-y: scroll;">
-			<table width="500" border="0" align="center" left_padding="50"
-				cellpadding="0" cellspacing="1">
+			<table width="500" border="0" align="center" left_padding="50" cellpadding="0" cellspacing="1">
 				<!-- 가계부 정보 -->
 				<%
 					int cnt = 0;
@@ -77,7 +63,8 @@
 						cnt++;
 					%>
 					<tr>
-						<td align="center"><input type="checkbox" name="item_list" value="${item_list.line_no}"></td>
+						<td align="center"><input type="checkbox" name="item_list"
+							value="${item_list.line_no}"></td>
 						<td align="center">
 							<%
 								out.println(cnt);
@@ -88,18 +75,24 @@
 						<td align="center"><span>${ item_list.cost}</span></td>
 						<td align="center"><span>${ item_list.mileage}</span></td>
 						<td align="center"><a href="/AutomobileAccountBook/Edit?item_list=${ item_list.line_no}">수정</a></td>
-						
+
 					</tr>
 				</c:forEach>
-
+				<tr>
+				</tr>
 			</table>
 		</div>
-	<div align="center">
-		<input type="button" name="add_list_line" value="add_list_line"
-			onclick="add_list_line()">
-	</div>
-	<div align="center">
-		<input type="button" name="logout" value="logout" onclick="logout()">
-	</div>
+		<div align="center">
+			<input type="submit" name="delete_line2" value="delete!">
+		</div>
+	</form>
+		<div align="center">
+			<input type="button" name="add_list_line" value="add_list_line"
+				onclick="add_list_line()">
+		</div>
+		<div align="center">
+			<input type="button" name="logout" value="logout" onclick="logout()">
+		</div>
+
 </body>
 </html>
