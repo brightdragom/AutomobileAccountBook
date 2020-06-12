@@ -39,7 +39,7 @@
 
 			</button>
 
-			<a class="navbar-brand" href="/AutomobileAccountBook/housekeepingBook_view.jsp">부릉</a>
+			<a class="navbar-brand" href="/AutomobileAccountBook/main/housekeepingBook_view.jsp">부릉</a>
 
 		</div>
 
@@ -47,9 +47,9 @@
 
 			<ul class="nav navbar-nav">
 
-				<li><a href="/AutomobileAccountBook/housekeepingBook_view.jsp">가계부</a></li>
+				<li><a href="/AutomobileAccountBook/main/housekeepingBook_view.jsp">가계부</a></li>
 
-				<li class="active"><a href="/AutomobileAccountBook/RepairCheck.jsp">수리현황</a></li>
+				<li class="active"><a href="/AutomobileAccountBook/main/RepairCheck.jsp">수리현황</a></li>
 
 			</ul>
 
@@ -96,7 +96,7 @@
 
 					</table>
 
-					<a href="/AutomobileAccountBook/RepairCheckWrite.jsp" class="btn btn-primary pull-right">글쓰기</a>
+					<a href="/AutomobileAccountBook/main/RepairCheckWrite.jsp" class="btn btn-primary pull-right">글쓰기</a>
 
 				</div>
 

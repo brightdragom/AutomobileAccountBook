@@ -58,9 +58,9 @@
 
 			<ul class="nav navbar-nav">
 
-				<li><a href="FindId.jsp">아이디찾기</a></li>
+				<li><a href="login/FindId.jsp">아이디찾기</a></li>
 
-				<li><a href="FindPw.jsp">비밀번호찾기</a></li>
+				<li><a href="login/FindPw.jsp">비밀번호찾기</a></li>
 
 			</ul>
 		</div>

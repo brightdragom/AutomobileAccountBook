@@ -58,7 +58,7 @@ public class AddList extends HttpServlet {
 			
 			request.setAttribute("item_list", list);	
 			
-			RequestDispatcher rd = request.getRequestDispatcher("housekeepingBook_view.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("main/housekeepingBook_view.jsp");
 			rd.forward(request, response);	
 		}else {
 			//수정 요망

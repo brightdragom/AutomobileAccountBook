@@ -16,7 +16,7 @@
 	User user = null;
 	if (session.getAttribute("user") == null) {
 		out.println("<script>alert('로그인을 먼저 해주세요'); history.back();</script>");
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("/AutomobileAccountBook/login/index.jsp");
 	} else {
 		user = (User) session.getAttribute("user");
 		out.println("<script>alert('환영합니다.');</script>");
@@ -36,10 +36,13 @@
 
 <script type="text/javascript">
 	function add_list_line() {
-		location.href = "/AutomobileAccountBook/add_list_line.jsp";
+		location.href = "/AutomobileAccountBook/main/add_list_line.jsp";
+	}
+	function edit() {
+		location.href = "/AutomobileAccountBook/Edit";
 	}
 	function logout() {
-		location.href = "/AutomobileAccountBook/logout.jsp"
+		location.href = "/AutomobileAccountBook/login/logout.jsp"
 	}
 </script>
 </head>
@@ -61,7 +64,6 @@
 			<td><span> 현재Km </span></td>
 		</tr>
 	</table>
-	<form action="/AutomobileAccountBook/TestServlet" method="post">
 		<div
 			style="max-height: 500px; width: 100%; overflow-x: hidden; overflow-y: scroll;">
 			<table width="500" border="0" align="center" left_padding="50"
@@ -82,35 +84,17 @@
 								out.println(cnt);
 							%>
 						</td>
-						<!-- <td align="center"> <input actionfocus name="item_list.todate" type="text" value="${ item_list.todate}"> </td>
-				<td align="center"> <input actionfocus name="item_list.content" type="text" value="${ item_list.content}"></td>
-				<td align="center"> <input actionfocus name="item_list.cost" type="text" value="${ item_list.cost}"></td>
-				<td align="center"> <input actionfocus name="item_list.mileage" type="text" value="${ item_list.mileage}"></td> -->
 						<td align="center"><span>${ item_list.todate}</span></td>
 						<td align="center"><span>${ item_list.content}</span></td>
 						<td align="center"><span>${ item_list.cost}</span></td>
 						<td align="center"><span>${ item_list.mileage}</span></td>
-						<!-- <td align="center"><a href="/AutomobileAccountBook/TestServlet?item_list=${ item_list.line_no}">수정</a></td> -->
-
+						<td align="center"><a href="/AutomobileAccountBook/Edit?item_list=${ item_list.line_no}">수정</a></td>
+						
 					</tr>
 				</c:forEach>
-				<!-- 가계부 정보 -->
 
-				<tr>
-					<!-- 장식 -->
-					<!--  <td align="center" colspan="6"><input type="submit" value="SAVE" onClick="true"></td>-->
-					<!--  <td align="center" colspan="6"><a href="/AutomobileAccountBook/TestServlet?item_list=1">123</a></td>-->
-					<!-- <td align="center" colspan="7"> <a href="/AutomobileAccountBook/TestServlet">save</a> </td>  -->
-					<!-- <td align="center" colspan="7"> <input type="submit"></td>-->
-
-				</tr>
 			</table>
 		</div>
-		<div align="center">
-			<input type="submit" value="Edit" />
-		</div>
-	</form>
-	<!-- <div align="center"><input type="button" value="add_list_line" onclick="add_list_line()"></div> -->
 	<div align="center">
 		<input type="button" name="add_list_line" value="add_list_line"
 			onclick="add_list_line()">
