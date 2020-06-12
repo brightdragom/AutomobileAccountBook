@@ -25,7 +25,11 @@ public class DBConnection {
 			
 			String dbID = "root";
 
+<<<<<<< HEAD
 			String dbPassword = "thals0416";
+=======
+			String dbPassword = "1234";
+>>>>>>> 0191054a64b3671066ca0e0ef5c57d8205ca5dd1
 
 			Class.forName("com.mysql.jdbc.Driver");
 
@@ -39,7 +43,7 @@ public class DBConnection {
 
 	}
 
-	public User login(String id, String pw) {
+	public User login(String id, String pw) {	//로그인 메소드
 
 		String SQL = "SELECT * FROM user where id = ?";
 
@@ -67,29 +71,32 @@ public class DBConnection {
 		return null;
 	}
 
-	public AutoAccountList findLine(String line_no) {
+	public boolean editLine(AutoAccountList aac) {	//가계부 라인 수정 메소드
 
-		String SQL = "SELECT * FROM list where line_no = ?";
+		String SQL = "UPDATE list SET line_no = ?, todate = ?, contents = ?, cost = ?, mileage = ?, writer = ?";
 
 		try {
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, line_no);
-			System.out.println(" >>> SQL : " + SQL + "<<<");
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				return new AutoAccountList(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4),
-						rs.getInt(5), rs.getString(6));
+			
+			pstmt.setString(1, aac.getLine_no());
+			pstmt.setString(2, aac.getTodate());
+			pstmt.setString(3, aac.getContent());
+			pstmt.setInt(4, aac.getCost());
+			pstmt.setInt(5, aac.getMileage());
+			
+			int result = pstmt.executeUpdate();
+			
+			if(result != 0) {
+				return true;
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		System.out.println("db err");
-		return null;
+		return false;
 	}
 
-	// 수정할곳 -gy
-	public AutoAccountList Edit_line(String line_no) {
+	public AutoAccountList findLine(String line_no) {	//차계부 라인 찾는 메소드
 
 		String SQL = "SELECT * FROM list where line_no = ?";
 
@@ -110,7 +117,7 @@ public class DBConnection {
 		return null;
 	}
 	
-	public List<AutoAccountList> getHousekeepingList(String id) {
+	public List<AutoAccountList> getHousekeepingList(String id) {	//차계부 아이디에 맞게 내용 가져오는 메소드
 		String SQL = "select * from list where writer = ?";
 
 		ArrayList<AutoAccountList> list = new ArrayList<>();
