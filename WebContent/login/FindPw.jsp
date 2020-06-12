@@ -46,9 +46,9 @@ padding-right: 15px;
 
 		<ul class="nav navbar-nav">
 
-			<li><a href="FindId.jsp">아이디찾기</a></li>
+			<li><a href="login/FindId.jsp">아이디찾기</a></li>
 
-			<li><a href="FindPw.jsp">비밀번호찾기</a></li>
+			<li><a href="login/FindPw.jsp">비밀번호찾기</a></li>
 
 		</ul>
 	</div>
@@ -67,7 +67,7 @@ padding-right: 15px;
 
 		<div class="jumbotron" style="padding-top: 20px;">
 
-			<form method="post" action="ViaPw.jsp">
+			<form method="post" action="login/ViaPw.jsp">
 				<!-- 로그인 정보를 숨기면서 전송post -->
 
 
