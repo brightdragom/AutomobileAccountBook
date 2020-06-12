@@ -30,19 +30,19 @@ public class RegisterAction extends HttpServlet{
 				|| name == null || name.equals("") ||  gender == null || gender.equals(gender)){
 			request.getSession().setAttribute("messageType", "오류");
 			request.getSession().setAttribute("messageType", "모든 내용을 입력 하시오");
-			response.sendRedirect("Register.jsp");
+			response.sendRedirect("main/Register.jsp");
 			return;
 		}
 		int result = new DBConnection().register(id, pw, phone, email, part, addr, name, gender);
 		if (result == 1) {
 			request.getSession().setAttribute("messageType", "성공");
 			request.getSession().setAttribute("messageType", "회원가입 성공");
-			response.sendRedirect("Register.jsp");
+			response.sendRedirect("main/Register.jsp");
 			return;
 		} else {
 			request.getSession().setAttribute("messageType", "오류 메세지");
 			request.getSession().setAttribute("messageType", "이미 존재 합니다.");
-			response.sendRedirect("Register.jsp");
+			response.sendRedirect("main/Register.jsp");
 			return;
 		}
 	}

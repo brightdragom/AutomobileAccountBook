@@ -45,7 +45,7 @@ public class LoginAction extends HttpServlet {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("user", user);
 			session.setAttribute("db", db);
-			RequestDispatcher rd = request.getRequestDispatcher("housekeepingBook_view.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("main/housekeepingBook_view.jsp");
 			//RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 			rd.forward(request, response);
 		}else {

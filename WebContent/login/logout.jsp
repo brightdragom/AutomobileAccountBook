@@ -19,7 +19,7 @@
 		alert('logout successfully');
 	</script>
 	<%
-		response.sendRedirect("/AutomobileAccountBook/index.jsp");
+		response.sendRedirect("/AutomobileAccountBook/login/index.jsp");
 	%>
 </body>
 </html>
