@@ -21,11 +21,11 @@ public class DBConnection {
 	public DBConnection() {
 		try {
 
-			String dbURL = "jdbc:mysql://localhost:3306/accountBook?serverTimezone=UTC"; // localhost:3306 포트는 컴퓨터설치된
+			String dbURL = "jdbc:mysql://localhost:3306/dbname?serverTimezone=UTC"; // localhost:3306 포트는 컴퓨터설치된
 			
-			String dbID = "root";
+			String dbID = "id";
 
-			String dbPassword = "1234";
+			String dbPassword = "password";
 
 			Class.forName("com.mysql.jdbc.Driver");
 
@@ -69,17 +69,16 @@ public class DBConnection {
 
 	public boolean editLine(AutoAccountList aac) {	//가계부 라인 수정 메소드
 
-		String SQL = "UPDATE list SET line_no = ?, todate = ?, contents = ?, cost = ?, mileage = ?, writer = ?";
+		String SQL = "UPDATE list SET todate = ?, contents = ?, cost = ?, mileage = ? where line_no = ?";
 
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			
-			pstmt.setString(1, aac.getLine_no());
-			pstmt.setString(2, aac.getTodate());
-			pstmt.setString(3, aac.getContent());
-			pstmt.setInt(4, aac.getCost());
-			pstmt.setInt(5, aac.getMileage());
-			
+			pstmt.setString(1, aac.getTodate());
+			pstmt.setString(2, aac.getContent());
+			pstmt.setInt(3, aac.getCost());
+			pstmt.setInt(4, aac.getMileage());
+			pstmt.setString(5, aac.getLine_no());
 			int result = pstmt.executeUpdate();
 			
 			if(result != 0) {
