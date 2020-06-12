@@ -27,13 +27,13 @@ public class RegisterAction extends HttpServlet{
 		String gender = request.getParameter("gender");
 		if(id == null || id.equals("") || pw == null || pw.equals("" ) || phone == null || phone.equals("") ||
 				email == null || email.equals("") || part == null || part.equals("") || addr == null || addr.equals("")
-				|| name == null || name.equals("") ||  gender == null || gender.equals(gender)){
+				|| name == null || name.equals("") ||  gender == null || gender.equals("")){
 			request.getSession().setAttribute("messageType", "오류");
 			request.getSession().setAttribute("messageType", "모든 내용을 입력 하시오");
 			response.sendRedirect("main/Register.jsp");
 			return;
 		}
-		int result = new DBConnection().register(id, pw, phone, email, part, addr, name, gender);
+		int result = new DBConnection().register(name, id, pw, phone, email, part, addr, gender);
 		if (result == 1) {
 			request.getSession().setAttribute("messageType", "성공");
 			request.getSession().setAttribute("messageType", "회원가입 성공");
@@ -43,10 +43,10 @@ public class RegisterAction extends HttpServlet{
 			request.getSession().setAttribute("messageType", "오류 메세지");
 			request.getSession().setAttribute("messageType", "이미 존재 합니다.");
 			response.sendRedirect("main/Register.jsp");
+
 			return;
 		}
 	}
 	
 	
 }
-

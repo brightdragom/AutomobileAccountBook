@@ -142,21 +142,21 @@ public class DBConnection {
 		return list;
 	}
 
-	public int register (String id, String pw, String phone, String email, String part, String addr, String name, String gender) {
+	public int register (String name, String id, String pw, String phone, String email, String part, String addr, String gender) {
 
 		pstmt = null;
 		ResultSet re = null;
-		String SQL = "INSERT INTO user VALUES (?, ?, ?, ?, ?, ?, ?)";
+		String SQL = "INSERT INTO user VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, id);
-			pstmt.setString(2, pw);
-			pstmt.setString(3, phone);
-			pstmt.setString(4, email);
-			pstmt.setString(5, part);
-			pstmt.setString(6, addr);
-			pstmt.setString(7, name);
-			pstmt.setString(7, gender);
+			pstmt.setString(1, name);
+			pstmt.setString(2, id);
+			pstmt.setString(3, pw);
+			pstmt.setString(4, phone);
+			pstmt.setString(5, email);
+			pstmt.setString(6, part);
+			pstmt.setString(7, addr);
+			pstmt.setString(8, gender);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -205,7 +205,7 @@ public class DBConnection {
 
 		boolean findSuccess = false;
 		String pw = null;
-		String SQL = "select * from user where id='" + "?" + "' and phone='" + "?'";
+		String SQL = "select pw from user where id= ? and phone = ?";
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, id);
@@ -236,7 +236,7 @@ public class DBConnection {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, id);
 			re = pstmt.executeQuery();
-			if (rs.next()) {
+			if (re.next() || id.equals("")) {
 				return 0;
 			} else {
 				return 1;
@@ -245,8 +245,8 @@ public class DBConnection {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (rs != null)
-					rs.close();
+				if (re != null)
+					re.close();
 				if (pstmt != null)
 					pstmt.close();
 			} catch (Exception e) {
