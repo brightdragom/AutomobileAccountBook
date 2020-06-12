@@ -25,13 +25,7 @@ public class DBConnection {
 			
 			String dbID = "root";
 
-<<<<<<< HEAD
-			String dbPassword = "thals0416";
-=======
 			String dbPassword = "1234";
->>>>>>> 0191054a64b3671066ca0e0ef5c57d8205ca5dd1
-
-
 
 			Class.forName("com.mysql.jdbc.Driver");
 
