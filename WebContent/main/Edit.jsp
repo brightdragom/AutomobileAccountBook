@@ -31,7 +31,7 @@
 			<td align="center"> <input actionfocus name="item.writer" type="text" value="${ item.writer }"> </td>
 		</tr>
 	</table>
-	<input type="subit" value="submit">
+		<input type="submit" value="전송">
 	</form>
 </body>
 </html>
