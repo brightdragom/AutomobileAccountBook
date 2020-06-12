@@ -2,6 +2,7 @@ package Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -41,8 +42,22 @@ public class EditList extends HttpServlet {
     	
     	AutoAccountList aac = new AutoAccountList(line_no, todate,contents,cost,mileage,writer);
     	HttpSession session = request.getSession();
+		User user = (User)session.getAttribute("user");
 		db = (DBConnection) session.getAttribute("db");
-		db.editLine(aac);
+		boolean result = db.editLine(aac);
+		
+		if(result) {
+			System.out.println(">>>>Edit Success<<<<");
+			List<AutoAccountList> list = db.getHousekeepingList(user.getId());	//로그인 한 사람이 작성한 가계부 내용 가져오는 코드
+			
+			request.setAttribute("item_list", list);
+			RequestDispatcher rd = request.getRequestDispatcher("main/housekeepingBook_view.jsp");
+			rd.forward(request, response);
+		}else {
+			System.out.println(">>>>Edit fail<<<<");
+			RequestDispatcher rd = request.getRequestDispatcher("main/housekeepingBook_view.jsp");
+			rd.forward(request, response);
+		}
     }
 
 	/**
