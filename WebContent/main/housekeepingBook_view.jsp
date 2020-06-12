@@ -77,8 +77,7 @@
 						cnt++;
 					%>
 					<tr>
-						<td align="center"><input type="checkbox" name="item_list"
-							value="${item_list.line_no}"></td>
+						<td align="center"><input type="checkbox" name="item_list" value="${item_list.line_no}"></td>
 						<td align="center">
 							<%
 								out.println(cnt);
