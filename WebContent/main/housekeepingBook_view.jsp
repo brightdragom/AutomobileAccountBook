@@ -25,10 +25,13 @@
 <title>HousekeepingBook_view_page</title>
 <script type="text/javascript">
 	function add_list_line() {
-		location.href = "/AutomobileAccountBook/main/add_list_line.jsp";
+		location.href = "/AutomobileAccountBook/main/add_list_line.jsp"
 	}
 	function logout() {
 		location.href = "/AutomobileAccountBook/login/logout.jsp"
+	}
+	function myPages(){
+		location.href="/AutomobileAccountBook/main/myPages.jsp"
 	}
 </script>
 </head>
@@ -92,6 +95,9 @@
 		</div>
 		<div align="center">
 			<input type="button" name="logout" value="logout" onclick="logout()">
+		</div>
+		<div align="center">
+			<input type="button" name="myPages" value="myPages" onclick="myPages()">
 		</div>
 
 </body>
