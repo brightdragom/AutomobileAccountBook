@@ -7,12 +7,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script type="text/javascript">
-</script>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <title>아이디찾기</title>
 <script src="https://code.jquery.com/jquery-3.1.1min.js"></script>
 <script src="js/bootstrap.js"></script>
+
+
 <style>
 .container-fluid {
   padding-right: 15px;
@@ -67,7 +67,7 @@
 
 		<div class="jumbotron" style="padding-top: 20px;">
 
-			<form method="post" action="login/viaId.jsp">
+			<form method="post" action="ViaId.jsp">
 				<!-- 로그인 정보를 숨기면서 전송post -->
 
 
