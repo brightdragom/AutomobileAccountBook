@@ -64,10 +64,10 @@
 }
 
 </style>
-<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/styles_login.css">
 <title>회원가입</title>
 <script src="https://code.jquery.com/jquery-3.1.1min.js"></script>
-<script src="js/bootstrap.js"></script>
+<script src="../js/scripts.js"></script>
 </head>
 
 
