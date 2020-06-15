@@ -12,7 +12,8 @@
 </script>
 <link rel="stylesheet" href="../css/styles_login.css">
 <title>아이디찾기</title>
-<script src="httbootstrap.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1min.js"></script>
+<script src="../js/scripts.js"></script>
 <style>
 .container-fluid {
   padding-right: 15px;
