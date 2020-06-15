@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
-<%@ page import="DAO.*" %>
+<%@ page import="DAO.*"%>
 
 
 
@@ -22,81 +22,94 @@
 </head>
 
 <%
+	request.setCharacterEncoding("UTF-8");
 
-   request.setCharacterEncoding("UTF-8");
+	String name = request.getParameter("name");
 
-   String name = request.getParameter("name");
+	String phone = request.getParameter("phone");
 
-   String phone = request.getParameter("phone");
-   
-   
-   DBConnection db = new DBConnection();
-   
-   String id = db.findId(name, phone);
+	DBConnection db = new DBConnection();
 
+	String id = db.findId(name, phone);
 %>
 <nav class="navbar navbar-default">
 
-		<div class="navbar-header">
+	<div class="navbar-header">
 
-			<button type="button" class="navbar-toggle collapsed"
-				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-				aria-expaned="false">
+		<button type="button" class="navbar-toggle collapsed"
+			data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+			aria-expaned="false">
 
-				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
+			<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+				class="icon-bar"></span>
 
-			</button>
+		</button>
 
-			<a class="navbar-brand" href="index.jsp">로그인</a>
+		<a class="navbar-brand" href="index.jsp">로그인</a>
 
-		</div>
+	</div>
 
-		<div class="collapse navbar-collapse"
-			id="#bs-example-navbar-collapse-1">
+	<div class="collapse navbar-collapse"
+		id="#bs-example-navbar-collapse-1">
 
-			<ul class="nav navbar-nav">
+		<ul class="nav navbar-nav">
 
-				<li><a href="FindId.jsp">아이디찾기</a></li>
+			<li><a href="FindId.jsp">아이디찾기</a></li>
 
-				<li><a href="FindPw.jsp">비밀번호찾기</a></li>
+			<li><a href="FindPw.jsp">비밀번호찾기</a></li>
 
-			</ul>
-		</div>
-	</nav>
+		</ul>
+	</div>
+</nav>
 
 
 
 
 <body>
 
-  <!-- 로그인 폼 -->
-<div class="container" style="padding-top: 2.5%; margin-top: 5%">
+	<!-- 로그인 폼 -->
+	<div class="container" style="padding-top: 2.5%; margin-top: 5%">
 
-	<div class="col-lg-4"></div>
-	<div class="col-lg-4">
-
-
-		<div class="jumbotron" style="padding-top: 17%;">
-			<div class="form-group" style="text-align: center;">
+		<div class="col-lg-4"></div>
+		<div class="col-lg-4">
 
 
-				<h3><%=name%>님의 아이디<span class="label label-default"></span></h3>
+			<div class="jumbotron" style="padding-top: 17%;">
+				<div class="form-group" style="text-align: center;">
 
-			</div>
-			<div class="form-group" style="text-align: center;">
+					<%
+						if (id != null) {
+					%>
+					<h3><%=name%>님의 아이디<span class="label label-default"></span>
+					</h3>
+
+				</div>
+				<div class="form-group" style="text-align: center;">
 
 
-				<h4><%=id%></h4>
+					<h4><%=id%></h4>
+					<%
+						} else {
+					%>
+					<h3><%=name%>님의 아이디<span class="label label-default"></span>
+					</h3>
 
-			</div>
-			<div class="form-group" style="text-align: center;">
-				<button id="idChkBtn" class="btn btn-primary"
-					onclick="location.href='login/index.jsp'">확인</button>
+				</div>
+				<div class="form-group" style="text-align: center;">
+
+
+					<h4>가입 정보가 없습니다.</h4>
+				</div>
+				<%
+					}
+				%>
+				<div class="form-group" style="text-align: center;">
+					<button id="idChkBtn" class="btn btn-primary"
+						onclick="location.href='index.jsp'">확인</button>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
 </body>
 
