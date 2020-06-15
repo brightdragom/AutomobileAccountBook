@@ -23,9 +23,9 @@ public class DBConnection {
 
 			String dbURL = "jdbc:mysql://localhost:3306/dbname?serverTimezone=UTC"; // localhost:3306 포트는 컴퓨터설치된
 			
-			String dbID = "root";
+			String dbID = "id";
 
-			String dbPassword = "thals0416";
+			String dbPassword = "password";
 
 			Class.forName("com.mysql.jdbc.Driver");
 
