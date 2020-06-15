@@ -3,6 +3,7 @@
 
 <%@ page import="java.io.PrintWriter"%>
 
+
 <!DOCTYPE html>
 
 <html>
@@ -11,20 +12,20 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<!-- 뷰포트 -->
+뷰포트
 
 <meta name="viewport" content="width=device-width" initial-scale="1">
 
-<!-- 스타일시트 참조  -->
+스타일시트 참조 
 
-<link rel="stylesheet" href="css/bootstrap.css">
-
+<link rel="stylesheet" href="../css/styles.css">
+<script src="../js/scripts_.js"></script>
 <title>수리점검현황</title>
 
 </head>
 
 <body>
-	<!-- 네비게이션  -->
+	네비게이션 
 
 	<nav class="navbar navbar-default">
 	
@@ -53,7 +54,7 @@
 
 			</ul>
 
-			<!-- 수리현황 -->
+			수리현황
 
 			<div class="container">
 
@@ -110,11 +111,11 @@
 
 
 
-			<!-- 애니매이션 담당 JQUERY -->
+			애니매이션 담당 JQUERY
 
 			<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
-			<!-- 부트스트랩 JS  -->
+			부트스트랩 JS 
 
 			<script src="js/bootstrap.js"></script>
 </body>

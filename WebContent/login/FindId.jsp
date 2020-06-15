@@ -5,13 +5,16 @@
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-ps://code.jquery.com/jquery-3.1.1min.js"></script>
+<script src="js/equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="css/bootstrap.min.css">
+<
+<script type="text/javascript">
+</script>
+<link rel="stylesheet" href="../css/styles_login.css">
 <title>아이디찾기</title>
 <script src="https://code.jquery.com/jquery-3.1.1min.js"></script>
-<script src="js/bootstrap.js"></script>
-
+<script src="../js/scripts.js"></script>
 
 <style>
 .container-fluid {

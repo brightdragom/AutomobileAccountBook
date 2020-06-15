@@ -8,11 +8,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script type="text/javascript">
 </script>
-<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/styles.css">
 <title>아이디찾기</title>
 <script src="https://code.jquery.com/jquery-3.1.1min.js"></script>
-<script src="js/bootstrap.js"></script>
-
+<script src="../js/scripts.js"></script>
 <style>
 .container {
 padding-right: 15px;

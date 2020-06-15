@@ -24,8 +24,9 @@ public class DBConnection {
 			String dbURL = "jdbc:mysql://localhost:3306/Dbname?serverTimezone=UTC"; // localhost:3306 포트는 컴퓨터설치된
 			
 			String dbID = "id";
-			
-			String dbPassword = "pw";
+
+			String dbPassword = "password";
+
 
 			Class.forName("com.mysql.jdbc.Driver");
 
@@ -70,7 +71,7 @@ public class DBConnection {
 	public boolean editLine(AutoAccountList aac) {	//가계부 라인 수정 메소드
 
 		String SQL = "UPDATE list SET todate = ?, contents = ?, cost = ?, mileage = ? where line_no = ?";
-
+		
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			
@@ -79,6 +80,8 @@ public class DBConnection {
 			pstmt.setInt(3, aac.getCost());
 			pstmt.setInt(4, aac.getMileage());
 			pstmt.setString(5, aac.getLine_no());
+			System.out.println("Edit SQL >>>> "+SQL);
+			System.out.println(aac.getTodate()+"\t"+aac.getContent()+"\t"+aac.getCost()+"\t"+aac.getMileage()+"\t line_no> "+aac.getLine_no());
 			int result = pstmt.executeUpdate();
 			
 			if(result != 0) {
@@ -390,6 +393,21 @@ public class DBConnection {
 				return false;
 			}
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return false;
+	}
+	
+	public boolean deleteLine(String line_no) {
+		
+		String SQL = "DELETE FROM list WHERE line_no = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, line_no);
+			int result = pstmt.executeUpdate();
+			return result > 1 ? true : false;
+		}catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
 		return false;

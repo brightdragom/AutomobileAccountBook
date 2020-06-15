@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
+<link rel="stylesheet" href="../css/styles.css">
 <title>로그인</title>
 <style>
 body {
