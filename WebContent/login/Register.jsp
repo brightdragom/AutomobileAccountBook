@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/bootstrap.min.css">
 <script type="text/javascript">
 	function registerCheckFunction() {
 		var id = $('#id').val();
@@ -44,30 +45,26 @@
 </script>
 <style>
 .vertical-alignment-helper {
-    display: table;
-    height: 100%;
-    width: 100%;
-    pointer-events: none;
-}
- 
-.vertical-align-center {
-    display: table-cell;
-    vertical-align: middle;
-    pointer-events: none;
-}
- 
-.modal-content {
-    width: inherit;
-    height: inherit;
-    margin: 0 auto;
-    pointer-events: none;
+	display: table;
+	height: 100%;
+	width: 100%;
+	pointer-events: none;
 }
 
+.vertical-align-center {
+	display: table-cell;
+	vertical-align: middle;
+	pointer-events: none;
+}
+
+.modal-content {
+	width: inherit;
+	height: inherit;
+	margin: 0 auto;
+	pointer-events: none;
+}
 </style>
-<link rel="stylesheet" href="../css/styles_login.css">
 <title>회원가입</title>
-<script src="https://code.jquery.com/jquery-3.1.1min.js"></script>
-<script src="../js/scripts.js"></script>
 </head>
 
 
@@ -94,9 +91,9 @@
 
 			<ul class="nav navbar-nav">
 
-				<li><a href="login/FindId.jsp">아이디찾기</a></li>
+				<li><a href="FindId.jsp">아이디찾기</a></li>
 
-				<li><a href="login/FindPw.jsp">비밀번호찾기</a></li>
+				<li><a href="FindPw.jsp">비밀번호찾기</a></li>
 
 			</ul>
 		</div>
@@ -124,29 +121,32 @@
 					<div class="form-group">
 
 
-						<input type="text" class="form-control" placeholder="아이디"
-							id ="id" name="id" maxlength="20">
+						<input type="text" class="form-control" placeholder="아이디" id="id"
+							name="id" maxlength="20">
 
 					</div>
 
 					<div class="form-group" style="text-align: center;">
-						<button  class="btn btn-primary" onclick="registerCheckFunction();" type="button">중복확인</button>
+						<button class="btn btn-primary" onclick="registerCheckFunction();"
+							type="button">중복확인</button>
 					</div>
 
 					<div class="form-group">
 
 						<input type="password" class="form-control" placeholder="비밀번호"
-							id= "userPassword1" name="pw" maxlength="20" onkeyup="passwordCheckFunction();">
+							id="userPassword1" name="pw" maxlength="20"
+							onkeyup="passwordCheckFunction();">
 
 					</div>
-					
+
 					<div class="form-group">
 
-						<input type="password" class="form-control" placeholder="재 확인 비밀번호"
-							id= "userPassword2" name="pw" maxlength="20" onkeyup="passwordCheckFunction();">
+						<input type="password" class="form-control"
+							placeholder="재 확인 비밀번호" id="userPassword2" name="pw"
+							maxlength="20" onkeyup="passwordCheckFunction();">
 
 					</div>
-					
+
 					<div class="form-group">
 
 						<input type="text" class="form-control" placeholder="이름"
@@ -208,7 +208,7 @@
 						</div>
 
 					</div>
-					
+
 					<div class="form-group">
 
 						<h5 style="color: red;" id="passwordCheckMessage"></h5>
@@ -293,20 +293,20 @@
 		aria-hidden="true">
 		<div class="vertical-alignment-helper">
 			<div class="modal-dialog vertical-align-center">
-			<div id="checkType" class="modal-content panel-info">
-				<div class="modal-header panel-heading">
-					<button type="button" class="close" data-dismiss="modal">
-						<span aria-hidden="true">&times;</span> <span class="sr-only">Close</span>
-					</button>
-					<h4 class="model-title">확인 메세지</h4>
-				</div>
-				<div class="modal-body" id="checkMessage"></div>
-				<div class="model-footer" align="right">
-					<button type="button" class="btn btn-primary" data-dismiss="modal">확인</button>
+				<div id="checkType" class="modal-content panel-info">
+					<div class="modal-header panel-heading">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">&times;</span> <span class="sr-only">Close</span>
+						</button>
+						<h4 class="model-title">확인 메세지</h4>
+					</div>
+					<div class="modal-body" id="checkMessage"></div>
+					<div class="model-footer" align="right">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">확인</button>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 	</div>
 </body>
 

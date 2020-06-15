@@ -6,18 +6,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/bootstrap.min.css">
 <script type="text/javascript">
 </script>
-<link rel="stylesheet" href="../css/styles.css">
 <title>아이디찾기</title>
-<script src="https://code.jquery.com/jquery-3.1.1min.js"></script>
-<script src="../js/scripts.js"></script>
 <style>
 .container {
-padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
 }
 </style>
 </head>
@@ -45,9 +43,9 @@ padding-right: 15px;
 
 		<ul class="nav navbar-nav">
 
-			<li><a href="login/FindId.jsp">아이디찾기</a></li>
+			<li><a href="FindId.jsp">아이디찾기</a></li>
 
-			<li><a href="login/FindPw.jsp">비밀번호찾기</a></li>
+			<li><a href="FindPw.jsp">비밀번호찾기</a></li>
 
 		</ul>
 	</div>

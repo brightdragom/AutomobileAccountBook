@@ -5,16 +5,12 @@
 
 <html>
 <head>
-<meta http-ps://code.jquery.com/jquery-3.1.1min.js"></script>
-<script src="js/equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<
+<link rel="stylesheet" href="css/bootstrap.min.css">
+
 <script type="text/javascript">
 </script>
-<link rel="stylesheet" href="../css/styles_login.css">
-<title>아이디찾기</title>
-<script src="https://code.jquery.com/jquery-3.1.1min.js"></script>
-<script src="../js/scripts.js"></script>
 
 <style>
 .container-fluid {
@@ -49,9 +45,9 @@
 
 		<ul class="nav navbar-nav">
 
-			<li><a href="login/FindId.jsp">아이디찾기</a></li>
+			<li><a href="FindId.jsp">아이디찾기</a></li>
 
-			<li><a href="login/FindPw.jsp">비밀번호찾기</a></li>
+			<li><a href="FindPw.jsp">비밀번호찾기</a></li>
 
 		</ul>
 	</div>
@@ -76,7 +72,7 @@
 
 
 				<h3 style="text-align: center;">아이디 찾기</h3>
-				
+
 
 
 				<div class="form-group">
