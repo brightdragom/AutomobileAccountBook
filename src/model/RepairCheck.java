@@ -12,6 +12,20 @@ public class RepairCheck {
 	private String finish_date;
 	private int cost;
 	
+	public RepairCheck(int repair_no, String driver_id, String driver_name, String technician_id, String technician_name, String contents,
+			String start_date, String expect_date, String finish_date, int cost) {
+		this.repair_no = repair_no;
+		this.driver_id = driver_id;
+		this.driver_name = driver_name;
+		this.technician_id = technician_id;
+		this.technician_name = technician_name;
+		this.contents = contents;
+		this.start_date = start_date;
+		this.expect_date = expect_date;
+		this.finish_date = finish_date;
+		this.cost = cost;
+	}
+	
 	public int getRepair_no() {
 		return repair_no;
 	}

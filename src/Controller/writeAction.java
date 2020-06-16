@@ -21,13 +21,13 @@ import model.User;
  * Servlet implementation class AddList
  */
 @WebServlet("/wirteAction")
-public class wirteAction extends HttpServlet {
+public class writeAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public wirteAction() {
+    public writeAction() {
         super();
         // TODO Auto-generated constructor stub
     }
