@@ -27,7 +27,6 @@ public class DBConnection {
 
 			String dbPassword = "password";
 
-
 			Class.forName("com.mysql.jdbc.Driver");
 
 			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);

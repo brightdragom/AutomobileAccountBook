@@ -134,7 +134,7 @@
 					<div class="form-group">
 
 						<input type="password" class="form-control" placeholder="비밀번호"
-							id="userPassword1" name="pw" maxlength="20"
+							id="userPassword1" name="pw1" maxlength="20"
 							onkeyup="passwordCheckFunction();">
 
 					</div>
@@ -142,7 +142,7 @@
 					<div class="form-group">
 
 						<input type="password" class="form-control"
-							placeholder="재 확인 비밀번호" id="userPassword2" name="pw"
+							placeholder="재 확인 비밀번호" id="userPassword2" name="pw2"
 							maxlength="20" onkeyup="passwordCheckFunction();">
 
 					</div>
@@ -247,7 +247,7 @@
 		}
 
 		String messageType = null;
-		if (session.getAttribute("messageContent") != null) {
+		if (session.getAttribute("messageType") != null) {
 			messageType = (String) session.getAttribute("messageType");
 		}
 		if (messageContent != null) {
@@ -284,11 +284,12 @@
 	<script>
 		$('#messageModal').modal("show");
 	</script>
-	<%
-		session.removeAttribute("messageContent");
-			session.removeAttribute("messageType");
-		}
-	%>
+	 <%
+        session.removeAttribute("messageContent");
+            session.removeAttribute("messageType");
+        }
+    %>
+
 	<div class="modal fade" id="checkModal" tabindex="-1" role="dialog"
 		aria-hidden="true">
 		<div class="vertical-alignment-helper">
