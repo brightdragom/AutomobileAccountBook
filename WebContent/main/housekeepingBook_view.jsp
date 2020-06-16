@@ -30,8 +30,11 @@
 	function logout() {
 		location.href = "/AutomobileAccountBook/login/logout.jsp"
 	}
-	function myPages(){
-		location.href="/AutomobileAccountBook/main/myPages.jsp"
+	function myPages() {
+		location.href = "/AutomobileAccountBook/main/myPages.jsp"
+	}
+	function repair() {
+		location.href = "/AutomobileAccountBook/RepairList"
 	}
 </script>
 </head>
@@ -56,7 +59,8 @@
 	<form action="/AutomobileAccountBook/Delete" method="post">
 		<div
 			style="max-height: 500px; width: 100%; overflow-x: hidden; overflow-y: scroll;">
-			<table width="500" border="0" align="center" left_padding="50" cellpadding="0" cellspacing="1">
+			<table width="500" border="0" align="center" left_padding="50"
+				cellpadding="0" cellspacing="1">
 				<!-- 가계부 정보 -->
 				<%
 					int cnt = 0;
@@ -77,7 +81,8 @@
 						<td align="center"><span>${ item_list.content}</span></td>
 						<td align="center"><span>${ item_list.cost}</span></td>
 						<td align="center"><span>${ item_list.mileage}</span></td>
-						<td align="center"><a href="/AutomobileAccountBook/Edit?item_list=${ item_list.line_no}">수정</a></td>
+						<td align="center"><a
+							href="/AutomobileAccountBook/Edit?item_list=${ item_list.line_no}">수정</a></td>
 
 					</tr>
 				</c:forEach>
@@ -89,16 +94,20 @@
 			<input type="submit" name="delete_line2" value="delete!">
 		</div>
 	</form>
-		<div align="center">
-			<input type="button" name="add_list_line" value="add_list_line"
-				onclick="add_list_line()">
-		</div>
-		<div align="center">
-			<input type="button" name="logout" value="logout" onclick="logout()">
-		</div>
-		<div align="center">
-			<input type="button" name="myPages" value="myPages" onclick="myPages()">
-		</div>
+	<div align="center">
+		<input type="button" name="add_list_line" value="add_list_line"
+			onclick="add_list_line()">
+	</div>
+	<div align="center">
+		<input type="button" name="logout" value="logout" onclick="logout()">
+	</div>
+	<div align="center">
+		<input type="button" name="myPages" value="myPages"
+			onclick="myPages()">
+	</div>
+	<div align="center">
+		<input type="button" name="repair" value="repair" onclick="repair()">
+	</div>
 
 </body>
 </html>
