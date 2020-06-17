@@ -574,5 +574,49 @@ public class DBConnection {
 
 		return result;
 	}
+	
+	public int findDataCost(String userid) {
+		int result = 0;
+
+		String SQL = "select * from list where writer= ?";
+
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userid);
+
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				result += rs.getInt(4);
+			}
+			System.out.println("findData >> " + result);
+			return result;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
+		return result;
+	}
+	
+	public int[] findDataCostChart(String userid, String nYear, String nMonth) {
+		String SQL = "select * from list where writer= ?";
+		int[] costCnt = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userid);
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				String[] date = rs.getString("todate").split("-");
+				
+				if(date[0].equals(nYear)) {
+					int month = Integer.parseInt(date[1]);
+					costCnt[month] += rs.getInt("cost");
+				}
+			}
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return costCnt;
+	}
 
 }
