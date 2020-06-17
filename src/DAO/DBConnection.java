@@ -145,7 +145,7 @@ public class DBConnection {
 		return list;
 	}
 
-	public int register (String name, String id, String pw, String phone, String email, String part, String addr, String gender) {
+	public int register (String name, String id, String pw, String phone, String email, String career, String addr, String gender) {
 
 		pstmt = null;
 		ResultSet re = null;
@@ -157,7 +157,7 @@ public class DBConnection {
 			pstmt.setString(3, pw);
 			pstmt.setString(4, phone);
 			pstmt.setString(5, email);
-			pstmt.setString(6, part);
+			pstmt.setString(6, career);
 			pstmt.setString(7, addr);
 			pstmt.setString(8, gender);
 			return pstmt.executeUpdate();
