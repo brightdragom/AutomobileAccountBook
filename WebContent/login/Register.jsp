@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="../css/styles.css">
+
 <script type="text/javascript">
 	function registerCheckFunction() {
 		var id = $('#id').val();
@@ -80,7 +80,7 @@
 
 
 <body >
-      <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+      
             <a class="navbar-brand" href="index.jsp">로그인</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
              
             <ul class="navbar-nav ml-auto">
@@ -94,7 +94,7 @@
                         <a class="dropdown-item" href="FindId.jsp">아이디 찾기</a><a class="dropdown-item" href="FindPw.jsp">비밀번호 찾기</a>
                 </li>
             </ul>
-        </nav>
+        
  
 
 	<!-- 로그인 폼 -->
