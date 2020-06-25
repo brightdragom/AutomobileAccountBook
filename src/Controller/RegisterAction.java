@@ -42,11 +42,7 @@ public class RegisterAction extends HttpServlet {
 			response.sendRedirect("login/Register.jsp");
 			return;
 		}
-<<<<<<< HEAD
-		int result = new DBConnection().register(name, id, pw1, phone, email, part.equals("정비사") ? "T" : "D", addr, gender);
-=======
-		int result = new DBConnection().register(name, id, pw1, phone, email, career, addr, gender);
->>>>>>> yonghun
+		int result = new DBConnection().register(name, id, pw1, phone, email, career.equals("정비사") ? "T" : "D", addr, gender);
 		if (result == 1) {
 			request.getSession().setAttribute("messageType", "성공");
 			request.getSession().setAttribute("messageContent", "회원가입 성공");
