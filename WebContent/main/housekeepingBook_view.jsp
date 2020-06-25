@@ -64,7 +64,7 @@
 
 		series.accuracy = 4;
 		series.step = 15;
-		//series.rotationThreshold = 0.7;
+		series.rotationThreshold = 0.7;
 		series.maxCount = 200;
 		series.minWordLength = 2;
 		series.labels.template.tooltipText = "{word}: {value}";

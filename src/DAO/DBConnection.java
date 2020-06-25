@@ -31,7 +31,7 @@ public class DBConnection {
 
 		} catch (Exception e) {
 
-			e.printStackTrace(); // �삤瑜섍� 臾댁뾿�씤吏� 異쒕젰
+			e.printStackTrace(); 
 
 		}
 
@@ -56,9 +56,10 @@ public class DBConnection {
 					return null;
 				}
 			}
-			System.out.println("�븘�씠�뵒 x");
+			System.out.println(">>>Login False <<<");
 			return null;
 		} catch (Exception e) {
+			System.out.println(">>>DBConnection login method<<<");
 			System.out.println(e.getMessage());
 		}
 		System.out.println("db err");
