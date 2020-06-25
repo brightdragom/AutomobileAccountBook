@@ -19,11 +19,11 @@ public class DBConnection {
 	public DBConnection() {
 		try {
 
-			String dbURL = "jdbc:mysql://localhost:3306/accountBook?serverTimezone=UTC"; // localhost:3306 포트는 컴퓨터설치된
+			String dbURL = "jdbc:mysql://localhost:3306/dbname?serverTimezone=UTC"; // localhost:3306 포트는 컴퓨터설치된
 
-			String dbID = "root";
+			String dbID = "id";
 
-			String dbPassword = "thals0416";
+			String dbPassword = "password";
 
 			Class.forName("com.mysql.jdbc.Driver");
 
@@ -510,10 +510,10 @@ public class DBConnection {
 			Repair item = null;
 
 			while (rs.next()) {
-				item = new Repair(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
+				item = new Repair(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
 				list.add(item);
 
-				System.out.println("생성 >>> " + item.getRepair_no());
+				System.out.println("생성 >>> " + item.getRepair_no()+" | "+item.getContents()+" | "+item.getDoday()+" | "+item.getWriter_id()+" | "+item.getImg()+" | ");
 			}
 			System.out.println("list size = " + list.size() + "\t");
 			return list;
@@ -524,14 +524,15 @@ public class DBConnection {
 		return list;
 	}
 
-	public boolean Add_RepairProgressline(int repair_no, String contents, String doday, String writer_id) {
-		String SQL = "insert into repair values( ?, ?, ?, ?)";
+	public boolean Add_RepairProgressline(int repair_no, String contents, String doday, String writer_id, String FileName) {
+		String SQL = "insert into repair values( ?, ?, ?, ?, ?)";
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, repair_no);
 			pstmt.setString(2, contents);
 			pstmt.setString(3, doday);
 			pstmt.setString(4, writer_id);
+			pstmt.setString(5, FileName);
 
 			System.out.println(" >>> SQL : " + SQL + "<<<");
 			int result2 = pstmt.executeUpdate();
