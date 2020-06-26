@@ -19,11 +19,11 @@ public class DBConnection {
 	public DBConnection() {
 		try {
 
-			String dbURL = "jdbc:mysql://localhost:3306/accountBook?serverTimezone=UTC"; // localhost:3306 포트는 컴퓨터설치된
+			String dbURL = "jdbc:mysql://localhost:3306/dbname?serverTimezone=UTC"; // localhost:3306 포트는 컴퓨터설치된
 
-			String dbID = "root";
+			String dbID = "id";
 
-			String dbPassword = "thals0416";
+			String dbPassword = "password";
 
 			Class.forName("com.mysql.jdbc.Driver");
 
@@ -31,7 +31,7 @@ public class DBConnection {
 
 		} catch (Exception e) {
 
-			e.printStackTrace(); // �삤瑜섍� 臾댁뾿�씤吏� 異쒕젰
+			e.printStackTrace(); 
 
 		}
 
@@ -56,9 +56,10 @@ public class DBConnection {
 					return null;
 				}
 			}
-			System.out.println("�븘�씠�뵒 x");
+			System.out.println(">>>Login False <<<");
 			return null;
 		} catch (Exception e) {
+			System.out.println(">>>DBConnection login method<<<");
 			System.out.println(e.getMessage());
 		}
 		System.out.println("db err");
@@ -143,9 +144,7 @@ public class DBConnection {
 		return list;
 	}
 
-	public int register(String name, String id, String pw, String phone, String email, String part, String addr,
-			String gender) {
-
+	public int register (String name, String id, String pw, String phone, String email, String career, String addr, String gender) {
 		pstmt = null;
 		ResultSet re = null;
 		String SQL = "INSERT INTO user VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -156,7 +155,7 @@ public class DBConnection {
 			pstmt.setString(3, pw);
 			pstmt.setString(4, phone);
 			pstmt.setString(5, email);
-			pstmt.setString(6, part);
+			pstmt.setString(6, career);
 			pstmt.setString(7, addr);
 			pstmt.setString(8, gender);
 			return pstmt.executeUpdate();
@@ -511,10 +510,10 @@ public class DBConnection {
 			Repair item = null;
 
 			while (rs.next()) {
-				item = new Repair(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
+				item = new Repair(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
 				list.add(item);
 
-				System.out.println("생성 >>> " + item.getRepair_no());
+				System.out.println("생성 >>> " + item.getRepair_no()+" | "+item.getContents()+" | "+item.getDoday()+" | "+item.getWriter_id()+" | "+item.getImg()+" | ");
 			}
 			System.out.println("list size = " + list.size() + "\t");
 			return list;
@@ -525,14 +524,15 @@ public class DBConnection {
 		return list;
 	}
 
-	public boolean Add_RepairProgressline(int repair_no, String contents, String doday, String writer_id) {
-		String SQL = "insert into repair values( ?, ?, ?, ?)";
+	public boolean Add_RepairProgressline(int repair_no, String contents, String doday, String writer_id, String FileName) {
+		String SQL = "insert into repair values( ?, ?, ?, ?, ?)";
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, repair_no);
 			pstmt.setString(2, contents);
 			pstmt.setString(3, doday);
 			pstmt.setString(4, writer_id);
+			pstmt.setString(5, FileName);
 
 			System.out.println(" >>> SQL : " + SQL + "<<<");
 			int result2 = pstmt.executeUpdate();
@@ -573,6 +573,50 @@ public class DBConnection {
 		}
 
 		return result;
+	}
+	
+	public int findDataCost(String userid) {
+		int result = 0;
+
+		String SQL = "select * from list where writer= ?";
+
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userid);
+
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				result += rs.getInt(4);
+			}
+			System.out.println("findData >> " + result);
+			return result;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
+		return result;
+	}
+	
+	public int[] findDataCostChart(String userid, String nYear, String nMonth) {
+		String SQL = "select * from list where writer= ?";
+		int[] costCnt = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userid);
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				String[] date = rs.getString("todate").split("-");
+				
+				if(date[0].equals(nYear)) {
+					int month = Integer.parseInt(date[1]);
+					costCnt[month] += rs.getInt("cost");
+				}
+			}
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return costCnt;
 	}
 
 }

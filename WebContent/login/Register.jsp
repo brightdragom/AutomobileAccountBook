@@ -178,10 +178,10 @@
 						<div class="btn-group" data-toggle="buttons">
 
 							<label class="btn btn-primary active"> <input
-								type="radio" name="part" autocomplete="off" value="정비사" checked>정비사
+								type="radio" name="career" autocomplete="off" value="정비사" checked>정비사
 
 							</label> <label class="btn btn-primary"> <input type="radio"
-								name="part" autocomplete="off" value="운전자">운전자
+								name="career" autocomplete="off" value="운전자">운전자
 
 							</label>
 

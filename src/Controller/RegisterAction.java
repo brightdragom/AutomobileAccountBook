@@ -24,12 +24,12 @@ public class RegisterAction extends HttpServlet {
 		String pw2 = request.getParameter("pw2");
 		String phone = request.getParameter("phone");
 		String email = request.getParameter("email");
-		String part = request.getParameter("part");
+		String career = request.getParameter("career");
 		String addr = request.getParameter("addr");
 		String name = request.getParameter("name");
 		String gender = request.getParameter("gender");
 		if (id == null || id.equals("") || pw1 == null || pw1.equals("") || phone == null || phone.equals("")
-				|| email == null || email.equals("") || part == null || part.equals("") || addr == null
+				|| email == null || email.equals("") || career == null || career.equals("") || addr == null
 				|| addr.equals("") || name == null || name.equals("") || gender == null || gender.equals("")) {
 			request.getSession().setAttribute("messageType", "오류");
 			request.getSession().setAttribute("messageContent", "모든 내용을 입력 하시오");
@@ -42,11 +42,11 @@ public class RegisterAction extends HttpServlet {
 			response.sendRedirect("login/Register.jsp");
 			return;
 		}
-		int result = new DBConnection().register(name, id, pw1, phone, email, part.equals("정비사") ? "T" : "D", addr, gender);
+		int result = new DBConnection().register(name, id, pw1, phone, email, career.equals("정비사") ? "T" : "D", addr, gender);
 		if (result == 1) {
 			request.getSession().setAttribute("messageType", "성공");
 			request.getSession().setAttribute("messageContent", "회원가입 성공");
-			response.sendRedirect("login/Register.jsp");
+			response.sendRedirect("login/index.jsp");
 			return;
 		} else {
 			request.getSession().setAttribute("messageType", "오류 메세지");

@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<% User user = (User) session.getAttribute("user"); %>
+	<% User user = (User) session.getAttribute("user");	%>
 	<div align="center">
 		<span> 등록할 정비 정보 </span>
 	</div>
@@ -42,7 +42,7 @@
 					<td align="center"><input actionfocus
 						name="item_list.expect_time" type="date"
 						value="${ item_list.expect_time}"></td>
-
+						
 				</tr>
 
 			</table>

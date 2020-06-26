@@ -8,6 +8,7 @@
 <%@ page import="java.util.List"%>
 <%@ page import="DAO.DBConnection"%>
 <%@ page import="model.User"%>
+<%@ page import="java.util.Calendar" %>
 <!DOCTYPE html>
 <html>
 <%
@@ -244,6 +245,124 @@
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script src="assets/demo/datatables-demo.js"></script>
  -->
+	<script src="https://www.amcharts.com/lib/4/core.js"></script>
+	<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+	<script src="https://www.amcharts.com/lib/4/plugins/wordCloud.js"></script>
+	<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+	<%
+		DBConnection db = (DBConnection) session.getAttribute("db");
+		String text = db.findData(user.getId());
+		System.out.println("text >>" + text);
+		int total_cost = db.findDataCost(user.getId());
+		Calendar cal = Calendar.getInstance();
+		int year = cal.get(Calendar.YEAR);
+		int month = cal.get(Calendar.MONTH)+1;
+		int monthCost[] = db.findDataCostChart(user.getId(), year+"", month+"");	
+	%>
+	<script>
+		var texts = "<%=text%>";
+		am4core.useTheme(am4themes_animated);
+		//Themes end
+
+		var chart = am4core.create("chartdiv", am4plugins_wordCloud.WordCloud);
+		var series = chart.series.push(new am4plugins_wordCloud.WordCloudSeries());
+
+		series.accuracy = 4;
+		series.step = 15;
+		series.rotationThreshold = 0.7;
+		series.maxCount = 200;
+		series.minWordLength = 2;
+		series.labels.template.tooltipText = "{word}: {value}";
+		series.fontFamily = "Courier New";
+		series.maxFontSize = am4core.percent(30);
+		console.log(texts);
+		series.text = texts;
+	</script>
+	<!-- Chart code -->
+	<script>
+		am4core.ready(function() {
+			var num = 1000;
+			
+			// Themes begin
+			am4core.useTheme(am4themes_animated);
+			// Themes end
+
+			// Create chart instance
+			var chart = am4core.create("chartdiv2", am4charts.XYChart);
+
+			// Add data
+			chart.data = [ {
+				"month" : "Jan",
+				"cost" : <%= monthCost[0]%>
+			}, {
+				"month" : "Feb",
+				"cost" : <%= monthCost[1]%>
+			}, {
+				"month" : "Mar",
+				"cost" : <%= monthCost[2]%>
+			}, {
+				"month" : "Apr",
+				"cost" : <%= monthCost[3]%>
+			}, {
+				"month" : "May",
+				"cost" : <%= monthCost[4]%>
+			}, {
+				"month" : "Jun",
+				"cost" : <%= monthCost[5]%>
+			}, {
+				"month" : "Jul",
+				"cost" : <%= monthCost[6]%>
+			}, {
+				"month" : "Aug",
+				"cost" : <%= monthCost[7]%>
+			}, {
+				"month" : "Sept",
+				"cost" : <%= monthCost[8]%>
+			}, {
+				"month" : "Oct",
+				"cost" : <%= monthCost[9]%>
+			}, {
+				"month" : "Nov",
+				"cost" : <%= monthCost[10]%>
+			}, {
+				"month" : "Dec",
+				"cost" : <%= monthCost[11]%>
+			}];
+
+			// Create axes
+
+			var categoryAxis = chart.xAxes
+					.push(new am4charts.CategoryAxis());
+			categoryAxis.dataFields.category = "month";
+			categoryAxis.renderer.grid.template.location = 0;
+			categoryAxis.renderer.minGridDistance = 30;
+
+			categoryAxis.renderer.labels.template.adapter.add("dy",
+					function(dy, target) {
+						if (target.dataItem && target.dataItem.index
+								& 2 == 2) {
+							return dy + 25;
+						}
+						return dy;
+					});
+
+			var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+
+			// Create series
+			var series = chart.series
+					.push(new am4charts.ColumnSeries());
+			series.dataFields.valueY = "cost";
+			series.dataFields.categoryX = "month";
+			series.name = "Cost";
+			series.columns.template.tooltipText = "{categoryX}: [bold]{valueY}[/]";
+			series.columns.template.fillOpacity = .8;
+
+			var columnTemplate = series.columns.template;
+			columnTemplate.strokeWidth = 2;
+			columnTemplate.strokeOpacity = 1;
+
+		}); // end am4core.ready()
+	</script>
 	<div align="center">
 		<span> 가계부 <%=user.getName()%>
 		</span>
@@ -269,8 +388,9 @@
 				<!-- 가계부 정보 -->
 				<%
 					int cnt = 0;
+					int total_mileage = 0;
 				%>
-				<c:forEach items="${ item_list }" var="item_list" varStatus="count">
+				<c:forEach items="${ item_list }" var="item_list">
 					<%
 						cnt++;
 					%>
@@ -288,12 +408,15 @@
 						<td align="center"><span>${ item_list.mileage}</span></td>
 						<td align="center"><a
 							href="/AutomobileAccountBook/Edit?item_list=${ item_list.line_no}">수정</a></td>
-
+						<c:set var="c" value="${item_list.mileage }"></c:set>
 					</tr>
 				</c:forEach>
-				<tr>
-				</tr>
 			</table>
+		</div>
+		<div
+			style="display: flex; flex-direction: clumn; margin: 15px auto; width: 100%;">
+			<label>Total Cost >></label> <label><%=total_cost%></label> <label>Total
+				Mileage(KM) >></label> <label>"${c }"</label>
 		</div>
 		<div align="center">
 			<input type="submit" name="delete_line2" value="delete!">
@@ -314,5 +437,7 @@
 		<input type="button" name="repair" value="repair" onclick="repair()">
 	</div>
 
+	<div id="chartdiv" align="center"></div><!-- 워듴ㄹ라욷 -->
+	<div id="chartdiv2" align="center"></div><!-- 챁 -->
 </body>
 </html>

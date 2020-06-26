@@ -11,16 +11,20 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-   function add_repair(){
-      location.href="/AutomobileAccountBook/main/RepairProgressAdd.jsp?item=${repair_no}"
-   }
+	function add_repair() {
+		location.href = "/AutomobileAccountBook/main/RepairProgressAdd.jsp?item=${repair_no}"
+	}
+	function returnpage() {
+		location.href = "/AutomobileAccountBook/RepairList"
+	}
 </script>
 </head>
 <body>
 	<div align="center">Repair Progress List Page</div>
-	<% 
-   String no = (String)session.getAttribute("reno");
-   System.out.println(no);%>
+	<%
+		String no = (String) session.getAttribute("reno");
+		System.out.println(no);
+	%>
 	<div align="center"></div>
 	<table align="center">
 		<tr>
@@ -44,6 +48,11 @@
 					<label>작성자</label>
 				</div>
 			</td>
+			<td>
+				<div align="center">
+					<label>image</label>
+				</div>
+			</td>
 		</tr>
 
 		<!-- 여기부터 에러 -->
@@ -53,6 +62,7 @@
 				<td><label>${ item.contents }</label></td>
 				<td><label>${ item.doday }</label></td>
 				<td><label>${ item.writer_id }</label></td>
+				<td><img src="${ item.img }"></td>
 			</tr>
 		</c:forEach>
 	</table>
@@ -60,6 +70,9 @@
 		<input type="button" name="add_repair" value="add_repair"
 			onclick="add_repair()">
 	</div>
-
+	<div align="center">
+		<input type="button" name="returnpage" value="returnpage"
+			onclick="returnpage()">
+	</div>
 </body>
 </html>
