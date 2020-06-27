@@ -27,10 +27,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Dashboard - SB Admin</title>
+        <title>HousekeepingBook</title>
         <link href="<%=request.getContextPath()%>/css/styles.css" rel="stylesheet" />
          
 <title>HousekeepingBook_view_page</title>
+ 
 <script type="text/javascript">
 	function add_list_line() {
 		location.href = "/AutomobileAccountBook/main/add_list_line.jsp"
@@ -45,11 +46,23 @@
 		location.href = "/AutomobileAccountBook/RepairList"
 	}
 </script>
+
+ <%
+		DBConnection db = (DBConnection) session.getAttribute("db");
+		String text = db.findData(user.getId());
+		System.out.println("text >>" + text);
+		int total_cost = db.findDataCost(user.getId());
+		Calendar cal = Calendar.getInstance();
+		int year = cal.get(Calendar.YEAR);
+		int month = cal.get(Calendar.MONTH)+1;
+		int monthCost[] = db.findDataCostChart(user.getId(), year+"", month+"");	
+	%>
+	
 </head>
 
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="index.html">Start Bootstrap</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
+            <a class="navbar-brand" href="index.html">차계부</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="housekeepingBook_view.jsp"><i class="fas fa-bars"></i></button
             ><!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
                 <div class="input-group">
@@ -62,64 +75,42 @@
             <!-- Navbar-->
             <ul class="navbar-nav ml-auto ml-md-0">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <svg class="svg-inline--fa fa-user fa-w-14 fa-fw" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg>
+                    <path fill="currentColor" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path>
+                    </svg>
+                    </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">Settings</a><a class="dropdown-item" href="#">Activity Log</a>
+                        <a class="dropdown-item" href="/AutomobileAccountBook/RepairList">수리진행상황</a><a class="dropdown-item" href="/AutomobileAccountBook/main/myPages.jsp">mypages</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="login.html">Logout</a>
                     </div>
                 </li>
             </ul>
         </nav>
+        
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="index.html"
-                                ><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Dashboard</a
-                            >
-                            <div class="sb-sidenav-menu-heading">Interface</div>
+                            <div class="sb-sidenav-menu-heading">informs</div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Layouts
+                                Mypages
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
                             ></a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="layout-static.html">Static Navigation</a><a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a></nav>
+                                <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="layout-static.html">Repairing</a><a class="nav-link" href="layout-sidenav-light.html">Users</a></nav>
                             </div>
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages"
-                                ><div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                Pages
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
-                            ></a>
-                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth"
-                                        >Authentication
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
-                                    ></a>
-                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
-                                        <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="login.html">Login</a><a class="nav-link" href="register.html">Register</a><a class="nav-link" href="password.html">Forgot Password</a></nav>
-                                    </div>
-                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError"
-                                        >Error
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
-                                    ></a>
-                                    <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
-                                        <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="401.html">401 Page</a><a class="nav-link" href="404.html">404 Page</a><a class="nav-link" href="500.html">500 Page</a></nav>
-                                    </div>
-                                </nav>
-                            </div>
-                            <div class="sb-sidenav-menu-heading">Addons</div>
+                          
+                            <div class="sb-sidenav-menu-heading">views</div>
                             <a class="nav-link" href="charts.html"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Charts</a
                             ><a class="nav-link" href="tables.html"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Tables</a
+                                Wordclouding</a
                             >
                         </div>
                     </div>
@@ -136,49 +127,16 @@
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol>
-                        <div class="row">
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">Primary Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-warning text-white mb-4">
-                                    <div class="card-body">Warning Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">Success Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-danger text-white mb-4">
-                                    <div class="card-body">Danger Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <div class="row">
                             <div class="col-xl-6">
                                 <div class="card mb-4">
                                     <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Area Chart Example</div>
-                                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
+                                    <div class="card-body" >	
+                                    <div id="chartdiv" align="center"></div> <!-- 워드ㅋ라욷 -->
+	<div id="chartdiv2" align="center"></div><!-- 챁 --> 
+	</div>
+               
                                 </div>
                             </div>
                             <div class="col-xl-6">
@@ -189,7 +147,7 @@
                             </div>
                         </div>
                         <div class="card mb-4">
-                            <div class="card-header"><i class="fas fa-table mr-1"></i>차량 가계부 사용내역</div>
+                            <div class="card-header"><i class="fas fa-table mr-1"></i> <%=user.getName()%>님의 차량 가계부 사용내역</div>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -200,8 +158,53 @@
                                                 <th>Memo</th>
                                                 <th>Cost</th>
                                                 <th>Distance</th>
-                                             
+                                             	<th>Modify</th>
                                             </tr>
+                                            <tbody>
+                                            <form action="/AutomobileAccountBook/Delete" method="post">
+		<div
+			style="max-height: 500px; width: 100%; overflow-x: hidden; overflow-y: scroll;">
+			<table width="500" border="0" align="center" left_padding="50"
+				cellpadding="0" cellspacing="1">
+				<!-- 가계부 정보 -->
+				<%
+					int cnt = 0;
+					int total_mileage = 0;
+				%>
+				<c:forEach items="${ item_list }" var="item_list">
+					<%
+						cnt++;
+					%>
+					<tr>
+						<td align="center"><input type="checkbox" name="item_list"
+							value="${item_list.line_no}"></td>
+						<td align="center">
+							<%
+								out.println(cnt);
+							%>
+						</td>
+						<td align="center"><span>${ item_list.todate}</span></td>
+						<td align="center"><span>${ item_list.content}</span></td>
+						<td align="center"><span>${ item_list.cost}</span></td>
+						<td align="center"><span>${ item_list.mileage}</span></td>
+						<td align="center"><a
+							href="/AutomobileAccountBook/Edit?item_list=${ item_list.line_no}">수정</a></td>
+						<c:set var="c" value="${item_list.mileage }"></c:set>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
+		<div
+			style="display: flex; flex-direction: clumn; margin: 15px auto; width: 100%;">
+			<label>Total Cost >></label> <label><%=total_cost%></label> <label>Total
+				Mileage(KM) >></label> <label>"${c }"</label>
+		</div>
+		<div align="center">
+			<input type="submit" name="delete_line2" value="delete!">
+		</div>
+	</form>
+
+                                            </tbody>
                                         </thead>
                                     
                                     </table>
@@ -224,9 +227,20 @@
                 </footer>
             </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+
+<!--         <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
+        <script src="../js/scripts_.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+        <script src="assets/demo/datatables-demo.js"></script>
+ -->
+       <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/bootstrap.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
         <script src="assets/demo/chart-area-demo.js"></script>
         <script src="assets/demo/chart-bar-demo.js"></script>
@@ -234,21 +248,12 @@
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script src="assets/demo/datatables-demo.js"></script>
     
-    <!--     <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-     -->    <script src="../js/scripts_.js"></script>
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
-        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/datatables-demo.js"></script>
- -->
-	<script src="https://www.amcharts.com/lib/4/core.js"></script>
-	<script src="https://www.amcharts.com/lib/4/charts.js"></script>
-	<script src="https://www.amcharts.com/lib/4/plugins/wordCloud.js"></script>
-	<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
-	<%
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+<script src="https://www.amcharts.com/lib/4/plugins/wordCloud.js"></script>
+
+	<%--   <%
 		DBConnection db = (DBConnection) session.getAttribute("db");
 		String text = db.findData(user.getId());
 		System.out.println("text >>" + text);
@@ -257,7 +262,7 @@
 		int year = cal.get(Calendar.YEAR);
 		int month = cal.get(Calendar.MONTH)+1;
 		int monthCost[] = db.findDataCostChart(user.getId(), year+"", month+"");	
-	%>
+	%> --%>
 	<script>
 		var texts = "<%=text%>";
 		am4core.useTheme(am4themes_animated);
@@ -279,7 +284,7 @@
 	</script>
 	<!-- Chart code -->
 	<script>
-		am4core.ready(function() {
+		am4core.ready(function() { 
 			var num = 1000;
 			
 			// Themes begin
@@ -361,13 +366,33 @@
 			columnTemplate.strokeOpacity = 1;
 
 		}); // end am4core.ready()
-	</script>
+	</script> 
 	<div align="center">
-		<span> 가계부 <%=user.getName()%>
+		<span> 
 		</span>
 	</div>
-
-	<table width="500" border="0" align="center" cellpadding="0"
+<!-- <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Line</th>
+                                                <th>날짜</th>
+                                                <th>사용내역</th>
+                                                <th>비용</th>
+                                                <th>현재Km</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Tiger Nixon</td>
+                                                <td>System Architect</td>
+                                                <td>Edinburgh</td>
+                                                <td>61</td>
+                                                <td>2011/04/25</td>
+                                                <td>$320,800</td>
+                                            </tr>
+                                            </tbody>
+                                        </table> -->
+	<!-- <table width="500" border="0" align="center" cellpadding="0"
 		cellspacing="1">
 		<tr align="center">
 			<td></td>
@@ -378,8 +403,8 @@
 			<td><span> 비용 </span></td>
 			<td><span> 현재Km </span></td>
 		</tr>
-	</table>
-	<form action="/AutomobileAccountBook/Delete" method="post">
+	</table> -->
+	<%-- <form action="/AutomobileAccountBook/Delete" method="post">
 		<div
 			style="max-height: 500px; width: 100%; overflow-x: hidden; overflow-y: scroll;">
 			<table width="500" border="0" align="center" left_padding="50"
@@ -420,7 +445,7 @@
 		<div align="center">
 			<input type="submit" name="delete_line2" value="delete!">
 		</div>
-	</form>
+	</form> --%>
 	<div align="center">
 		<input type="button" name="add_list_line" value="add_list_line"
 			onclick="add_list_line()">
@@ -432,11 +457,11 @@
 		<input type="button" name="myPages" value="myPages"
 			onclick="myPages()">
 	</div>
-	<div align="center">
+	<!-- <div align="center">
 		<input type="button" name="repair" value="repair" onclick="repair()">
-	</div>
-
-	<div id="chartdiv" align="center"></div><!-- 워듴ㄹ라욷 -->
-	<div id="chartdiv2" align="center"></div><!-- 챁 -->
+	</div> -->
+<!-- 
+	<div id="chartdiv" align="center"></div> 워드ㅋ라욷
+	<div id="chartdiv2" align="center"></div>챁  -->
 </body>
 </html>
