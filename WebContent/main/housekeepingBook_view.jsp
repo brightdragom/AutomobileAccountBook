@@ -18,7 +18,6 @@
 		response.sendRedirect("/AutomobileAccountBook/login/index.jsp");
 	} else {
 		user = (User) session.getAttribute("user");
-		out.println("<script>alert('환영합니다.');</script>");
 	}
 %>
 <head>
