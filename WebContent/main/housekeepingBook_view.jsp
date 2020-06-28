@@ -36,7 +36,7 @@
  background-color:#a3dae8;
  }
  .bg-dark{
- background-color:#c2d890;
+ background-color:#7ed5e4;
  } 
  </style>
 <script type="text/javascript">
@@ -90,7 +90,7 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="/AutomobileAccountBook/RepairList">수리진행상황</a><a class="dropdown-item" href="/AutomobileAccountBook/main/myPages.jsp">mypages</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="login.html">Logout</a>
+                        <a class="dropdown-item" href="/AutomobileAccountBook/login/logout.jsp">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -221,7 +221,7 @@
 		<input type="button" name="logout" value="logout" onclick="logout()">
 	</div>
 	<div align="center">
-		<input type="button" name="myPages" value="myPages"
+		<input class="btn btn-primary" type="button" name="myPages" value="myPages"
 			onclick="myPages()">
 	</div>
 
