@@ -8,7 +8,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="css/bootstrap.min.css">
-
+<style>
+.container{
+background-color:color: #70bfe4;
+}
+</style>
 <script type="text/javascript">
 	function registerCheckFunction() {
 		var id = $('#id').val();

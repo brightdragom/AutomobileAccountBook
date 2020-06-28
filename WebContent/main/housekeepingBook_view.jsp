@@ -164,7 +164,7 @@
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol>
-                        
+                         </div>
                         <div class="row">
                             <div class="col-xl-6">
                                 <div class="card mb-4">
