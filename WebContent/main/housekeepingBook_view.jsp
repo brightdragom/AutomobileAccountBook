@@ -68,7 +68,7 @@
 </head>
 
     <body class="sb-nav-fixed">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark" style="background-color: #c2d890" >
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-yellows" >
             <a class="navbar-brand" href="index.html">차계부</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="housekeepingBook_view.jsp"><i class="fas fa-bars"></i></button
             ><!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -140,8 +140,7 @@
                                 <div class="card mb-4">
                                     <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Area Chart Example</div>
                                     <div class="card-body" >	
-                                    <div id="chartdiv" align="center"></div> <!-- 워드ㅋ라욷 -->
-	<div id="chartdiv2" align="center"></div><!-- 챁 --> 
+                                   <div id="chartdiv2" align="center"></div><!-- 챁 --> 
 	</div>
                
                                 </div>
@@ -150,6 +149,7 @@
                                 <div class="card mb-4">
                                     <div class="card-header"><i class="fas fa-chart-bar mr-1"></i>Bar Chart Example</div>
                                     <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+                                 <div id="chartdiv" align="center"></div> <!-- 워드ㅋ라욷 -->
                                 </div>
                             </div>
                         </div>

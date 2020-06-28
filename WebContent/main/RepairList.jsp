@@ -4,6 +4,14 @@
 <%@ page import="model.User"%>
 <!DOCTYPE html>
 <html>
+<% User user = (User) session.getAttribute("user");
+   boolean isRight = user.getCareer().equals("T") ? true : false;
+   if(isRight){
+      out.println("<script>alert('정비 현황 리스트입니다.');</script>");
+   }else{
+      out.println("<script>alert('이용권한이 없습니다.'); history.back();</script>");
+   }
+%>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
