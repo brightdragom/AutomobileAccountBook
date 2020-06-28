@@ -37,7 +37,7 @@
 
 <meta charset="UTF-8">
         <title>HousekeepingBook</title>
-        <link href="<%=request.getContextPath()%>/css/styles.css" rel="stylesheet" />
+        <link href="<%=request.getContextPath()%>/css/styles.css" rel="stylesheet" /> 
          
  <style>
  .sb-sidenav-dark{
@@ -49,11 +49,11 @@
  </style>
 <script type="text/javascript">
 	function add_list_line() {
-		/* var url = "/AutomobileAccountBook/main/add_list_line.jsp";
+		var url = "/AutomobileAccountBook/main/add_list_line.jsp";
 	 	var name = "데이터 생성";
 	 	var option = "width = 500, height = 500, top = 100, left = 200, location = no"
-		window.open(url, name, option);  */
-		location.href = "/AutomobileAccountBook/main/add_list_line.jsp"
+		window.open(url, name, option); 
+		//location.href = "/AutomobileAccountBook/main/add_list_line.jsp"
 	}
 	function logout() {
 		location.href = "/AutomobileAccountBook/login/logout.jsp"
@@ -62,7 +62,7 @@
 		location.href = "/AutomobileAccountBook/main/myPages.jsp"
 	}
 	function repair() {
-		location.href = "/AutomobileAccountBook/main/RepairList.jsp"
+		location.href = "/AutomobileAccountBook/RepairList.jsp"
 	}
 </script>
 
@@ -78,7 +78,8 @@
 	%>
 	
 </head>
- <body class="sb-nav-fixed">
+
+  <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-yellows">
 		<a class="navbar-brand" href="/AutomobileAccountBook/main/housekeepingBook_view.jsp">Automobile Account Book</a>
 		<button class="btn btn-link btn-sm order-1 order-lg-0"
@@ -165,16 +166,16 @@
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol>
                         
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-xl-6">
                                 <div class="card mb-4">
                                     <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Area Chart Example</div>
                                     <div class="card-body" >	
-                                   <div id="chartdiv2" align="center"></div><!-- 챁 --> 
+                                   <div id="chartdiv2" align="center"></div>챁 
 	</div>
                
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-xl-6">
                                 <div class="card mb-4">
                                     <div class="card-header"><i class="fas fa-chart-bar mr-1"></i>Bar Chart Example</div>
@@ -183,7 +184,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card mb-4">
+                       <%--  <div class="card mb-4">
                             <div class="card-header"><i class="fas fa-table mr-1"></i> <%=user.getName()%>님의 차량 가계부 사용내역</div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -247,7 +248,7 @@
 		<div align="center">
 		<input type="button" name="add_list_line" value="add_list_line"
 			onclick="add_list_line()">
-	</div>
+	</div> --%>
 	<!-- <div align="center">  
 		<input type="button" name="logout" value="logout" onclick="logout()">
 	</div>

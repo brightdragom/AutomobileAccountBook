@@ -42,7 +42,7 @@
 </head>
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-yellows">
-		<a class="navbar-brand" href="index.html">Automobile Account Book</a>
+		<a class="navbar-brand" href="/AutomobileAccountBook/main/housekeepingBook_view.jsp">Automobile Account Book</a>
 		<button class="btn btn-link btn-sm order-1 order-lg-0"
 			id="sidebarToggle" href="#">
 			<i class="fas fa-bars"></i>
@@ -98,16 +98,16 @@
 						<div class="collapse" id="collapseLayouts"
 							aria-labelledby="headingOne" data-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="layout-static.html">CarkeepingBook</a>
-									<a class="nav-link" href="layout-sidenav-light.html">RepairingBook</a>
+								<a class="nav-link" href="/AutomobileAccountBook/main/housekeepingBook_view.jsp">CarkeepingBook</a>
+									<a class="nav-link" href="/AutomobileAccountBook/main/RepairList.jsp">RepairingBook</a>
 							</nav>
 						</div>
 						
 						<div class="sb-sidenav-menu-heading">Views</div>
-						<a class="nav-link" href="charts.html"><div
+						<a class="nav-link" href="/AutomobileAccountBook/main/housekeepingBook_charts.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
-							</div> Charts</a><a class="nav-link" href="tables.html"><div
+							</div> Charts</a><a class="nav-link" href="/AutomobileAccountBook/main/housekeepingBook_word.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-table"></i>
 							</div> WordCloud</a>
