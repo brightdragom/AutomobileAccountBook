@@ -189,8 +189,18 @@ video {
         <title>로그인</title>
         <link href="../css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+    <style>
+    .bgss-primary{
+    background-color:#70bfe4;
+    }
+    .btnss-primary {
+    color: #fff;
+    background-color: #70bfe4;
+ 	border-color: #70bfe4;
+    }
+    </style>
     </head>
-    <body class="bg-primary">
+    <body class="bgss-primary">
     
 	<%
 		if (("1").equals(request.getParameter("error"))) {
@@ -227,7 +237,7 @@ video {
                                            
                                            
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0"><a class="small" href="FindId.jsp">Forgot ID?</a><a class="small" href="FindPw.jsp">Forgot Password?</a>
-                                            <input class="btn btn-primary" type="submit" value="Login"></div>
+                                            <input class="btn btnss-primary" type="submit" value="Login"></div>
                                         
                                         </form>
                                     </div>
