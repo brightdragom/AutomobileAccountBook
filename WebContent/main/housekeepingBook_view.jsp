@@ -31,7 +31,14 @@
         <link href="<%=request.getContextPath()%>/css/styles.css" rel="stylesheet" />
          
 <title>HousekeepingBook_view_page</title>
- 
+ <style>
+ .sb-sidenav-dark{
+ background-color:#a3dae8;
+ }
+ .bg-dark{
+ background-color:#c2d890;
+ } 
+ </style>
 <script type="text/javascript">
 	function add_list_line() {
 		location.href = "/AutomobileAccountBook/main/add_list_line.jsp"
@@ -61,7 +68,7 @@
 </head>
 
     <body class="sb-nav-fixed">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark" style="background-color: #c2d890" >
             <a class="navbar-brand" href="index.html">차계부</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="housekeepingBook_view.jsp"><i class="fas fa-bars"></i></button
             ><!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -77,7 +84,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <svg class="svg-inline--fa fa-user fa-w-14 fa-fw" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg>
-                    <path fill="currentColor" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path>
+                    <path fill="black" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path>
                     </svg>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
@@ -94,7 +101,7 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading">informs</div>
+                            <div class="sb-sidenav-menu-heading" style="font-color:black">informs</div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 Mypages
@@ -153,6 +160,7 @@
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
+                                            	<th></th>
                                                 <th>Line</th>
                                                 <th>Date</th>
                                                 <th>Memo</th>
@@ -164,9 +172,10 @@
                                             <form action="/AutomobileAccountBook/Delete" method="post">
 		<div
 			style="max-height: 500px; width: 100%; overflow-x: hidden; overflow-y: scroll;">
-			<table width="500" border="0" align="center" left_padding="50"
-				cellpadding="0" cellspacing="1">
+<!-- 			<table width="500" border="0" align="center" left_padding="50"
+				cellpadding="0" cellspacing="1"> -->
 				<!-- 가계부 정보 -->
+				   <tbody>
 				<%
 					int cnt = 0;
 					int total_mileage = 0;
@@ -183,17 +192,18 @@
 								out.println(cnt);
 							%>
 						</td>
-						<td align="center"><span>${ item_list.todate}</span></td>
-						<td align="center"><span>${ item_list.content}</span></td>
-						<td align="center"><span>${ item_list.cost}</span></td>
-						<td align="center"><span>${ item_list.mileage}</span></td>
+						<td align="center">${ item_list.todate}</td>
+						<td align="center">${ item_list.content}</td>
+						<td align="center">${ item_list.cost}</td>
+						<td align="center">${ item_list.mileage}</td>
 						<td align="center"><a
 							href="/AutomobileAccountBook/Edit?item_list=${ item_list.line_no}">수정</a></td>
 						<c:set var="c" value="${item_list.mileage }"></c:set>
 					</tr>
 				</c:forEach>
-			</table>
-		</div>
+				</tbody>
+<!-- 			</table>
+ -->		</div>
 		<div
 			style="display: flex; flex-direction: clumn; margin: 15px auto; width: 100%;">
 			<label>Total Cost >></label> <label><%=total_cost%></label> <label>Total
@@ -203,6 +213,17 @@
 			<input type="submit" name="delete_line2" value="delete!">
 		</div>
 	</form>
+		<div align="center">
+		<input type="button" name="add_list_line" value="add_list_line"
+			onclick="add_list_line()">
+	</div>
+	<div align="center">
+		<input type="button" name="logout" value="logout" onclick="logout()">
+	</div>
+	<div align="center">
+		<input type="button" name="myPages" value="myPages"
+			onclick="myPages()">
+	</div>
 
                                             </tbody>
                                         </thead>
@@ -446,7 +467,7 @@
 			<input type="submit" name="delete_line2" value="delete!">
 		</div>
 	</form> --%>
-	<div align="center">
+<!-- 	<div align="center">
 		<input type="button" name="add_list_line" value="add_list_line"
 			onclick="add_list_line()">
 	</div>
@@ -456,7 +477,7 @@
 	<div align="center">
 		<input type="button" name="myPages" value="myPages"
 			onclick="myPages()">
-	</div>
+	</div> -->
 	<!-- <div align="center">
 		<input type="button" name="repair" value="repair" onclick="repair()">
 	</div> -->
