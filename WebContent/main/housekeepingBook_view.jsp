@@ -21,27 +21,39 @@
 	}
 %>
 <head>
-<meta charset="UTF-8">
 <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<link href="css/styles.css" rel="stylesheet" />
+<link
+	href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"
+	rel="stylesheet" crossorigin="anonymous" />
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"
+	crossorigin="anonymous"></script>
+
+<meta charset="UTF-8">
         <title>HousekeepingBook</title>
-        <link href="<%=request.getContextPath()%>/css/styles.css" rel="stylesheet" />
+       <%--  <link href="<%=request.getContextPath()%>/css/styles.css" rel="stylesheet" /> --%>
          
-<title>HousekeepingBook_view_page</title>
  <style>
  .sb-sidenav-dark{
  background-color:#a3dae8;
  }
  .bg-dark{
- background-color:#7ed5e4;
+ background-color:#70bfe4;
  } 
  </style>
 <script type="text/javascript">
 	function add_list_line() {
-		location.href = "/AutomobileAccountBook/main/add_list_line.jsp"
+		var url = "/AutomobileAccountBook/main/add_list_line.jsp";
+	 	var name = "데이터 생성";
+	 	var option = "width = 500, height = 500, top = 100, left = 200, location = no"
+		window.open(url, name, option); 
+		//location.href = "/AutomobileAccountBook/main/add_list_line.jsp"
 	}
 	function logout() {
 		location.href = "/AutomobileAccountBook/login/logout.jsp"
@@ -50,7 +62,7 @@
 		location.href = "/AutomobileAccountBook/main/myPages.jsp"
 	}
 	function repair() {
-		location.href = "/AutomobileAccountBook/RepairList"
+		location.href = "/AutomobileAccountBook/RepairList.jsp"
 	}
 </script>
 
@@ -67,66 +79,85 @@
 	
 </head>
 
-    <body class="sb-nav-fixed">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-yellows" >
-            <a class="navbar-brand" href="index.html">차계부</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="housekeepingBook_view.jsp"><i class="fas fa-bars"></i></button
-            ><!-- Navbar Search-->
-            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
-                    </div>
-                </div>
-            </form>
-            <!-- Navbar-->
-            <ul class="navbar-nav ml-auto ml-md-0">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <svg class="svg-inline--fa fa-user fa-w-14 fa-fw" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg>
-                    <path fill="black" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path>
-                    </svg>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="/AutomobileAccountBook/RepairList">수리진행상황</a><a class="dropdown-item" href="/AutomobileAccountBook/main/myPages.jsp">mypages</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/AutomobileAccountBook/login/logout.jsp">Logout</a>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-        
-        <div id="layoutSidenav">
-            <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                    <div class="sb-sidenav-menu">
-                        <div class="nav">
-                            <div class="sb-sidenav-menu-heading" style="font-color:black">informs</div>
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"
-                                ><div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Mypages
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
-                            ></a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="layout-static.html">Repairing</a><a class="nav-link" href="layout-sidenav-light.html">Users</a></nav>
-                            </div>
-                          
-                            <div class="sb-sidenav-menu-heading">views</div>
-                            <a class="nav-link" href="charts.html"
-                                ><div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Charts</a
-                            ><a class="nav-link" href="tables.html"
-                                ><div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Wordclouding</a
-                            >
-                        </div>
-                    </div>
-                    <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        Start Bootstrap
-                    </div>
-                </nav>
-            </div>
+  <body class="sb-nav-fixed">
+	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-yellows">
+		<a class="navbar-brand" href="index.html">Automobile Account Book</a>
+		<button class="btn btn-link btn-sm order-1 order-lg-0"
+			id="sidebarToggle" href="#">
+			<i class="fas fa-bars"></i>
+		</button>
+		<!-- Navbar Search-->
+		<form
+			class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+			<div class="input-group">
+				<input class="form-control" type="text" placeholder="Search for..."
+					aria-label="Search" aria-describedby="basic-addon2" />
+				<div class="input-group-append">
+					<button class="btn btn-primary" type="button">
+						<i class="fas fa-search"></i>
+					</button>
+				</div>
+			</div>
+		</form>
+		<!-- Navbar-->
+		<ul class="navbar-nav ml-auto ml-md-0">
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" id="userDropdown" href="#"
+				role="button" data-toggle="dropdown" aria-haspopup="true"
+				aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+				<div class="dropdown-menu dropdown-menu-right"
+					aria-labelledby="userDropdown">
+					<a class="dropdown-item" href="/AutomobileAccountBook/main/myPages.jsp">My Pages</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="/AutomobileAccountBook/login/logout.jsp">Logout</a>
+				</div></li>
+		</ul>
+	</nav>
+	<div id="layoutSidenav">
+		<div id="layoutSidenav_nav">
+			<nav class="sb-sidenav accordion sb-sidenav-dark"
+				id="sidenavAccordion">
+				<div class="sb-sidenav-menu">
+					<div class="nav">
+						<div class="sb-sidenav-menu-heading">Core</div>
+						<a class="nav-link" href="index.html"><div
+								class="sb-nav-link-icon">
+								<i class="fas fa-tachometer-alt"></i>
+							</div> Dashboard</a>
+						<div class="sb-sidenav-menu-heading">My Car</div>
+						<a class="nav-link collapsed" href="#" data-toggle="collapse"
+							data-target="#collapseLayouts" aria-expanded="false"
+							aria-controls="collapseLayouts"><div
+								class="sb-nav-link-icon">
+								<i class="fas fa-columns"></i>
+							</div> Management
+							<div class="sb-sidenav-collapse-arrow">
+								<i class="fas fa-angle-down"></i>
+							</div></a>
+						<div class="collapse" id="collapseLayouts"
+							aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+							<nav class="sb-sidenav-menu-nested nav">
+								<a class="nav-link" href="layout-static.html">CarkeepingBook</a>
+									<a class="nav-link" href="layout-sidenav-light.html">RepairingBook</a>
+							</nav>
+						</div>
+						
+						<div class="sb-sidenav-menu-heading">Views</div>
+						<a class="nav-link" href="charts.html"><div
+								class="sb-nav-link-icon">
+								<i class="fas fa-chart-area"></i>
+							</div> Charts</a><a class="nav-link" href="tables.html"><div
+								class="sb-nav-link-icon">
+								<i class="fas fa-table"></i>
+							</div> WordCloud</a>
+					</div>
+				</div>
+				<div class="sb-sidenav-footer">
+					<div class="small">Logged in as:</div>
+					Start Bootstrap
+				</div>
+			</nav>
+		</div>
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
@@ -196,8 +227,9 @@
 						<td align="center">${ item_list.content}</td>
 						<td align="center">${ item_list.cost}</td>
 						<td align="center">${ item_list.mileage}</td>
-						<td align="center"><a
-							href="/AutomobileAccountBook/Edit?item_list=${ item_list.line_no}">수정</a></td>
+						<td align="center">
+						<a href="/AutomobileAccountBook/Edit?item_list=${ item_list.line_no}">수정</a></td> 
+					<!-- 	<a onclick = "edit_list_line()" >수정</a></td> -->
 						<c:set var="c" value="${item_list.mileage }"></c:set>
 					</tr>
 				</c:forEach>
@@ -217,13 +249,13 @@
 		<input type="button" name="add_list_line" value="add_list_line"
 			onclick="add_list_line()">
 	</div>
-	<div align="center">
+	<!-- <div align="center">  
 		<input type="button" name="logout" value="logout" onclick="logout()">
 	</div>
 	<div align="center">
 		<input class="btn btn-primary" type="button" name="myPages" value="myPages"
 			onclick="myPages()">
-	</div>
+	</div> -->
 
                                             </tbody>
                                         </thead>

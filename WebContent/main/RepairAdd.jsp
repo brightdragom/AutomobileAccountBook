@@ -4,11 +4,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+<% User user = (User) session.getAttribute("user");
+   boolean isRight = user.getCareer().equals("T") ? true : false;
+   if(isRight){
+   }else{
+      out.println("<script>alert('이용권한이 없습니다.'); history.back();</script>");
+   }
+%>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<% User user = (User) session.getAttribute("user");	%>
 	<div align="center">
 		<span> 등록할 정비 정보 </span>
 	</div>
@@ -48,7 +54,7 @@
 			</table>
 		</div>
 		<div align="center">
-			<input type="submit" value="item_list">
+			<input type="submit" value="Save">
 		</div>
 	</form>
 </body>
