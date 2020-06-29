@@ -36,7 +36,7 @@
 	crossorigin="anonymous"></script>
 
 <meta charset="UTF-8">
-        <title>HousekeepingBook</title>
+        <title>HousekeepingBook_charts</title>
         <link href="<%=request.getContextPath()%>/css/styles.css" rel="stylesheet" /> 
          
  <style>
@@ -126,11 +126,6 @@ height:30px;
 				id="sidenavAccordion">
 				<div class="sb-sidenav-menu">
 					<div class="nav">
-						<div class="sb-sidenav-menu-heading">Core</div>
-						<a class="nav-link" href="index.html"><div
-								class="sb-nav-link-icon">
-								<i class="fas fa-tachometer-alt"></i>
-							</div> Dashboard</a>
 						<div class="sb-sidenav-menu-heading">My Car</div>
 						<a class="nav-link collapsed" href="#" data-toggle="collapse"
 							data-target="#collapseLayouts" aria-expanded="false"
@@ -161,16 +156,16 @@ height:30px;
 				</div>
 				<div class="sb-sidenav-footer">
 					<div class="small">Logged in as:</div>
-					Start Bootstrap
+					AutomobileAccountBook
 				</div>
 			</nav>
 		</div>
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">Dashboard</h1>
+                        <h1 class="mt-4">Charts</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Dashboard</li>
+                            <li class="breadcrumb-item active"></li>
                         </ol>
                         
                         <div class="row">

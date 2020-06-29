@@ -22,7 +22,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"
 	crossorigin="anonymous"></script>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>RepairProgressList</title>
 <style>
  .sb-sidenav-dark{
  background-color:#a3dae8;
@@ -87,11 +87,6 @@ height:30px;
 				id="sidenavAccordion">
 				<div class="sb-sidenav-menu">
 					<div class="nav">
-						<div class="sb-sidenav-menu-heading">Core</div>
-						<a class="nav-link" href="index.html"><div
-								class="sb-nav-link-icon">
-								<i class="fas fa-tachometer-alt"></i>
-							</div> Dashboard</a>
 						<div class="sb-sidenav-menu-heading">My Car</div>
 						<a class="nav-link collapsed" href="#" data-toggle="collapse"
 							data-target="#collapseLayouts" aria-expanded="false"
@@ -122,16 +117,16 @@ height:30px;
 				</div>
 				<div class="sb-sidenav-footer">
 					<div class="small">Logged in as:</div>
-					Start Bootstrap
+					AutomobileAccountBook
 				</div>
 			</nav>
 		</div>
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid">
-					<h1 class="mt-4">Dashboard</h1>
+					<h1 class="mt-4">정비상황</h1>
 					<ol class="breadcrumb mb-4">
-						<li class="breadcrumb-item active">Dashboard</li>
+						<li class="breadcrumb-item active"></li>
 					</ol>
 					<div class="card mb-4">
 						<div class="card-header">
