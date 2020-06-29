@@ -13,6 +13,12 @@
 </script>
 
 <style>
+body{
+background-color: #70bfe4;
+}
+.container{
+margin-top:15%;
+}
 .container-fluid {
   padding-right: 15px;
   padding-left: 15px;
@@ -21,39 +27,6 @@
 }
 </style>
 </head>
-
-
-<nav class="navbar navbar-default">
-
-	<div class="navbar-header">
-
-		<button type="button" class="navbar-toggle collapsed"
-			data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-			aria-expaned="false">
-
-			<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-				class="icon-bar"></span>
-
-		</button>
-
-		<a class="navbar-brand" href="index.jsp">로그인</a>
-
-	</div>
-
-	<div class="collapse navbar-collapse"
-		id="#bs-example-navbar-collapse-1">
-
-		<ul class="nav navbar-nav">
-
-			<li><a href="FindId.jsp">아이디찾기</a></li>
-
-			<li><a href="FindPw.jsp">비밀번호찾기</a></li>
-
-		</ul>
-	</div>
-</nav>
-
-
 
 
 <!-- 로그인 폼 -->
@@ -91,7 +64,23 @@
 
 				</div>
 				<input type="submit" class="btn btn-primary form-control"
+				style="color:#fff;	background-color: #70bfe4; border-color:#70bfe4;"
 					value="아이디찾기">
+				<div class="card-footer text-center">
+					<div class="small">
+						<a href="Register.jsp">Need an account? Sign up!</a>
+					</div>
+					<div class="small">
+					<br>
+					<a href="index.jsp">Have an account? Go to login</a>
+				</div>
+				<div
+					class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+					<a class="small" href="FindPw.jsp">Forgot Password?</a>
+
+				</div>
+				</div>
+				
 			</form>
 		</div>
 

@@ -29,6 +29,33 @@ public class LoginAction extends HttpServlet {
     }
 
 	
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String id = request.getParameter("user_id");
+		String pw = request.getParameter("user_pw");
+		
+		System.out.println("id : "+id+"\t pw : "+pw);
+		db = new DBConnection();
+		User user = db.login(id, pw);
+		if(user != null) {
+			
+			List<AutoAccountList> list = db.getHousekeepingList(id);	//로그인 한 사람이 작성한 가계부 내용 가져오는 코드
+			
+			request.setAttribute("item_list", list);			
+			//세션 등록
+			HttpSession session = request.getSession(true);
+			session.setAttribute("user", user);
+			session.setAttribute("db", db);
+			RequestDispatcher rd = request.getRequestDispatcher("main/housekeepingBook_view.jsp");
+			//RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+			rd.forward(request, response);
+		}else {
+			response.sendRedirect(request.getHeader("referer")+"?error=1");		
+		}
+		
+	}
+
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("user_id");
 		String pw = request.getParameter("user_pw");

@@ -36,8 +36,8 @@
 	crossorigin="anonymous"></script>
 
 <meta charset="UTF-8">
-        <title>HousekeepingBook</title>
-        <link href="<%=request.getContextPath()%>/css/styles.css" rel="stylesheet" />
+        <title>HousekeepingBook_charts</title>
+        <link href="<%=request.getContextPath()%>/css/styles.css" rel="stylesheet" /> 
          
  <style>
  .sb-sidenav-dark{
@@ -46,7 +46,7 @@
  .bg-dark{
  background-color:#70bfe4;
  } 
- .top-icon{
+  .top-icon{
 margin-left:15px;
 width:30px;
 height:30px;
@@ -54,11 +54,11 @@ height:30px;
  </style>
 <script type="text/javascript">
 	function add_list_line() {
-		/* var url = "/AutomobileAccountBook/main/add_list_line.jsp";
+		var url = "/AutomobileAccountBook/main/add_list_line.jsp";
 	 	var name = "데이터 생성";
 	 	var option = "width = 500, height = 500, top = 100, left = 200, location = no"
-		window.open(url, name, option);  */
-		location.href = "/AutomobileAccountBook/main/add_list_line.jsp"
+		window.open(url, name, option); 
+		//location.href = "/AutomobileAccountBook/main/add_list_line.jsp"
 	}
 	function logout() {
 		location.href = "/AutomobileAccountBook/login/logout.jsp"
@@ -67,7 +67,7 @@ height:30px;
 		location.href = "/AutomobileAccountBook/main/myPages.jsp"
 	}
 	function repair() {
-		location.href = "/AutomobileAccountBook/main/RepairList.jsp"
+		location.href = "/AutomobileAccountBook/RepairList.jsp"
 	}
 </script>
 
@@ -83,7 +83,8 @@ height:30px;
 	%>
 	
 </head>
- <body class="sb-nav-fixed">
+
+  <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-yellows">
 	<a href="/AutomobileAccountBook/main/housekeepingBook_view.jsp">
 	<img class="top-icon" src="/AutomobileAccountBook/img/pickup-car.png" ></a>
@@ -138,8 +139,8 @@ height:30px;
 						<div class="collapse" id="collapseLayouts"
 							aria-labelledby="headingOne" data-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								 <a class="nav-link" href="/AutomobileAccountBook/main/housekeepingBook_view.jsp">CarkeepingBook</a>
-								 <a class="nav-link" href="/AutomobileAccountBook/main/RepairList.jsp">RepairingBook</a>
+								<a class="nav-link" href="/AutomobileAccountBook/main/housekeepingBook_view.jsp">CarkeepingBook</a>
+									<a class="nav-link" href="/AutomobileAccountBook/main/RepairList.jsp">RepairingBook</a>
 							</nav>
 						</div>
 						
@@ -162,11 +163,11 @@ height:30px;
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">Housekeepingbook</h1>
+                        <h1 class="mt-4">Charts</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active"></li>
                         </ol>
-                         </div>
+                        
                         <div class="row">
                             <div class="col-xl-6">
                                 <div class="card mb-4">
@@ -177,7 +178,7 @@ height:30px;
                
                                 </div>
                             </div>
-                            <div class="col-xl-6">
+                           <%--  <div class="col-xl-6">
                                 <div class="card mb-4">
                                     <div class="card-header"><i class="fas fa-chart-bar mr-1"></i>Bar Chart Example</div>
                                     <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
@@ -185,69 +186,20 @@ height:30px;
                                 </div>
                             </div>
                         </div>
-                        <div class="card mb-4">
-                            <div class="card-header"><i class="fas fa-table mr-1"></i> <%=user.getName()%>님의 차량 가계부 사용내역</div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                            	<th></th>
-                                                <th>Line</th>
-                                                <th>Date</th>
-                                                <th>Memo</th>
-                                                <th>Cost</th>
-                                                <th>Distance</th>
-                                             	<th>Modify</th>
-                                            </tr>
-                                            <tbody>
-		<div style="max-height: 500px; width: 100%; overflow-x: hidden; overflow-y: scroll;">
-<!-- 			<table width="500" border="0" align="center" left_padding="50"
-				cellpadding="0" cellspacing="1"> -->
-				<!-- 가계부 정보 -->
-				   <tbody>
-				<%
-					int cnt = 0;
-					int total_mileage = 0;
-				%>
-				<c:forEach items="${ item_list }" var="item_list">
-					<%
-						cnt++;
-					%>
-					<tr>
-						<td align="center"><input type="checkbox" name="item_list"
-							value="${item_list.line_no}"></td>
-						<td align="center">
-							<%
-								out.println(cnt);
-							%>
-						</td>
-						<td align="center">${ item_list.todate}</td>
-						<td align="center">${ item_list.content}</td>
-						<td align="center">${ item_list.cost}</td>
-						<td align="center">${ item_list.mileage}</td>
-						<td align="center">
-						<a href="/AutomobileAccountBook/Edit?item_list=${ item_list.line_no}">수정</a></td> 
-					<!-- 	<a onclick = "edit_list_line()" >수정</a></td> -->
-						<c:set var="c" value="${item_list.mileage }"></c:set>
-					</tr>
-				</c:forEach>
-				</tbody>
-			</table>
-		</div>
+                      
 		<div
 			style="display: flex; flex-direction: clumn; margin: 15px auto; width: 100%;">
 			<label>Total Cost >></label> <label><%=total_cost%></label> <label>Total
 				Mileage(KM) >></label> <label>"${c }"</label>
 		</div>
-		<div align="right">
-			<input class="btn btnss-primary" type="button" name="add_list_line" value="추가하기" onclick="add_list_line()">
-		<form action="/AutomobileAccountBook/Delete" method="post" style="display: inline;" >
-			<input class="btn btnss-primary" type="submit" name="delete_line2" value="삭제하기">
-			</form>
+		<div align="center">
+			<input type="submit" name="delete_line2" value="delete!">
 		</div>
-	
-	
+	</form>
+		<div align="center">
+		<input type="button" name="add_list_line" value="add_list_line"
+			onclick="add_list_line()">
+	</div> --%>
 	<!-- <div align="center">  
 		<input type="button" name="logout" value="logout" onclick="logout()">
 	</div>
@@ -256,7 +208,10 @@ height:30px;
 			onclick="myPages()">
 	</div> -->
 
-                       
+                                            </tbody>
+                                        </thead>
+                                    
+                                    </table>
                                 </div>
                             </div>
                         </div>

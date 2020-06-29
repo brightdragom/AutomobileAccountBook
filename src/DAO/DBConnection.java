@@ -19,6 +19,7 @@ public class DBConnection {
 			String dbURL = "jdbc:mysql://localhost:3306/accountBook?serverTimezone=UTC";
 			String dbID = "root";
 			String dbPassword = "1234";
+
 			Class.forName("com.mysql.jdbc.Driver");
 
 			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
@@ -294,7 +295,7 @@ public class DBConnection {
 	}
 
 	public List<RepairCheck> getRepairList(User user) { // 차계부 아이디에 맞게 내용 가져오는 메소드
-		String SQL = "select * from repair_info where driver_id = ? or technician_id = ?";
+		String SQL = "select * from repair_info where driver_id = ? or technician_id  = ?";
 
 		ArrayList<RepairCheck> list = new ArrayList<>();
 

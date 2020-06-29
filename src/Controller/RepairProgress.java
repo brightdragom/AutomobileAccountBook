@@ -64,17 +64,17 @@ public class RepairProgress extends HttpServlet {
 
 		int maxSize = 1024 * 1024 * 10;
 
-		// 웹서버 컨테이너 경로
+		// �쎒�꽌踰� 而⑦뀒�씠�꼫 寃쎈줈
 		// String root = request.getSession().getServletContext().getRealPath("/");
 
-		// 파일 저장 경로(ex : /home/tour/web/ROOT/upload)
+		// �뙆�씪 ���옣 寃쎈줈(ex : /home/tour/web/ROOT/upload)
 		//String savePath = "C:\\Users\\Gwang\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\AutomobileAccountBook3\\upload";
-		String savePath = "C:\\Users\\Gwang\\Desktop\\AutomobileAccountBook\\WebContent\\upload";
-		System.out.println("파일 저장 경로 > > " + savePath);
-		// 업로드 파일명
+		String savePath = "C:\\Users\\somin\\Desktop\\AutomobileAccountBook\\WebContent\\upload";
+		System.out.println("Save File Path > > " + savePath);
+		// �뾽濡쒕뱶 �뙆�씪紐�
 		String uploadFile = "";
 
-		// 실제 저장할 파일명
+		// �떎�젣 ���옣�븷 �뙆�씪紐�
 		String newFileName = "";
 		String repair_no = null, contents = null, doday = null;
 		int read = 0;
