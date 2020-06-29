@@ -88,19 +88,20 @@
 			id="sidebarToggle" href="#">
 			<i class="fas fa-bars"></i>
 		</button>
-		<!-- Navbar Search-->
-		<form
+ 	<!-- Navbar Search-->
+		 <form
 			class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-			<div class="input-group">
+			<a><%=user.getName()%>님 환영합니다</a>
+			<!-- <div class="input-group">
 				<input class="form-control" type="text" placeholder="Search for..."
-					aria-label="Search" aria-describedby="basic-addon2" />
-				<div class="input-group-append">
+					aria-label="Search" aria-describedby="basic-addon2" /> -->
+				<!-- <div class="input-group-append">
 					<button class="btn btn-primary" type="button">
 						<i class="fas fa-search"></i>
 					</button>
-				</div>
+				</div> -->
 			</div>
-		</form>
+		</form> 
 		<!-- Navbar-->
 		<ul class="navbar-nav ml-auto ml-md-0">
 			<li class="nav-item dropdown"><a
@@ -167,11 +168,11 @@
 						<li class="breadcrumb-item active"></li>
 					</ol>
 				</div>
-				<div class="row">
+				<div class="row" style="margin-left:15px; margin-right:15px">
 					<div class="col-xl-6">
 						<div class="card mb-4">
 							<div class="card-header">
-								<i class="fas fa-chart-area mr-1"></i>Area Chart Example
+								<i class="fas fa-chart-area mr-1"></i>Charts
 							</div>
 							<div class="card-body">
 								<div id="chartdiv2" align="center"></div>
@@ -183,7 +184,7 @@
 					<div class="col-xl-6">
 						<div class="card mb-4">
 							<div class="card-header">
-								<i class="fas fa-chart-bar mr-1"></i>Bar Chart Example
+								<i class="fas fa-chart-bar mr-1"></i>WordCloud
 							</div>
 							<div class="card-body">
 								<canvas id="myBarChart" width="100%" height="40"></canvas>
@@ -193,8 +194,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="card mb-4">
-					<div class="card-header">
+				<div class="card mb-4" style="margin-left:15px; margin-right:15px">
+					<div class="card-header"  >
 						<i class="fas fa-table mr-1"></i>
 						<%=user.getName()%>님의 차량 가계부 사용내역
 					</div>

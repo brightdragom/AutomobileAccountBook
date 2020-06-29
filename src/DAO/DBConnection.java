@@ -18,7 +18,7 @@ public class DBConnection {
 		try {
 			String dbURL = "jdbc:mysql://localhost:3306/accountBook?serverTimezone=UTC";
 			String dbID = "root";
-			String dbPassword = "1234";
+			String dbPassword = "thals0416";
 
 			Class.forName("com.mysql.jdbc.Driver");
 

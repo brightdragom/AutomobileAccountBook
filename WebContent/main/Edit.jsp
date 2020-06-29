@@ -22,7 +22,9 @@
 
 <meta charset="UTF-8">
 <title>수정</title>
-<link href="<%=request.getContextPath()%>/css/styles.css" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/css/styles.css"
+	rel="stylesheet" />
+
  <style>
  .sb-sidenav-dark{
  background-color:#369bc9;
@@ -40,29 +42,32 @@ width:30px;
 height:30px;
  }
  </style>
-</head>
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-yellows">
-	<a href="/AutomobileAccountBook/LoginAction">
-	<img class="top-icon" src="/AutomobileAccountBook/img/pickup-car.png" ></a>
-		<a class="navbar-brand" href="/AutomobileAccountBook/LoginAction">Automobile Account Book</a>
+		<a href="/AutomobileAccountBook/LoginAction"> <img
+			class="top-icon" src="/AutomobileAccountBook/img/pickup-car.png"></a>
+		<a class="navbar-brand"
+			href="/AutomobileAccountBook/LoginAction">Automobile
+			Account Book</a>
 		<button class="btn btn-link btn-sm order-1 order-lg-0"
 			id="sidebarToggle" href="#">
 			<i class="fas fa-bars"></i>
 		</button>
 		<!-- Navbar Search-->
-		<form
+		 <form
 			class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-			<div class="input-group">
+	      <%--  <a><%=user.getName()%>님 환영합니다</a> --%>
+			<!-- <div class="input-group">
 				<input class="form-control" type="text" placeholder="Search for..."
-					aria-label="Search" aria-describedby="basic-addon2" />
-				<div class="input-group-append">
+					aria-label="Search" aria-describedby="basic-addon2" /> -->
+					User user = (User)request.getAttrute("user")
+				<!-- <div class="input-group-append">
 					<button class="btn btn-primary" type="button">
 						<i class="fas fa-search"></i>
 					</button>
-				</div>
+				</div> -->
 			</div>
-		</form>
+		</form> 
 		<!-- Navbar-->
 		<ul class="navbar-nav ml-auto ml-md-0">
 			<li class="nav-item dropdown"><a
@@ -71,9 +76,11 @@ height:30px;
 				aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
 				<div class="dropdown-menu dropdown-menu-right"
 					aria-labelledby="userDropdown">
-					<a class="dropdown-item" href="/AutomobileAccountBook/main/myPages.jsp">My Pages</a>
+					<a class="dropdown-item"
+						href="/AutomobileAccountBook/main/myPages.jsp">My Pages</a>
 					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="/AutomobileAccountBook/login/logout.jsp">Logout</a>
+					<a class="dropdown-item"
+						href="/AutomobileAccountBook/login/logout.jsp">Logout</a>
 				</div></li>
 		</ul>
 	</nav>
@@ -83,17 +90,10 @@ height:30px;
 				id="sidenavAccordion">
 				<div class="sb-sidenav-menu">
 					<div class="nav">
-						<!-- <div class="sb-sidenav-menu-heading">Core</div>
-						<a class="nav-link" href="index.html"><div
-								class="sb-nav-link-icon">
-								<i class="fas fa-tachometer-alt"></i>
-							</div> Dashboard</a>
-							 -->
 						<div class="sb-sidenav-menu-heading">My Car</div>
 						<a class="nav-link collapsed" href="#" data-toggle="collapse"
 							data-target="#collapseLayouts" aria-expanded="false"
-							aria-controls="collapseLayouts">
-							<div class="sb-nav-link-icon">
+							aria-controls="collapseLayouts"><div class="sb-nav-link-icon">
 								<i class="fas fa-columns"></i>
 							</div> Management
 							<div class="sb-sidenav-collapse-arrow">
@@ -102,16 +102,18 @@ height:30px;
 						<div class="collapse" id="collapseLayouts"
 							aria-labelledby="headingOne" data-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/AutomobileAccountBook/LoginAction">CarkeepingBook</a>
-								<a class="nav-link" href="/AutomobileAccountBook/RepairList">RepairingBook</a>
+								 <a class="nav-link" href="/AutomobileAccountBook/LoginAction">CarkeepingBook</a>
+								 <a class="nav-link" href="/AutomobileAccountBook/RepairList">RepairingBook</a>
 							</nav>
 						</div>
-						
+
 						<div class="sb-sidenav-menu-heading">Views</div>
-						<a class="nav-link" href="/AutomobileAccountBook/main/housekeepingBook_charts.jsp"><div
+						<a class="nav-link"
+							href="/AutomobileAccountBook/main/housekeepingBook_charts.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
-							</div> Charts</a><a class="nav-link" href="/AutomobileAccountBook/main/housekeepingBook_word.jsp"><div
+							</div> Charts</a><a class="nav-link"
+							href="/AutomobileAccountBook/main/housekeepingBook_word.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-table"></i>
 							</div> WordCloud</a>
@@ -119,7 +121,7 @@ height:30px;
 				</div>
 				<div class="sb-sidenav-footer">
 					<div class="small">Logged in as:</div>
-					Start Bootstrap
+					AutomobileAccountBook
 				</div>
 			</nav>
 		</div>
@@ -196,5 +198,24 @@ height:30px;
 		</table>
 		 
 	</form>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		crossorigin="anonymous"></script>
+        <script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
+        <script src="js/bootstrap.js"></script>
+        <script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+		crossorigin="anonymous"></script>
+        <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
+        <script
+		src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"
+		crossorigin="anonymous"></script>
+        <script
+		src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"
+		crossorigin="anonymous"></script>
+        <script src="assets/demo/datatables-demo.js"></script>
+    
 </body>
 </html> 

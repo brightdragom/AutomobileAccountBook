@@ -94,18 +94,19 @@ height:30px;
 			<i class="fas fa-bars"></i>
 		</button>
 		<!-- Navbar Search-->
-		<form
+		 <form
 			class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-			<div class="input-group">
+			<a><%=user.getName()%>님 환영합니다</a>
+			<!-- <div class="input-group">
 				<input class="form-control" type="text" placeholder="Search for..."
-					aria-label="Search" aria-describedby="basic-addon2" />
-				<div class="input-group-append">
+					aria-label="Search" aria-describedby="basic-addon2" /> -->
+				<!-- <div class="input-group-append">
 					<button class="btn btn-primary" type="button">
 						<i class="fas fa-search"></i>
 					</button>
-				</div>
+				</div> -->
 			</div>
-		</form>
+		</form> 
 		<!-- Navbar-->
 		<ul class="navbar-nav ml-auto ml-md-0">
 			<li class="nav-item dropdown"><a
@@ -171,7 +172,7 @@ height:30px;
                         <div class="row">
                             <div class="col-xl-6">
                                 <div class="card mb-4">
-                                    <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Area Chart Example</div>
+                                    <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Charts</div>
                                     <div class="card-body" >	
                                    <div id="chartdiv2" align="center"></div><!-- 챁 --> 
 	</div>

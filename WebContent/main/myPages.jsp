@@ -52,16 +52,17 @@ height:30px;
 			<i class="fas fa-bars"></i>
 		</button>
 		<!-- Navbar Search-->
-		<form
+		 <form
 			class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-			<div class="input-group">
+			<a><%=user.getName()%>님 환영합니다</a>
+			<!-- <div class="input-group">
 				<input class="form-control" type="text" placeholder="Search for..."
-					aria-label="Search" aria-describedby="basic-addon2" />
-				<div class="input-group-append">
+					aria-label="Search" aria-describedby="basic-addon2" /> -->
+				<!-- <div class="input-group-append">
 					<button class="btn btn-primary" type="button">
 						<i class="fas fa-search"></i>
 					</button>
-				</div>
+				</div> -->
 			</div>
 		</form>
 		<!-- Navbar-->
@@ -153,5 +154,23 @@ height:30px;
 		<td> <label>${user.getAddr() }</label>
 	</tr>
 </table>
+       <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		crossorigin="anonymous"></script>
+        <script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
+        <script src="js/bootstrap.js"></script>
+        <script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+		crossorigin="anonymous"></script>
+        <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
+        <script
+		src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"
+		crossorigin="anonymous"></script>
+        <script
+		src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"
+		crossorigin="anonymous"></script>
+        <script src="assets/demo/datatables-demo.js"></script>
 </body>
 </html>

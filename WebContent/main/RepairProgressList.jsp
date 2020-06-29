@@ -55,18 +55,19 @@ height:30px;
 			<i class="fas fa-bars"></i>
 		</button>
 		<!-- Navbar Search-->
-		<form
+		 <form
 			class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-			<div class="input-group">
+			<%--  <a><%=user.getName()%>님 환영합니다</a> --%>
+			<!-- <div class="input-group">
 				<input class="form-control" type="text" placeholder="Search for..."
-					aria-label="Search" aria-describedby="basic-addon2" />
-				<div class="input-group-append">
+					aria-label="Search" aria-describedby="basic-addon2" /> -->
+				<!-- <div class="input-group-append">
 					<button class="btn btn-primary" type="button">
 						<i class="fas fa-search"></i>
 					</button>
-				</div>
+				</div> -->
 			</div>
-		</form>
+		</form> 
 		<!-- Navbar-->
 		<ul class="navbar-nav ml-auto ml-md-0">
 			<li class="nav-item dropdown"><a
@@ -132,6 +133,7 @@ height:30px;
 						<div class="card-header">
 							<i class="fas fa-table mr-1"></i>DataTable Example
 						</div>
+						
 						<div class="card-body">
 							<div class="table-responsive">
 								<table class="table table-bordered" id="dataTable" width="100%"
@@ -155,10 +157,19 @@ height:30px;
 					</tr>
 				</c:forEach>
 				</tbody>
+					
 								</table>
 							</div>
 						</div>
+					<div align="right" style="margin-right:15px">
+				<input class="btn btnss-primary"  type="button" name="add_repair" value="add_repair"
+					onclick="add_repair()">
+			
+				<input class="btn btnss-primary"  type="button" name="returnpage" value="returnpage"
+					onclick="returnpage()">
+				
 					</div>
+						<br>
 				</div>
 			</main>
 			<footer class="py-4 bg-light mt-auto">
@@ -239,13 +250,13 @@ height:30px;
 					</tr>
 				</c:forEach>
 			</table> --%>
-			<div align="center">
+		<!-- 	<div align="center">
 				<input type="button" name="add_repair" value="add_repair"
 					onclick="add_repair()">
 			</div>
 			<div align="center">
 				<input type="button" name="returnpage" value="returnpage"
 					onclick="returnpage()">
-			</div>
+			</div> -->
 </body>
 </html>
