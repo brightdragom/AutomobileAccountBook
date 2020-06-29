@@ -16,7 +16,20 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 
 <title>아이디 찾기</title>
-
+<style>
+body{
+background-color: #70bfe4;
+}
+.container{
+margin-top:15%;
+}
+.container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+</style>
 </head>
 
 <%
@@ -30,7 +43,7 @@
 
 	String id = db.findId(name, phone);
 %>
-<nav class="navbar navbar-default">
+<!-- <nav class="navbar navbar-default">
 
 	<div class="navbar-header">
 
@@ -62,7 +75,7 @@
 
 
 
-
+ -->
 <body>
 
 	<!-- 로그인 폼 -->
@@ -98,13 +111,28 @@
 
 					<h4>가입 정보가 없습니다.</h4>
 				</div>
+				<div class="form-group" style="text-align: center;">
+					<button id="idChkBtn" class="btn btn-primary" style="color:#fff;	background-color: #70bfe4; border-color:#70bfe4;"
+						onclick="location.href='index.jsp'">확인</button>
+				</div>
+				<div class="card-footer text-center">
+					<div class="small">
+						<a href="Register.jsp">Need an account? Sign up!</a>
+					</div>
+					<div
+					class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+					<a class="small" href="FindId.jsp">Forgot ID?</a>
+					<a class="small" href="FindPw.jsp">Forgot Password?</a>
+
+				</div>
+				</div>
 				<%
 					}
 				%>
-				<div class="form-group" style="text-align: center;">
-					<button id="idChkBtn" class="btn btn-primary"
+				<!-- <div class="form-group" style="text-align: center;">
+					<button id="idChkBtn" class="btn btn-primary" style="color:#fff;	background-color: #70bfe4; border-color:#70bfe4;"
 						onclick="location.href='index.jsp'">확인</button>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
