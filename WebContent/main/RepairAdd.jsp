@@ -35,10 +35,17 @@
  .bg-dark{
  background-color:#70bfe4;
  } 
+  .top-icon{
+margin-left:15px;
+width:30px;
+height:30px;
+ }
  </style>
 </head>
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-yellows">
+	<a href="/AutomobileAccountBook/main/housekeepingBook_view.jsp">
+	<img class="top-icon" src="/AutomobileAccountBook/img/pickup-car.png" ></a>
 		<a class="navbar-brand" href="/AutomobileAccountBook/main/housekeepingBook_view.jsp">Automobile Account Book</a>
 		<button class="btn btn-link btn-sm order-1 order-lg-0"
 			id="sidebarToggle" href="#">
@@ -138,7 +145,30 @@
 		</tr>
 	</table>
 	<form action="/AutomobileAccountBook/AddRepair" method="post">
-		<div
+	<div class="add-list">
+	            <div class="mb-3">
+                <label for="content">운전자ID</label>
+                <input type="text" class="form-control" name="item_list.driver_id" value="${ item_list.driver_id}">
+            </div>
+            <div class="mb-3">
+                <label for="content">정비 및 수리내용</label>
+                <input type="text" class="form-control" name="item_list.contents"  placeholder="정비 내역을 입력해 주세요" value="${ item_list.contents}">
+            </div>
+            <div class="mb-3">
+                <label for="date">시작일</label>
+                <input type="date"  name="item_list.start_time"  class="form-control"/ value="${ item_list.start_time}">
+            </div>
+                        <div class="mb-3">
+                <label for="date">예상 종료일</label>
+                <input type="date" name="item_list.start_time"  class="form-control"/ value="${ item_list.expect_time}">
+            </div>
+            <div align="right">
+			<input class="btn btnss-primary" type="submit" value="Save">
+		</div>
+	</div>
+	
+	
+		<%--  <div
 			style="max-height: 500px; width: 100%; overflow-x: hidden; overflow-y: scroll;">
 			<table width="500" border="0" align="center" left_padding="50"
 				cellpadding="0" cellspacing="1">
@@ -161,10 +191,10 @@
 				</tr>
 
 			</table>
-		</div>
+		</div> 
 		<div align="center">
 			<input type="submit" value="Save">
-		</div>
+		</div> --%>
 	</form>
 </body>
 </html>

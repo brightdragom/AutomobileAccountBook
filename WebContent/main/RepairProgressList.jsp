@@ -30,6 +30,11 @@
  .bg-dark{
  background-color:#70bfe4;
  } 
+  .top-icon{
+margin-left:15px;
+width:30px;
+height:30px;
+ }
  </style>
 <script type="text/javascript">
 	function add_repair() {
@@ -42,6 +47,8 @@
 </head>
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-yellows">
+	<a href="/AutomobileAccountBook/main/housekeepingBook_view.jsp">
+	<img class="top-icon" src="/AutomobileAccountBook/img/pickup-car.png" ></a>
 		<a class="navbar-brand" href="/AutomobileAccountBook/main/housekeepingBook_view.jsp">Automobile Account Book</a>
 		<button class="btn btn-link btn-sm order-1 order-lg-0"
 			id="sidebarToggle" href="#">
@@ -143,6 +150,16 @@
 											<th>img</th>
 										</tr>
 									<tbody>
+									<c:forEach items="${item }" var="item">
+					<tr align="center">
+						<td>${ item.repair_no }</td>
+						<td>${ item.contents }</td>
+						<td>${ item.doday }</td>
+						<td>${ item.writer_id }</td>
+						<td><img src="${ item.img }"></td>
+					</tr>
+				</c:forEach>
+				</tbody>
 								</table>
 							</div>
 						</div>
@@ -186,7 +203,7 @@
 				String no = (String) session.getAttribute("reno");
 			System.out.println(no);
 			%>
-			<div align="center"></div>
+			<%-- <div align="center"></div>
 			<table align="center">
 				<tr>
 					<td>
@@ -226,7 +243,7 @@
 						<td><img src="${ item.img }"></td>
 					</tr>
 				</c:forEach>
-			</table>
+			</table> --%>
 			<div align="center">
 				<input type="button" name="add_repair" value="add_repair"
 					onclick="add_repair()">

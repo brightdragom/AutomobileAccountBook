@@ -9,10 +9,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <style>
+body{
+background-color: #70bfe4;
+}
 .container{
-background-color:color: #70bfe4;
+margin-top:15%;
+}
+.container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
 </style>
+<!-- .container{
+background-color:color: #70bfe4;
+} -->
+
 <script type="text/javascript">
 	function registerCheckFunction() {
 		var id = $('#id').val();
@@ -111,7 +124,7 @@ background-color:color: #70bfe4;
 					</div>
 
 					<div class="form-group" style="text-align: center;">
-						<button class="btn btn-primary" onclick="registerCheckFunction();"
+						<button class="btn btn-primary" style="color:#fff;	background-color: #70bfe4; border-color:#70bfe4;" onclick="registerCheckFunction();"
 							type="button">중복확인</button>
 					</div>
 
@@ -165,10 +178,10 @@ background-color:color: #70bfe4;
 
 						<div class="btn-group" data-toggle="buttons">
 
-							<label class="btn btn-primary active"> <input
+							<label class="btn btn-primary active" style="color:#fff;	background-color: #70bfe4; border-color:#70bfe4;"> <input 
 								type="radio" name="career" autocomplete="off" value="정비사" checked>정비사
 
-							</label> <label class="btn btn-primary"> <input type="radio"
+							</label> <label class="btn btn-primary" style="color:#fff;	background-color: #a3dae8; border-color:#a3dae8;"> <input type="radio"
 								name="career" autocomplete="off" value="운전자">운전자
 
 							</label>
@@ -181,10 +194,10 @@ background-color:color: #70bfe4;
 
 						<div class="btn-group" data-toggle="buttons">
 
-							<label class="btn btn-primary active"> <input
+							<label class="btn btn-primary active" style="color:#fff;	background-color: #70bfe4; border-color:#70bfe4;"> <input
 								type="radio" name="gender" autocomplete="off" value="M" checked>남자
 
-							</label> <label class="btn btn-primary"> <input type="radio"
+							</label> <label class="btn btn-primary" style="color:#fff;	background-color: #a3dae8; border-color:#a3dae8;"> <input type="radio"
 								name="gneder" autocomplete="off" value="F">여자
 
 							</label>
@@ -199,7 +212,7 @@ background-color:color: #70bfe4;
 
 					</div>
 
-					<input type="submit" class="btn btn-primary form-control"
+					<input type="submit" class="btn btn-primary form-control" style="color:#fff;	background-color: #70bfe4; border-color:#70bfe4;"
 						value="회원가입">
 					<div class="card-footer text-center">
 						

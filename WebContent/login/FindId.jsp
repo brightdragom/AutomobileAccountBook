@@ -13,6 +13,12 @@
 </script>
 
 <style>
+body{
+background-color: #70bfe4;
+}
+.container{
+margin-top:15%;
+}
 .container-fluid {
   padding-right: 15px;
   padding-left: 15px;
@@ -58,6 +64,7 @@
 
 				</div>
 				<input type="submit" class="btn btn-primary form-control"
+				style="color:#fff;	background-color: #70bfe4; border-color:#70bfe4;"
 					value="아이디찾기">
 				<div class="card-footer text-center">
 					<div class="small">

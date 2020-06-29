@@ -46,6 +46,11 @@
  .bg-dark{
  background-color:#70bfe4;
  } 
+ .top-icon{
+margin-left:15px;
+width:30px;
+height:30px;
+ }
  </style>
 <script type="text/javascript">
 	function add_list_line() {
@@ -80,6 +85,8 @@
 </head>
  <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-yellows">
+	<a href="/AutomobileAccountBook/main/housekeepingBook_view.jsp">
+	<img class="top-icon" src="/AutomobileAccountBook/img/pickup-car.png" ></a>
 		<a class="navbar-brand" href="/AutomobileAccountBook/main/housekeepingBook_view.jsp">Automobile Account Book</a>
 		<button class="btn btn-link btn-sm order-1 order-lg-0"
 			id="sidebarToggle" href="#">
@@ -136,8 +143,8 @@
 						<div class="collapse" id="collapseLayouts"
 							aria-labelledby="headingOne" data-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/AutomobileAccountBook/main/housekeepingBook_view.jsp">CarkeepingBook</a>
-									<a class="nav-link" href="/AutomobileAccountBook/main/RepairList.jsp">RepairingBook</a>
+								 <a class="nav-link" href="/AutomobileAccountBook/main/housekeepingBook_view.jsp">CarkeepingBook</a>
+								 <a class="nav-link" href="/AutomobileAccountBook/main/RepairList.jsp">RepairingBook</a>
 							</nav>
 						</div>
 						
@@ -199,9 +206,7 @@
                                              	<th>Modify</th>
                                             </tr>
                                             <tbody>
-                                            <form action="/AutomobileAccountBook/Delete" method="post">
-		<div
-			style="max-height: 500px; width: 100%; overflow-x: hidden; overflow-y: scroll;">
+		<div style="max-height: 500px; width: 100%; overflow-x: hidden; overflow-y: scroll;">
 <!-- 			<table width="500" border="0" align="center" left_padding="50"
 				cellpadding="0" cellspacing="1"> -->
 				<!-- 가계부 정보 -->
@@ -233,21 +238,21 @@
 					</tr>
 				</c:forEach>
 				</tbody>
-<!-- 			</table>
- -->		</div>
+			</table>
+		</div>
 		<div
 			style="display: flex; flex-direction: clumn; margin: 15px auto; width: 100%;">
 			<label>Total Cost >></label> <label><%=total_cost%></label> <label>Total
 				Mileage(KM) >></label> <label>"${c }"</label>
 		</div>
-		<div align="center">
-			<input type="submit" name="delete_line2" value="delete!">
+		<div align="right">
+			<input class="btn btnss-primary" type="button" name="add_list_line" value="추가하기" onclick="add_list_line()">
+		<form action="/AutomobileAccountBook/Delete" method="post" style="display: inline;" >
+			<input class="btn btnss-primary" type="submit" name="delete_line2" value="삭제하기">
+			</form>
 		</div>
-	</form>
-		<div align="center">
-		<input type="button" name="add_list_line" value="add_list_line"
-			onclick="add_list_line()">
-	</div>
+	
+	
 	<!-- <div align="center">  
 		<input type="button" name="logout" value="logout" onclick="logout()">
 	</div>
@@ -256,10 +261,7 @@
 			onclick="myPages()">
 	</div> -->
 
-                                            </tbody>
-                                        </thead>
-                                    
-                                    </table>
+                       
                                 </div>
                             </div>
                         </div>

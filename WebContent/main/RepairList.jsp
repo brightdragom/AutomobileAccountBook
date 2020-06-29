@@ -30,6 +30,11 @@
  .bg-dark{
  background-color:#70bfe4;
  } 
+  .top-icon{
+margin-left:15px;
+width:30px;
+height:30px;
+ }
  </style>
 <script type="text/javascript">
 	function add_repair() {
@@ -39,6 +44,8 @@
 </head>
  <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-yellows">
+		<a href="/AutomobileAccountBook/main/housekeepingBook_view.jsp">
+	<img class="top-icon" src="/AutomobileAccountBook/img/pickup-car.png" ></a>
 		<a class="navbar-brand" href="/AutomobileAccountBook/main/housekeepingBook_view.jsp">Automobile Account Book</a>
 		<button class="btn btn-link btn-sm order-1 order-lg-0"
 			id="sidebarToggle" href="#">
@@ -145,6 +152,23 @@
 											<th>상세정보</th>
 										</tr>
 									<tbody>
+									<c:forEach items="${item }" var="item">
+			<tr align="center">
+				<td>${ item.repair_no }</td>
+				<td>${ item.driver_id }</td>
+				<td>${ item.driver_name }</td>
+				<td>${ item.technician_id }</td>
+				<td>${ item.technician_name }</td>
+				<td>${ item.contents }</td>
+				<td>${ item.start_date }</td>se
+				<td>${ item.expect_date }</td>
+				<td>${ item.finish_date }</td>
+				<td>>${ item.cost }</td>
+				<td><a
+					href="/AutomobileAccountBook/RepairProgress?item=${ item.repair_no}">into</a>
+				</td>
+			</tr>
+		</c:forEach>
 								</table>
 							</div>
 						</div>
@@ -183,7 +207,7 @@
 		src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"
 		crossorigin="anonymous"></script>
 	<script src="assets/demo/datatables-demo.js"></script>
-	<div align="center">Repair List Page</div>
+	<!-- <div align="center">Repair List Page</div>
 
 	<table align="center">
 		<tr>
@@ -237,7 +261,7 @@
 					<label>비용</label>
 				</div>
 			</td>
-		</tr>
+		</tr> -->
 		<c:forEach items="${item }" var="item">
 			<tr align="center">
 				<td><label>${ item.repair_no }</label></td>
@@ -255,7 +279,7 @@
 				</td>
 			</tr>
 		</c:forEach>
-	</table>
+<!-- 	</table> -->
 	<div align="center">
 		<input type="button" name="add_repair" value="add_repair"
 			onclick="add_repair()">

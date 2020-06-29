@@ -11,13 +11,26 @@
 </script>
 <title>비밀번호찾기</title>
 <style>
-.container {
+body{
+background-color: #70bfe4;
+}
+.container{
+margin-top:15%;
+}
+.container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+</style>
+<!-- .container {
 	padding-right: 15px;
 	padding-left: 15px;
 	margin-right: auto;
 	margin-left: auto;
-}
-</style>
+} -->
 </head>
 
 
@@ -54,7 +67,9 @@
 						placeholder="휴대폰 번호 ex)010-3887-9849" name="phone" maxlength="20">
 
 				</div>
-				<input type="submit" class="btn btn-primary form-control"
+				<input type="submit" class="btn btn-primary form-control" 
+				  style="color:#fff;	background-color: #70bfe4; border-color:#70bfe4;"
+				  
 					value="비밀번호찾기">
 					<div class="card-footer text-center">
 					<div class="small">

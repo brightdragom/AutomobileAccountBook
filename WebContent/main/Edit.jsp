@@ -30,10 +30,21 @@
  .bg-dark{
  background-color:#70bfe4;
  } 
+ .add-list{
+ margin-left:30px;
+ margin-right:30px;
+ }
+  .top-icon{
+margin-left:15px;
+width:30px;
+height:30px;
+ }
  </style>
 </head>
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-yellows">
+	<a href="/AutomobileAccountBook/main/housekeepingBook_view.jsp">
+	<img class="top-icon" src="/AutomobileAccountBook/img/pickup-car.png" ></a>
 		<a class="navbar-brand" href="/AutomobileAccountBook/main/housekeepingBook_view.jsp">Automobile Account Book</a>
 		<button class="btn btn-link btn-sm order-1 order-lg-0"
 			id="sidebarToggle" href="#">
@@ -119,21 +130,55 @@
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol>
                          </div>
-	<div>
+	<!-- <div>
 		<span> 라인 정보 </span>
-	</div>
+	</div> -->
 	<form action="/AutomobileAccountBook/Edit" method="post">
 		<table width="500" border="0" align="center" cellpadding="0"
 			cellspacing="1">
-			<tr align="center">
+			<!-- <tr align="center">
 				<td><span> 고유번호 </span></td>
 				<td><span> 날짜 </span></td>
 				<td><span> 사용내역 </span></td>
 				<td><span> 비용 </span></td>
 				<td><span> 현재Km </span></td>
 				<td><span> 작성자 </span></td>
-			</tr>
-			<tr>
+			</tr> -->
+			<div class="add-list">
+	            <div class="mb-3">
+	            <label for="date">고유번호</label>
+                <input type="hidden" class="form-control" name="item.line_no" value="${ item.line_no }">
+           			 </div>
+							<div class="mb-3">
+								<label for="date">날짜</label> <input type="date"
+									class="form-control" name="item.todate"
+									value="${ item.todate }">
+ 									</div>
+								<div class="mb-3">
+									<label for="content">사용 내역</label> <input type="text"
+										class="form-control" name="item.content"
+										value="${ item.content }">
+								</div>
+								<div class="mb-3">
+									<label for="content">비용</label> <input type="text"
+										" name="item.cost" class="form-control"
+										/ value="${ item.cost }">
+								</div>
+								<div class="mb-3">
+									<label for="content">현재 km</label> <input type="text"
+										" name="item.mileage" class="form-control"
+										/ value="${ item.mileage }">
+								</div>
+								<div class="mb-3">
+								<label for="content">작성자</label> <input type="text"
+									" name="item.writer" class="form-control"
+									/ value="${ item.writer }">
+								</div>
+								<div align="right">
+		<input class="btn btnss-primary" type="submit" value="수정">
+		 </div>
+						</div>
+			<%-- <tr>
 				<td align="center"><input actionfocus name="item.line_no"
 					type="hidden" value="${ item.line_no }"></td>
 				<td align="center"><input actionfocus name="item.todate"
@@ -146,9 +191,9 @@
 					type="text" value="${ item.mileage }"></td>
 				<td align="center"><input actionfocus name="item.writer"
 					type="text" value="${ item.writer }"></td>
-			</tr>
+			</tr> --%>
 		</table>
-		<input type="submit" value="수정">
+		 
 	</form>
 </body>
 </html> 
