@@ -63,18 +63,11 @@ public class RepairProgress extends HttpServlet {
 		User user = (User) session.getAttribute("user");
 
 		int maxSize = 1024 * 1024 * 10;
-
-		// �쎒�꽌踰� 而⑦뀒�씠�꼫 寃쎈줈
-		// String root = request.getSession().getServletContext().getRealPath("/");
-
-		// �뙆�씪 ���옣 寃쎈줈(ex : /home/tour/web/ROOT/upload)
-		//String savePath = "C:\\Users\\Gwang\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\AutomobileAccountBook3\\upload";
-		String savePath = "C:\\Users\\somin\\Desktop\\AutomobileAccountBook\\WebContent\\upload";
+		//SavePath(ex : /home/tour/web/ROOT/upload)
+		String savePath = "C:\\Users\\Gwang\\Desktop\\AutomobileAccountBook\\WebContent\\upload";
 		System.out.println("Save File Path > > " + savePath);
-		// �뾽濡쒕뱶 �뙆�씪紐�
 		String uploadFile = "";
 
-		// �떎�젣 ���옣�븷 �뙆�씪紐�
 		String newFileName = "";
 		String repair_no = null, contents = null, doday = null;
 		int read = 0;
@@ -119,11 +112,10 @@ public class RepairProgress extends HttpServlet {
 			 System.out.println("***************************");
 
 		} catch (Exception e) {
+			System.out.println("-------------------------------------------------------");
 			e.printStackTrace();
 		}
-
-		// *********
-
+		System.out.println("");
 		db.Add_RepairProgressline(Integer.parseInt(repair_no), contents, doday, user.getId(), fullpath);
 
 		List<Repair> list = db.getRepairProgressList(repair_no + "");

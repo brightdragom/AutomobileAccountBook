@@ -68,40 +68,32 @@
 </script>
 
 <%
-		DBConnection db = (DBConnection) session.getAttribute("db");
-		String text = db.findData(user.getId());
-		System.out.println("text >>" + text);
-		int total_cost = db.findDataCost(user.getId());
-		Calendar cal = Calendar.getInstance();
-		int year = cal.get(Calendar.YEAR);
-		int month = cal.get(Calendar.MONTH)+1;
-		int monthCost[] = db.findDataCostChart(user.getId(), year+"", month+"");
-	%>
+	DBConnection db = (DBConnection) session.getAttribute("db");
+	String text = db.findData(user.getId());
+	System.out.println("text >>" + text);
+	int total_cost = db.findDataCost(user.getId());
+	Calendar cal = Calendar.getInstance();
+	int year = cal.get(Calendar.YEAR);
+	int month = cal.get(Calendar.MONTH) + 1;
+	int monthCost[] = db.findDataCostChart(user.getId(), year + "", month + "");
+%>
 
 </head>
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-yellows">
 		<a href="/AutomobileAccountBook/LoginAction"> <img
-			class="top-icon" src="/AutomobileAccountBook/img/pickup-car.png"></a>
-		<a class="navbar-brand" href="/AutomobileAccountBook/LoginAction">Automobile Account Book</a>
+			class="top-icon" src="/AutomobileAccountBook/img/car.png"></a>
+		<a class="navbar-brand" href="/AutomobileAccountBook/LoginAction">Automobile
+			Account Book</a>
 		<button class="btn btn-link btn-sm order-1 order-lg-0"
 			id="sidebarToggle" href="#">
 			<i class="fas fa-bars"></i>
 		</button>
- 	<!-- Navbar Search-->
-		 <form
+		<!-- Navbar Search-->
+		<form
 			class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-			<a><%=user.getCareer().equals("T")?"정비사":"운전자"%> <%=user.getName()%>님</a>
-			<!-- <div class="input-group">
-				<input class="form-control" type="text" placeholder="Search for..."
-					aria-label="Search" aria-describedby="basic-addon2" /> -->
-				<!-- <div class="input-group-append">
-					<button class="btn btn-primary" type="button">
-						<i class="fas fa-search"></i>
-					</button>
-				</div> -->
-			</div>
-		</form> 
+			<a><%=user.getCareer().equals("T") ? "정비사" : "운전자"%> <%=user.getName()%>님</a>
+		</form>
 		<!-- Navbar-->
 		<ul class="navbar-nav ml-auto ml-md-0">
 			<li class="nav-item dropdown"><a
@@ -168,7 +160,7 @@
 						<li class="breadcrumb-item active"></li>
 					</ol>
 				</div>
-				<div class="row" style="margin-left:15px; margin-right:15px">
+				<div class="row" style="margin-left: 15px; margin-right: 15px">
 					<div class="col-xl-6">
 						<div class="card mb-4">
 							<div class="card-header">
@@ -194,150 +186,118 @@
 						</div>
 					</div>
 				</div>
-				<div class="card mb-4" style="margin-left:15px; margin-right:15px">
-					<div class="card-header"  >
+				<div class="card mb-4" style="margin-left: 15px; margin-right: 15px">
+					<div class="card-header">
 						<i class="fas fa-table mr-1"></i>
 						<%=user.getName()%>님의 차량 가계부 사용내역
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
-<form action="/AutomobileAccountBook/Delete" method="post" style="display: inline;">
-							<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-								<thead>
-									<tr>
-										<th></th>
-										<th>Line</th>
-										<th>Date</th>
-										<th>Memo</th>
-										<th>Cost</th>
-										<th>Distance</th>
-										<th>Modify</th>
-									</tr>
+							<form action="/AutomobileAccountBook/Delete" method="post"
+								style="display: inline;">
+								<table class="table table-bordered" id="dataTable" width="100%"
+									cellspacing="0">
+									<thead>
+										<tr>
+											<th></th>
+											<th>Line</th>
+											<th>Date</th>
+											<th>Memo</th>
+											<th>Cost</th>
+											<th>Distance</th>
+											<th>Modify</th>
+										</tr>
 									<tbody>
-		<div style="max-height: 500px; width: 100%; overflow-x: hidden; overflow-y: scroll;">
-<!-- 			<table width="500" border="0" align="center" left_padding="50"
-				cellpadding="0" cellspacing="1"> -->
-				<!-- 가계부 정보 -->
-				   <tbody>
-				<%
-					int cnt = 0;
-					int total_mileage = 0;
-				%>
-				<c:forEach items="${ item_list }" var="item_list">
-					<%
-						cnt++;
-					%>
-					<tr>
-						<td align="center"><input type="checkbox" name="item_list"
-														value="${item_list.line_no}"></td>
-						<td align="center">
-							<%
-								out.println(cnt);
-							%>
-						</td>
-						<td align="center">${ item_list.todate}</td>
-						<td align="center">${ item_list.content}</td>
-						<td align="center">${ item_list.cost}</td>
-						<td align="center">${ item_list.mileage}</td>
-						<td align="center">
-						<a href="/AutomobileAccountBook/Edit?item_list=${ item_list.line_no}">수정</a>
-													</td> 
-					<!-- 	<a onclick = "edit_list_line()" >수정</a></td> -->
-						<c:set var="c" value="${item_list.mileage }"></c:set>
-					</tr>
-				</c:forEach>
-				</tbody>
-			
-							</table>
-		<div style="display: flex; flex-direction: clumn; margin: 15px auto; width: 100%;">
-			<label>Total Cost >></label> <label><%=total_cost%></label> <label>Total
-				Mileage(KM) >></label> <label>"${c }"
-						</label></div>
-		<div align="right">
-			<a class="btn btnss-primary" name="add_list_line2" value="추가하기" href="/AutomobileAccountBook/main/add_list_line.jsp">추가하기</a>
-			<input class="btn btnss-primary" type="submit" name="delete_line2"
-									value="삭제하기">
-			
+										<div
+											style="max-height: 500px; width: 100%; overflow-x: hidden; overflow-y: scroll;">
+											<!-- 가계부 정보 -->
+									<tbody>
+										<%
+													int cnt = 0;
+													int total_mileage = 0;
+												%>
+										<c:forEach items="${ item_list }" var="item_list">
+											<%
+														cnt++;
+													%>
+											<tr>
+												<td align="center"><input type="checkbox"
+													name="item_list" value="${item_list.line_no}"></td>
+												<td align="center">
+													<%
+																out.println(cnt);
+															%>
+												</td>
+												<td align="center">${ item_list.todate}</td>
+												<td align="center">${ item_list.content}</td>
+												<td align="center">${ item_list.cost}</td>
+												<td align="center">${ item_list.mileage}</td>
+												<td align="center"><a
+													href="/AutomobileAccountBook/Edit?item_list=${ item_list.line_no}">수정</a>
+												</td>
+												<c:set var="c" value="${item_list.mileage }"></c:set>
+											</tr>
+										</c:forEach>
+									</tbody>
+									</div>
+								</table>
+								<div
+									style="display: flex; flex-direction: clumn; margin: 15px auto; width: 100%;">
+									<label>Total Cost >></label> <label><%=total_cost%></label> <label>Total
+										Mileage(KM) >></label> <label>"${c }" </label>
+								</div>
+								<div align="right">
+									<a class="btn btnss-primary" name="add_list_line2" value="추가하기"
+										href="/AutomobileAccountBook/main/add_list_line.jsp">추가하기</a>
+									<input class="btn btnss-primary" type="submit"
+										name="delete_line2" value="삭제하기">
+
+								</div>
+							</form>
+						</div>
+
+					</div>
+				</div>
 		</div>
-			</form>
-		</div>
-	
-	
-	<!-- <div align="center">  
-		<input type="button" name="logout" value="logout" onclick="logout()">
 	</div>
-	<div align="center">
-		<input class="btn btn-primary" type="button" name="myPages" value="myPages"
-			onclick="myPages()">
-	</div> -->
-
-                       
-                                </div>
-                            </div>
-                        
+	</main>
+	<footer class="py-4 bg-light mt-auto">
+		<div class="container-fluid">
+			<div class="d-flex align-items-center justify-content-between small">
+				<div class="text-muted">Copyright &copy; Your Website 2019</div>
+				<div>
+					<a href="#">Privacy Policy</a> &middot; <a href="#">Terms &amp;
+						Conditions</a>
+				</div>
+			</div>
 		</div>
-                    </div>
-                </main>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid">
-                        <div
-				class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2019</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div>
-        </div>
-
-<!--         <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="../js/scripts_.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
-        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/datatables-demo.js"></script>
- -->
-       <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+	</footer>
+	</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
 		crossorigin="anonymous"></script>
-        <script
+	<script
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>
-        <script src="js/bootstrap.js"></script>
-        <script
+	<script src="js/bootstrap.js"></script>
+	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
 		crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
-        <script
+	<script src="assets/demo/chart-area-demo.js"></script>
+	<script src="assets/demo/chart-bar-demo.js"></script>
+	<script
 		src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"
 		crossorigin="anonymous"></script>
-        <script
+	<script
 		src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"
 		crossorigin="anonymous"></script>
-        <script src="assets/demo/datatables-demo.js"></script>
-    
-<script src="https://www.amcharts.com/lib/4/core.js"></script>
-<script src="https://www.amcharts.com/lib/4/charts.js"></script>
-<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
-<script src="https://www.amcharts.com/lib/4/plugins/wordCloud.js"></script>
+	<script src="assets/demo/datatables-demo.js"></script>
 
-	<%--   <%
-		DBConnection db = (DBConnection) session.getAttribute("db");
-		String text = db.findData(user.getId());
-		System.out.println("text >>" + text);
-		int total_cost = db.findDataCost(user.getId());
-		Calendar cal = Calendar.getInstance();
-		int year = cal.get(Calendar.YEAR);
-		int month = cal.get(Calendar.MONTH)+1;
-		int monthCost[] = db.findDataCostChart(user.getId(), year+"", month+"");	
-	%> --%>
+	<script src="https://www.amcharts.com/lib/4/core.js"></script>
+	<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+	<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+	<script src="https://www.amcharts.com/lib/4/plugins/wordCloud.js"></script>
+
 	<script>
 		var texts = "<%=text%>";
 		am4core.useTheme(am4themes_animated);
@@ -359,184 +319,105 @@
 	</script>
 	<!-- Chart code -->
 	<script>
-		am4core.ready(function() { 
-			var num = 1000;
-			
-			// Themes begin
-			am4core.useTheme(am4themes_animated);
-			// Themes end
+		am4core
+				.ready(function() {
+					var num = 1000;
 
-			// Create chart instance
-			var chart = am4core.create("chartdiv2", am4charts.XYChart);
+					// Themes begin
+					am4core.useTheme(am4themes_animated);
+					// Themes end
 
-			// Add data
-			chart.data = [ {
-				"month" : "Jan",
-				"cost" : <%= monthCost[0]%>
-			}, {
-				"month" : "Feb",
-				"cost" : <%= monthCost[1]%>
-			}, {
-				"month" : "Mar",
-				"cost" : <%= monthCost[2]%>
-			}, {
-				"month" : "Apr",
-				"cost" : <%= monthCost[3]%>
-			}, {
-				"month" : "May",
-				"cost" : <%= monthCost[4]%>
-			}, {
-				"month" : "Jun",
-				"cost" : <%= monthCost[5]%>
-			}, {
-				"month" : "Jul",
-				"cost" : <%= monthCost[6]%>
-			}, {
-				"month" : "Aug",
-				"cost" : <%= monthCost[7]%>
-			}, {
-				"month" : "Sept",
-				"cost" : <%= monthCost[8]%>
-			}, {
-				"month" : "Oct",
-				"cost" : <%= monthCost[9]%>
-			}, {
-				"month" : "Nov",
-				"cost" : <%= monthCost[10]%>
-			}, {
-				"month" : "Dec",
-				"cost" : <%= monthCost[11]%>
-			}];
+					// Create chart instance
+					var chart = am4core.create("chartdiv2", am4charts.XYChart);
 
-			// Create axes
+					// Add data
+					chart.data = [ {
+						"month" : "Jan",
+						"cost" :
+	<%=monthCost[0]%>
+		}, {
+						"month" : "Feb",
+						"cost" :
+	<%=monthCost[1]%>
+		}, {
+						"month" : "Mar",
+						"cost" :
+	<%=monthCost[2]%>
+		}, {
+						"month" : "Apr",
+						"cost" :
+	<%=monthCost[3]%>
+		}, {
+						"month" : "May",
+						"cost" :
+	<%=monthCost[4]%>
+		}, {
+						"month" : "Jun",
+						"cost" :
+	<%=monthCost[5]%>
+		}, {
+						"month" : "Jul",
+						"cost" :
+	<%=monthCost[6]%>
+		}, {
+						"month" : "Aug",
+						"cost" :
+	<%=monthCost[7]%>
+		}, {
+						"month" : "Sept",
+						"cost" :
+	<%=monthCost[8]%>
+		}, {
+						"month" : "Oct",
+						"cost" :
+	<%=monthCost[9]%>
+		}, {
+						"month" : "Nov",
+						"cost" :
+	<%=monthCost[10]%>
+		}, {
+						"month" : "Dec",
+						"cost" :
+	<%=monthCost[11]%>
+		} ];
 
-			var categoryAxis = chart.xAxes
-					.push(new am4charts.CategoryAxis());
-			categoryAxis.dataFields.category = "month";
-			categoryAxis.renderer.grid.template.location = 0;
-			categoryAxis.renderer.minGridDistance = 30;
+					// Create axes
 
-			categoryAxis.renderer.labels.template.adapter.add("dy",
-					function(dy, target) {
-						if (target.dataItem && target.dataItem.index
-								& 2 == 2) {
-							return dy + 25;
-						}
-						return dy;
-					});
+					var categoryAxis = chart.xAxes
+							.push(new am4charts.CategoryAxis());
+					categoryAxis.dataFields.category = "month";
+					categoryAxis.renderer.grid.template.location = 0;
+					categoryAxis.renderer.minGridDistance = 30;
 
-			var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+					categoryAxis.renderer.labels.template.adapter.add("dy",
+							function(dy, target) {
+								if (target.dataItem && target.dataItem.index
+										& 2 == 2) {
+									return dy + 25;
+								}
+								return dy;
+							});
 
-			// Create series
-			var series = chart.series
-					.push(new am4charts.ColumnSeries());
-			series.dataFields.valueY = "cost";
-			series.dataFields.categoryX = "month";
-			series.name = "Cost";
-			series.columns.template.tooltipText = "{categoryX}: [bold]{valueY}[/]";
-			series.columns.template.fillOpacity = .8;
+					var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
 
-			var columnTemplate = series.columns.template;
-			columnTemplate.strokeWidth = 2;
-			columnTemplate.strokeOpacity = 1;
+					// Create series
+					var series = chart.series
+							.push(new am4charts.ColumnSeries());
+					series.dataFields.valueY = "cost";
+					series.dataFields.categoryX = "month";
+					series.name = "Cost";
+					series.columns.template.tooltipText = "{categoryX}: [bold]{valueY}[/]";
+					series.columns.template.fillOpacity = .8;
 
-		}); // end am4core.ready()
-	</script> 
+					var columnTemplate = series.columns.template;
+					columnTemplate.strokeWidth = 2;
+					columnTemplate.strokeOpacity = 1;
+
+				}); // end am4core.ready()
+	</script>
 	<div align="center">
-		<span> 
-		</span>
+		<span> </span>
 	</div>
-<!-- <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th>Line</th>
-                                                <th>날짜</th>
-                                                <th>사용내역</th>
-                                                <th>비용</th>
-                                                <th>현재Km</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td>$320,800</td>
-                                            </tr>
-                                            </tbody>
-                                        </table> -->
-	<!-- <table width="500" border="0" align="center" cellpadding="0"
-		cellspacing="1">
-		<tr align="center">
-			<td></td>
-			<td></td>
-			<td><span> Line </span></td>
-			<td><span> 날짜 </span></td>
-			<td><span> 사용내역 </span></td>
-			<td><span> 비용 </span></td>
-			<td><span> 현재Km </span></td>
-		</tr>
-	</table> -->
-	<%-- <form action="/AutomobileAccountBook/Delete" method="post">
-		<div
-			style="max-height: 500px; width: 100%; overflow-x: hidden; overflow-y: scroll;">
-			<table width="500" border="0" align="center" left_padding="50"
-				cellpadding="0" cellspacing="1">
-				<!-- 가계부 정보 -->
-				<%
-					int cnt = 0;
-					int total_mileage = 0;
-				%>
-				<c:forEach items="${ item_list }" var="item_list">
-					<%
-						cnt++;
-					%>
-					<tr>
-						<td align="center"><input type="checkbox" name="item_list"
-							value="${item_list.line_no}"></td>
-						<td align="center">
-							<%
-								out.println(cnt);
-							%>
-						</td>
-						<td align="center"><span>${ item_list.todate}</span></td>
-						<td align="center"><span>${ item_list.content}</span></td>
-						<td align="center"><span>${ item_list.cost}</span></td>
-						<td align="center"><span>${ item_list.mileage}</span></td>
-						<td align="center"><a
-							href="/AutomobileAccountBook/Edit?item_list=${ item_list.line_no}">수정</a></td>
-						<c:set var="c" value="${item_list.mileage }"></c:set>
-					</tr>
-				</c:forEach>
-			</table>
-		</div>
-		<div
-			style="display: flex; flex-direction: clumn; margin: 15px auto; width: 100%;">
-			<label>Total Cost >></label> <label><%=total_cost%></label> <label>Total
-				Mileage(KM) >></label> <label>"${c }"</label>
-		</div>
-		<div align="center">
-			<input type="submit" name="delete_line2" value="delete!">
-		</div>
-	</form> --%>
-<!-- 	<div align="center">
-		<input type="button" name="add_list_line" value="add_list_line"
-			onclick="add_list_line()">
-	</div>
-	<div align="center">
-		<input type="button" name="logout" value="logout" onclick="logout()">
-	</div>
-	<div align="center">
-		<input type="button" name="myPages" value="myPages"
-			onclick="myPages()">
-	</div> -->
-	<!-- <div align="center">
-		<input type="button" name="repair" value="repair" onclick="repair()">
-	</div> -->
-<!-- 
-	<div id="chartdiv" align="center"></div> 워드ㅋ라욷
-	<div id="chartdiv2" align="center"></div>챁  -->
+
 </body>
 </html>
