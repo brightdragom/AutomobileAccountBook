@@ -266,7 +266,7 @@ background-color:color: #70bfe4;
 			<div class="modal-dialog vertical-align-center">
 				<div
 					class="modal-content
-					<%if (messageType.equals("오류메세지"))
+					<%if (messageType.equals("ErroMessage"))
 					out.println("panel-warning");
 				else
 					out.println("panel-sucess");%>">
