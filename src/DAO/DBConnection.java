@@ -10,29 +10,22 @@ import java.util.List;
 import java.sql.SQLException;
 
 public class DBConnection {
-	private Connection conn; // connection:db�뿉�젒洹쇳븯寃� �빐二쇰뒗 媛앹껜
-
+	private Connection conn;
 	private PreparedStatement pstmt;
-
 	private ResultSet rs;
 
 	public DBConnection() {
 		try {
-
-			String dbURL = "jdbc:mysql://localhost:3306/accountbook?serverTimezone=UTC"; // localhost:3306 포트는 컴퓨터설치된
-
+			String dbURL = "jdbc:mysql://localhost:3306/accountBook?serverTimezone=UTC";
 			String dbID = "root";
-
-			String dbPassword = "thals0416";
+			String dbPassword = "1234";
 
 			Class.forName("com.mysql.jdbc.Driver");
 
 			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
-
 		} catch (Exception e) {
-
-			e.printStackTrace(); 
-
+			System.out.println(">>>DBConnection Consumer Err<<<");
+			System.out.println(e.getMessage());
 		}
 
 	}
@@ -78,15 +71,16 @@ public class DBConnection {
 			pstmt.setInt(3, aac.getCost());
 			pstmt.setInt(4, aac.getMileage());
 			pstmt.setString(5, aac.getLine_no());
+
 			System.out.println("Edit SQL >>>> " + SQL);
 			System.out.println(aac.getTodate() + "\t" + aac.getContent() + "\t" + aac.getCost() + "\t"
 					+ aac.getMileage() + "\t line_no> " + aac.getLine_no());
 			int result = pstmt.executeUpdate();
 
-			if (result != 0) {
-				return true;
-			}
+			if (result != 0) return true;
+			
 		} catch (Exception e) {
+			System.out.println(">>>DBConnection EditLine Methode Err<<<");
 			System.out.println(e.getMessage());
 		}
 		System.out.println("db err");
@@ -108,6 +102,7 @@ public class DBConnection {
 						rs.getInt(5), rs.getString(6));
 			}
 		} catch (Exception e) {
+			System.out.println(">>>DBConnection FindLine Method Err<<<");
 			System.out.println(e.getMessage());
 		}
 		System.out.println("db err");
@@ -138,13 +133,15 @@ public class DBConnection {
 			System.out.println("list size = " + list.size() + "\t");
 			return list;
 		} catch (Exception e) {
+			System.out.println(">>>DBConnection getHousekeepingList Err<<<");
 			System.out.println(e.getMessage());
 		}
 		System.out.println("db err");
 		return list;
 	}
 
-	public int register (String name, String id, String pw, String phone, String email, String career, String addr, String gender) {
+	public int register(String name, String id, String pw, String phone, String email, String career, String addr,
+			String gender) {
 		pstmt = null;
 		ResultSet re = null;
 		String SQL = "INSERT INTO user VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -160,16 +157,10 @@ public class DBConnection {
 			pstmt.setString(8, gender);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(">>>DBConnection register Methode Err<<<");
+			System.out.println(e.getMessage());
 		} finally {
-			try {
-				if (rs != null)
-					rs.close();
-				if (pstmt != null)
-					pstmt.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			
 		}
 		return -1; // 오류
 	}
@@ -220,6 +211,7 @@ public class DBConnection {
 				findSuccess = (pw != null) ? true : false;
 			}
 		} catch (SQLException e) {
+			System.out.println(">>>DBConnection FindPassword Methode Err<<<");
 			System.out.println(e.getMessage());
 		}
 
@@ -243,116 +235,12 @@ public class DBConnection {
 				return 1;
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (re != null)
-					re.close();
-				if (pstmt != null)
-					pstmt.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
+			System.out.println(">>>DBConnection registerCheck Methode Err<<<");
+			System.out.println(e.getMessage());
+		} 
 		return -1; // 오류
 	}
-
-	public String getDate() {
-
-		String SQL = "SELECT NOW()"; // 현재 시간 가져오기
-
-		try {
-
-			PreparedStatement pstmt = conn.prepareStatement(SQL);
-
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-
-				return rs.getString(1);
-
-			}
-
-		} catch (Exception e) {
-
-			e.printStackTrace();
-
-		}
-
-		return "";
-
-	}
-
-	public int getNext() {
-
-		String SQL = "SELECT repaircheck_no FROM repaircheck ORDER BY repaircheck_no DESC";
-
-		try {
-
-			PreparedStatement pstmt = conn.prepareStatement(SQL);
-
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-
-				return rs.getInt(1) + 1;
-
-			}
-
-			return 1;// 첫 번째 게시물인 경우
-
-		} catch (Exception e) {
-
-			e.printStackTrace();
-
-		}
-
-		return -1;
-
-	}
-
-	public int write(String Title, String Content) {
-
-		String SQL = "INSERT INTO repaircheck VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-		try {
-
-			PreparedStatement pstmt = conn.prepareStatement(SQL);
-
-			pstmt.setInt(1, getNext());
-
-			pstmt.setInt(2, getNext());
-
-			pstmt.setInt(3, getNext());
-
-			pstmt.setInt(4, getNext());
-
-			pstmt.setInt(5, getNext());
-
-			pstmt.setString(6, Title);
-
-			pstmt.setString(7, Content);
-
-			pstmt.setInt(8, getNext());
-
-			pstmt.setInt(9, getNext());
-
-			pstmt.setString(10, getDate());
-
-			pstmt.setInt(11, getNext());
-
-			return pstmt.executeUpdate();
-
-		} catch (Exception e) {
-
-			e.printStackTrace();
-
-		}
-
-		return -1; // 데이터베이스 오류
-
-	}
-
+	
 	public boolean Add_line(User user, AutoAccountList aal) {
 		int num = 0;
 		String SQL = "INSERT INTO list VALUES(?,?,?,?,?,?)";
@@ -363,16 +251,10 @@ public class DBConnection {
 			rs = pstmt.executeQuery();
 
 			String result = null;
-			// rs.getString("MAX(line_no)");
-			/*
-			 * System.out.println(result); int line_no = 0; if(result != null) { line_no =
-			 * Integer.parseInt(result); }
-			 */
 			int line_no = 0;
 
-			if (rs.next()) {
-				line_no = rs.getInt(1);
-			}
+			if (rs.next())	line_no = rs.getInt(1);
+			
 			System.out.println("Max(line_no) : " + line_no++);
 
 			pstmt = conn.prepareStatement(SQL);
@@ -390,6 +272,7 @@ public class DBConnection {
 				return false;
 			}
 		} catch (Exception e) {
+			System.out.println(">>>DBConnection Add_line Methode Err<<<");
 			System.out.println(e.getMessage());
 		}
 		return false;
@@ -405,6 +288,7 @@ public class DBConnection {
 			int result = pstmt.executeUpdate();
 			return result > 1 ? true : false;
 		} catch (Exception e) {
+			System.out.println(">>>DBConnection deleteLine Methode Err<<<");
 			System.out.println(e.getMessage());
 		}
 		return false;
@@ -434,6 +318,7 @@ public class DBConnection {
 			System.out.println("list size = " + list.size() + "\t");
 			return list;
 		} catch (Exception e) {
+			System.out.println(">>>DBConnection getRepairList Methode Err<<<");
 			System.out.println("exception" + e.getMessage());
 		}
 		System.out.println("db err");
@@ -462,6 +347,7 @@ public class DBConnection {
 				return false;
 			}
 		} catch (Exception e) {
+			System.out.println(">>>DBConnection Add_Repairline Methode Err<<<");
 			System.out.println(e.getMessage());
 		}
 		return false;
@@ -490,7 +376,8 @@ public class DBConnection {
 			}
 			return new RepairCheck(++re_no, d_id, d_name, t_id, t_name, con, s_time, e_time, f_time, cost);
 		} catch (Exception e) {
-			System.out.println("createRepair > " + e.getMessage());
+			System.out.println(">>>DBConnection createRepairCheck Methode Err<<<");
+			System.out.println(e.getMessage());
 		}
 
 		return null;
@@ -513,18 +400,21 @@ public class DBConnection {
 				item = new Repair(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
 				list.add(item);
 
-				System.out.println("생성 >>> " + item.getRepair_no()+" | "+item.getContents()+" | "+item.getDoday()+" | "+item.getWriter_id()+" | "+item.getImg()+" | ");
+				System.out.println("생성 >>> " + item.getRepair_no() + " | " + item.getContents() + " | "
+						+ item.getDoday() + " | " + item.getWriter_id() + " | " + item.getImg() + " | ");
 			}
 			System.out.println("list size = " + list.size() + "\t");
 			return list;
 		} catch (Exception e) {
-			System.out.println("exception" + e.getMessage());
+			System.out.println(">>>DBConnection getRepairProgressList Methode Err<<<");
+			System.out.println(e.getMessage());
 		}
 		System.out.println("db err");
 		return list;
 	}
 
-	public boolean Add_RepairProgressline(int repair_no, String contents, String doday, String writer_id, String FileName) {
+	public boolean Add_RepairProgressline(int repair_no, String contents, String doday, String writer_id,
+			String FileName) {
 		String SQL = "insert into repair values( ?, ?, ?, ?, ?)";
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -542,6 +432,7 @@ public class DBConnection {
 				return false;
 			}
 		} catch (Exception e) {
+			System.out.println(">>>DBConnection Add_RepairProgressline Methode Err<<<");
 			System.out.println(e.getMessage());
 		}
 		return false;
@@ -569,12 +460,13 @@ public class DBConnection {
 			System.out.println("findData >> " + result);
 			return result;
 		} catch (Exception e) {
+			System.out.println(">>>DBConnection findData Methode Err<<<");
 			System.out.println(e.getMessage());
 		}
 
 		return result;
 	}
-	
+
 	public int findDataCost(String userid) {
 		int result = 0;
 
@@ -591,29 +483,31 @@ public class DBConnection {
 			System.out.println("findData >> " + result);
 			return result;
 		} catch (Exception e) {
+			System.out.println(">>>DBConnection findDataCost Methode Err<<<");
 			System.out.println(e.getMessage());
 		}
 
 		return result;
 	}
-	
+
 	public int[] findDataCostChart(String userid, String nYear, String nMonth) {
 		String SQL = "select * from list where writer= ?";
-		int[] costCnt = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		int[] costCnt = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userid);
-			
+
 			rs = pstmt.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				String[] date = rs.getString("todate").split("-");
-				
-				if(date[0].equals(nYear)) {
+
+				if (date[0].equals(nYear)) {
 					int month = Integer.parseInt(date[1]);
 					costCnt[month] += rs.getInt("cost");
 				}
 			}
-		}catch(Exception e) {
+		} catch (Exception e) {
+			System.out.println(">>>DBConnection findDataCostChart Methode Err<<<");
 			System.out.println(e.getMessage());
 		}
 		return costCnt;
