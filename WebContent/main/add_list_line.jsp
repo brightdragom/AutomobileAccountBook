@@ -39,6 +39,7 @@ width:30px;
 height:30px;
 }
  </style>
+ <%User user = (User)session.getAttribute("user"); %>
 </head>
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-yellows">
@@ -52,7 +53,7 @@ height:30px;
 		<!-- Navbar Search-->
 		 <form
 			class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-			
+			<a><%=user.getCareer().equals("T")?"정비사":"운전자"%> <%=user.getName()%>님</a>
 			<!-- <div class="input-group">
 				<input class="form-control" type="text" placeholder="Search for..."
 					aria-label="Search" aria-describedby="basic-addon2" /> -->
@@ -129,7 +130,6 @@ height:30px;
                             <li class="breadcrumb-item active"></li>
                         </ol>
                          </div>
-	<% User user = (User) session.getAttribute("user"); %>
 <!-- 	<div align="center">
 		<span> 가계부</span>
 	</div>

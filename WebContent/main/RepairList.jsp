@@ -4,7 +4,7 @@
 <%@ page import="model.User"%>
 <!DOCTYPE html>
 <html>
-
+<%User user = (User) session.getAttribute("user");%>
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -59,7 +59,8 @@
 		<!-- Navbar Search-->
 		 <form
 			class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-		
+		<a><%=user.getCareer().equals("T")?"정비사":"운전자"%> <%=user.getName()%>님</a>
+			
 			<!-- <div class="input-group">
 				<input class="form-control" type="text" placeholder="Search for..."
 					aria-label="Search" aria-describedby="basic-addon2" /> -->

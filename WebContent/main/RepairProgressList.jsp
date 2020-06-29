@@ -44,6 +44,7 @@ height:30px;
 		location.href = "/AutomobileAccountBook/RepairList"
 	}
 </script>
+ <%User user = (User)session.getAttribute("user"); %>
 </head>
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-yellows">
@@ -57,7 +58,7 @@ height:30px;
 		<!-- Navbar Search-->
 		 <form
 			class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-			<%--  <a><%=user.getName()%>님 환영합니다</a> --%>
+			<a><%=user.getCareer().equals("T")?"정비사":"운전자"%> <%=user.getName()%>님</a>
 			<!-- <div class="input-group">
 				<input class="form-control" type="text" placeholder="Search for..."
 					aria-label="Search" aria-describedby="basic-addon2" /> -->
