@@ -59,6 +59,7 @@ public class DBConnection {
 		return null;
 	}
 
+
 	public boolean editLine(AutoAccountList aac) { // 가계부 라인 수정 메소드
 
 		String SQL = "UPDATE list SET todate = ?, contents = ?, cost = ?, mileage = ? where line_no = ?";

@@ -42,6 +42,10 @@ public class DeleteList extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String[] line_no = request.getParameterValues("item_list");
+		if(line_no.equals(null)) {
+			RequestDispatcher rd = request.getRequestDispatcher("main/housekeepingBook_view.jsp");
+			rd.forward(request, response);
+		}
 		System.out.println(line_no.length);
 		HttpSession session = request.getSession();
 		DBConnection db = (DBConnection) session.getAttribute("db");

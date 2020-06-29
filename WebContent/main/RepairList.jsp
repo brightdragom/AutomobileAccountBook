@@ -22,31 +22,36 @@
 
 <meta charset="UTF-8">
 <title>RepairList</title>
-<link href="<%=request.getContextPath()%>/css/styles.css" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/css/styles.css"
+	rel="stylesheet" />
 <style>
- .sb-sidenav-dark{
- background-color:#369bc9;
- }
- .bg-dark{
- background-color:#70bfe4;
- } 
-  .top-icon{
-margin-left:15px;
-width:30px;
-height:30px;
- }
- </style>
+.sb-sidenav-dark {
+	background-color: #369bc9;
+}
+
+.bg-dark {
+	background-color: #70bfe4;
+}
+
+.top-icon {
+	margin-left: 15px;
+	width: 30px;
+	height: 30px;
+}
+</style>
 <script type="text/javascript">
 	function add_repair() {
 		location.href = "/AutomobileAccountBook/main/RepairAdd.jsp"
 	}
 </script>
 </head>
- <body class="sb-nav-fixed">
+<body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-yellows">
-		<a href="/AutomobileAccountBook/main/housekeepingBook_view.jsp">
-	<img class="top-icon" src="/AutomobileAccountBook/img/pickup-car.png" ></a>
-		<a class="navbar-brand" href="/AutomobileAccountBook/main/housekeepingBook_view.jsp">Automobile Account Book</a>
+		<a href="/AutomobileAccountBook/LoginAction"> <img
+			class="top-icon" src="/AutomobileAccountBook/img/pickup-car.png"></a>
+		<a class="navbar-brand"
+			href="/AutomobileAccountBook/LoginAction">Automobile
+			Account Book</a>
 		<button class="btn btn-link btn-sm order-1 order-lg-0"
 			id="sidebarToggle" href="#">
 			<i class="fas fa-bars"></i>
@@ -72,9 +77,11 @@ height:30px;
 				aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
 				<div class="dropdown-menu dropdown-menu-right"
 					aria-labelledby="userDropdown">
-					<a class="dropdown-item" href="/AutomobileAccountBook/main/myPages.jsp">My Pages</a>
+					<a class="dropdown-item"
+						href="/AutomobileAccountBook/main/myPages.jsp">My Pages</a>
 					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="/AutomobileAccountBook/login/logout.jsp">Logout</a>
+					<a class="dropdown-item"
+						href="/AutomobileAccountBook/login/logout.jsp">Logout</a>
 				</div></li>
 		</ul>
 	</nav>
@@ -87,8 +94,7 @@ height:30px;
 						<div class="sb-sidenav-menu-heading">My Car</div>
 						<a class="nav-link collapsed" href="#" data-toggle="collapse"
 							data-target="#collapseLayouts" aria-expanded="false"
-							aria-controls="collapseLayouts"><div
-								class="sb-nav-link-icon">
+							aria-controls="collapseLayouts"><div class="sb-nav-link-icon">
 								<i class="fas fa-columns"></i>
 							</div> Management
 							<div class="sb-sidenav-collapse-arrow">
@@ -97,16 +103,18 @@ height:30px;
 						<div class="collapse" id="collapseLayouts"
 							aria-labelledby="headingOne" data-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/AutomobileAccountBook/main/housekeepingBook_view.jsp">CarkeepingBook</a>
-									<a class="nav-link" href="/AutomobileAccountBook/main/RepairList.jsp">RepairingBook</a>
+								 <a class="nav-link" href="/AutomobileAccountBook/LoginAction">CarkeepingBook</a>
+								 <a class="nav-link" href="/AutomobileAccountBook/RepairList">RepairingBook</a>
 							</nav>
 						</div>
-						
+
 						<div class="sb-sidenav-menu-heading">Views</div>
-						<a class="nav-link" href="/AutomobileAccountBook/main/housekeepingBook_charts.jsp"><div
+						<a class="nav-link"
+							href="/AutomobileAccountBook/main/housekeepingBook_charts.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
-							</div> Charts</a><a class="nav-link" href="/AutomobileAccountBook/main/housekeepingBook_word.jsp"><div
+							</div> Charts</a><a class="nav-link"
+							href="/AutomobileAccountBook/main/housekeepingBook_word.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-table"></i>
 							</div> WordCloud</a>
@@ -143,27 +151,28 @@ height:30px;
 											<th>수리 및 정비날짜</th>
 											<th>시작날짜</th>
 											<th>완료예상날짜</th>
+											<th>완료 날짜</th>
 											<th>비용</th>
 											<th>상세정보</th>
 										</tr>
 									<tbody>
-									<c:forEach items="${item }" var="item">
-			<tr align="center">
-				<td>${ item.repair_no }</td>
-				<td>${ item.driver_id }</td>
-				<td>${ item.driver_name }</td>
-				<td>${ item.technician_id }</td>
-				<td>${ item.technician_name }</td>
-				<td>${ item.contents }</td>
-				<td>${ item.start_date }</td>se
-				<td>${ item.expect_date }</td>
-				<td>${ item.finish_date }</td>
-				<td>>${ item.cost }</td>
-				<td><a
-					href="/AutomobileAccountBook/RepairProgress?item=${ item.repair_no}">into</a>
-				</td>
-			</tr>
-		</c:forEach>
+										<c:forEach items="${item }" var="item">
+											<tr align="center">
+												<td>${ item.repair_no }</td>
+												<td>${ item.driver_id }</td>
+												<td>${ item.driver_name }</td>
+												<td>${ item.technician_id }</td>
+												<td>${ item.technician_name }</td>
+												<td>${ item.contents }</td>
+												<td>${ item.start_date }</td>
+												<td>${ item.expect_date }</td>
+												<td>${ item.finish_date }</td>
+												<td>>${ item.cost }</td>
+												<td><a
+													href="/AutomobileAccountBook/RepairProgress?item=${ item.repair_no}">into</a>
+												</td>
+											</tr>
+										</c:forEach>
 								</table>
 							</div>
 						</div>
@@ -257,24 +266,24 @@ height:30px;
 				</div>
 			</td>
 		</tr> -->
-		<c:forEach items="${item }" var="item">
-			<tr align="center">
-				<td><label>${ item.repair_no }</label></td>
-				<td><label>${ item.driver_id }</label></td>
-				<td><label>${ item.driver_name }</label></td>
-				<td><label>${ item.technician_id }</label></td>
-				<td><label>${ item.technician_name }</label></td>
-				<td><label>${ item.contents }</label></td>
-				<td><label>${ item.start_date }</label></td>
-				<td><label>${ item.expect_date }</label></td>
-				<td><label>${ item.finish_date }</label></td>
-				<td><label>${ item.cost }</label></td>
-				<td><a
-					href="/AutomobileAccountBook/RepairProgress?item=${ item.repair_no}">into</a>
-				</td>
-			</tr>
-		</c:forEach>
-<!-- 	</table> -->
+	<c:forEach items="${item }" var="item">
+		<tr align="center">
+			<td><label>${ item.repair_no }</label></td>
+			<td><label>${ item.driver_id }</label></td>
+			<td><label>${ item.driver_name }</label></td>
+			<td><label>${ item.technician_id }</label></td>
+			<td><label>${ item.technician_name }</label></td>
+			<td><label>${ item.contents }</label></td>
+			<td><label>${ item.start_date }</label></td>
+			<td><label>${ item.expect_date }</label></td>
+			<td><label>${ item.finish_date }</label></td>
+			<td><label>${ item.cost }</label></td>
+			<td><a
+				href="/AutomobileAccountBook/RepairProgress?item=${ item.repair_no}">into</a>
+			</td>
+		</tr>
+	</c:forEach>
+	<!-- 	</table> -->
 	<div align="center">
 		<input type="button" name="add_repair" value="add_repair"
 			onclick="add_repair()">

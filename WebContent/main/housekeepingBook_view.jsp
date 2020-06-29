@@ -8,7 +8,7 @@
 <%@ page import="java.util.List"%>
 <%@ page import="DAO.DBConnection"%>
 <%@ page import="model.User"%>
-<%@ page import="java.util.Calendar" %>
+<%@ page import="java.util.Calendar"%>
 <!DOCTYPE html>
 <html>
 <%
@@ -36,30 +36,26 @@
 	crossorigin="anonymous"></script>
 
 <meta charset="UTF-8">
-        <title>HousekeepingBook</title>
-        <link href="<%=request.getContextPath()%>/css/styles.css" rel="stylesheet" />
-         
- <style>
- .sb-sidenav-dark{
- background-color:#369bc9;
- }
- .bg-dark{
- background-color:#70bfe4;
- } 
- .top-icon{
-margin-left:15px;
-width:30px;
-height:30px;
- }
- </style>
+<title>HousekeepingBook</title>
+<link href="<%=request.getContextPath()%>/css/styles.css"
+	rel="stylesheet" />
+
+<style>
+.sb-sidenav-dark {
+	background-color: #369bc9;
+}
+
+.bg-dark {
+	background-color: #70bfe4;
+}
+
+.top-icon {
+	margin-left: 15px;
+	width: 30px;
+	height: 30px;
+}
+</style>
 <script type="text/javascript">
-	function add_list_line() {
-		/* var url = "/AutomobileAccountBook/main/add_list_line.jsp";
-	 	var name = "데이터 생성";
-	 	var option = "width = 500, height = 500, top = 100, left = 200, location = no"
-		window.open(url, name, option);  */
-		location.href = "/AutomobileAccountBook/main/add_list_line.jsp"
-	}
 	function logout() {
 		location.href = "/AutomobileAccountBook/login/logout.jsp"
 	}
@@ -67,11 +63,11 @@ height:30px;
 		location.href = "/AutomobileAccountBook/main/myPages.jsp"
 	}
 	function repair() {
-		location.href = "/AutomobileAccountBook/main/RepairList.jsp"
+		location.href = "/AutomobileAccountBook/RepairList"
 	}
 </script>
 
- <%
+<%
 		DBConnection db = (DBConnection) session.getAttribute("db");
 		String text = db.findData(user.getId());
 		System.out.println("text >>" + text);
@@ -79,15 +75,15 @@ height:30px;
 		Calendar cal = Calendar.getInstance();
 		int year = cal.get(Calendar.YEAR);
 		int month = cal.get(Calendar.MONTH)+1;
-		int monthCost[] = db.findDataCostChart(user.getId(), year+"", month+"");	
+		int monthCost[] = db.findDataCostChart(user.getId(), year+"", month+"");
 	%>
-	
+
 </head>
- <body class="sb-nav-fixed">
+<body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-yellows">
-	<a href="/AutomobileAccountBook/main/housekeepingBook_view.jsp">
-	<img class="top-icon" src="/AutomobileAccountBook/img/pickup-car.png" ></a>
-		<a class="navbar-brand" href="/AutomobileAccountBook/main/housekeepingBook_view.jsp">Automobile Account Book</a>
+		<a href="/AutomobileAccountBook/LoginAction"> <img
+			class="top-icon" src="/AutomobileAccountBook/img/pickup-car.png"></a>
+		<a class="navbar-brand" href="/AutomobileAccountBook/LoginAction">Automobile Account Book</a>
 		<button class="btn btn-link btn-sm order-1 order-lg-0"
 			id="sidebarToggle" href="#">
 			<i class="fas fa-bars"></i>
@@ -113,9 +109,11 @@ height:30px;
 				aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
 				<div class="dropdown-menu dropdown-menu-right"
 					aria-labelledby="userDropdown">
-					<a class="dropdown-item" href="/AutomobileAccountBook/main/myPages.jsp">My Pages</a>
+					<a class="dropdown-item"
+						href="/AutomobileAccountBook/main/myPages.jsp">My Pages</a>
 					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="/AutomobileAccountBook/login/logout.jsp">Logout</a>
+					<a class="dropdown-item"
+						href="/AutomobileAccountBook/login/logout.jsp">Logout</a>
 				</div></li>
 		</ul>
 	</nav>
@@ -128,8 +126,7 @@ height:30px;
 						<div class="sb-sidenav-menu-heading">My Car</div>
 						<a class="nav-link collapsed" href="#" data-toggle="collapse"
 							data-target="#collapseLayouts" aria-expanded="false"
-							aria-controls="collapseLayouts"><div
-								class="sb-nav-link-icon">
+							aria-controls="collapseLayouts"><div class="sb-nav-link-icon">
 								<i class="fas fa-columns"></i>
 							</div> Management
 							<div class="sb-sidenav-collapse-arrow">
@@ -138,16 +135,19 @@ height:30px;
 						<div class="collapse" id="collapseLayouts"
 							aria-labelledby="headingOne" data-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								 <a class="nav-link" href="/AutomobileAccountBook/main/housekeepingBook_view.jsp">CarkeepingBook</a>
-								 <a class="nav-link" href="/AutomobileAccountBook/main/RepairList.jsp">RepairingBook</a>
+								<!-- <a class="nav-link" href="/AutomobileAccountBook/main/housekeepingBook_view.jsp">CarkeepingBook</a> -->
+								<a class="nav-link" href="/AutomobileAccountBook/LoginAction">CarkeepingBook</a>
+								<a class="nav-link" href="/AutomobileAccountBook/RepairList">RepairingBook</a>
 							</nav>
 						</div>
-						
+
 						<div class="sb-sidenav-menu-heading">Views</div>
-						<a class="nav-link" href="/AutomobileAccountBook/main/housekeepingBook_charts.jsp"><div
+						<a class="nav-link"
+							href="/AutomobileAccountBook/main/housekeepingBook_charts.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
-							</div> Charts</a><a class="nav-link" href="/AutomobileAccountBook/main/housekeepingBook_word.jsp"><div
+							</div> Charts</a><a class="nav-link"
+							href="/AutomobileAccountBook/main/housekeepingBook_word.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-table"></i>
 							</div> WordCloud</a>
@@ -159,48 +159,60 @@ height:30px;
 				</div>
 			</nav>
 		</div>
-            <div id="layoutSidenav_content">
-                <main>
-                    <div class="container-fluid">
-                        <h1 class="mt-4">Housekeepingbook</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active"></li>
-                        </ol>
-                         </div>
-                        <div class="row">
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Area Chart Example</div>
-                                    <div class="card-body" >	
-                                   <div id="chartdiv2" align="center"></div><!-- 챁 --> 
-	</div>
-               
-                                </div>
-                            </div>
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header"><i class="fas fa-chart-bar mr-1"></i>Bar Chart Example</div>
-                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
-                                 <div id="chartdiv" align="center"></div> <!-- 워드ㅋ라욷 -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card mb-4">
-                            <div class="card-header"><i class="fas fa-table mr-1"></i> <%=user.getName()%>님의 차량 가계부 사용내역</div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                            	<th></th>
-                                                <th>Line</th>
-                                                <th>Date</th>
-                                                <th>Memo</th>
-                                                <th>Cost</th>
-                                                <th>Distance</th>
-                                             	<th>Modify</th>
-                                            </tr>
-                                            <tbody>
+		<div id="layoutSidenav_content">
+			<main>
+				<div class="container-fluid">
+					<h1 class="mt-4">Housekeepingbook</h1>
+					<ol class="breadcrumb mb-4">
+						<li class="breadcrumb-item active"></li>
+					</ol>
+				</div>
+				<div class="row">
+					<div class="col-xl-6">
+						<div class="card mb-4">
+							<div class="card-header">
+								<i class="fas fa-chart-area mr-1"></i>Area Chart Example
+							</div>
+							<div class="card-body">
+								<div id="chartdiv2" align="center"></div>
+								<!-- 챁 -->
+							</div>
+
+						</div>
+					</div>
+					<div class="col-xl-6">
+						<div class="card mb-4">
+							<div class="card-header">
+								<i class="fas fa-chart-bar mr-1"></i>Bar Chart Example
+							</div>
+							<div class="card-body">
+								<canvas id="myBarChart" width="100%" height="40"></canvas>
+							</div>
+							<div id="chartdiv" align="center"></div>
+							<!-- 워드ㅋ라욷 -->
+						</div>
+					</div>
+				</div>
+				<div class="card mb-4">
+					<div class="card-header">
+						<i class="fas fa-table mr-1"></i>
+						<%=user.getName()%>님의 차량 가계부 사용내역
+					</div>
+					<div class="card-body">
+						<div class="table-responsive">
+<form action="/AutomobileAccountBook/Delete" method="post" style="display: inline;">
+							<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+								<thead>
+									<tr>
+										<th></th>
+										<th>Line</th>
+										<th>Date</th>
+										<th>Memo</th>
+										<th>Cost</th>
+										<th>Distance</th>
+										<th>Modify</th>
+									</tr>
+									<tbody>
 		<div style="max-height: 500px; width: 100%; overflow-x: hidden; overflow-y: scroll;">
 <!-- 			<table width="500" border="0" align="center" left_padding="50"
 				cellpadding="0" cellspacing="1"> -->
@@ -216,7 +228,7 @@ height:30px;
 					%>
 					<tr>
 						<td align="center"><input type="checkbox" name="item_list"
-							value="${item_list.line_no}"></td>
+														value="${item_list.line_no}"></td>
 						<td align="center">
 							<%
 								out.println(cnt);
@@ -227,23 +239,25 @@ height:30px;
 						<td align="center">${ item_list.cost}</td>
 						<td align="center">${ item_list.mileage}</td>
 						<td align="center">
-						<a href="/AutomobileAccountBook/Edit?item_list=${ item_list.line_no}">수정</a></td> 
+						<a href="/AutomobileAccountBook/Edit?item_list=${ item_list.line_no}">수정</a>
+													</td> 
 					<!-- 	<a onclick = "edit_list_line()" >수정</a></td> -->
 						<c:set var="c" value="${item_list.mileage }"></c:set>
 					</tr>
 				</c:forEach>
 				</tbody>
-			</table>
-		</div>
-		<div
-			style="display: flex; flex-direction: clumn; margin: 15px auto; width: 100%;">
+			
+							</table>
+		<div style="display: flex; flex-direction: clumn; margin: 15px auto; width: 100%;">
 			<label>Total Cost >></label> <label><%=total_cost%></label> <label>Total
-				Mileage(KM) >></label> <label>"${c }"</label>
-		</div>
+				Mileage(KM) >></label> <label>"${c }"
+						</label></div>
 		<div align="right">
-			<input class="btn btnss-primary" type="button" name="add_list_line" value="추가하기" onclick="add_list_line()">
-		<form action="/AutomobileAccountBook/Delete" method="post" style="display: inline;" >
-			<input class="btn btnss-primary" type="submit" name="delete_line2" value="삭제하기">
+			<a class="btn btnss-primary" name="add_list_line2" value="추가하기" href="/AutomobileAccountBook/main/add_list_line.jsp">추가하기</a>
+			<input class="btn btnss-primary" type="submit" name="delete_line2"
+									value="삭제하기">
+			
+		</div>
 			</form>
 		</div>
 	
@@ -259,12 +273,14 @@ height:30px;
                        
                                 </div>
                             </div>
-                        </div>
+                        
+		</div>
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
-                        <div class="d-flex align-items-center justify-content-between small">
+                        <div
+				class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">Copyright &copy; Your Website 2019</div>
                             <div>
                                 <a href="#">Privacy Policy</a>
@@ -287,14 +303,23 @@ height:30px;
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script src="assets/demo/datatables-demo.js"></script>
  -->
-       <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+       <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		crossorigin="anonymous"></script>
+        <script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
         <script src="js/bootstrap.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+		crossorigin="anonymous"></script>
         <script src="assets/demo/chart-area-demo.js"></script>
         <script src="assets/demo/chart-bar-demo.js"></script>
-        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+        <script
+		src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"
+		crossorigin="anonymous"></script>
+        <script
+		src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"
+		crossorigin="anonymous"></script>
         <script src="assets/demo/datatables-demo.js"></script>
     
 <script src="https://www.amcharts.com/lib/4/core.js"></script>
