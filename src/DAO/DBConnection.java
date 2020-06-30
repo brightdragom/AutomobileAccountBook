@@ -504,7 +504,7 @@ public class DBConnection {
 
 				if (date[0].equals(nYear)) {
 					int month = Integer.parseInt(date[1]);
-					costCnt[month] += rs.getInt("cost");
+					costCnt[month-1] += rs.getInt("cost");
 				}
 			}
 		} catch (Exception e) {

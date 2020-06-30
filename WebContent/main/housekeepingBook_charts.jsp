@@ -81,7 +81,7 @@
 		int total_cost = db.findDataCost(user.getId());
 		Calendar cal = Calendar.getInstance();
 		int year = cal.get(Calendar.YEAR);
-		int month = cal.get(Calendar.MONTH)+1;
+		int month = cal.get(Calendar.MONTH) + 1;
 		int monthCost[] = db.findDataCostChart(user.getId(), year+"", month+"");	
 	%>
 
