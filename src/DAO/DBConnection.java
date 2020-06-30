@@ -18,7 +18,7 @@ public class DBConnection {
 		try {
 			String dbURL = "jdbc:mysql://localhost:3306/accountBook?serverTimezone=UTC";
 			String dbID = "root";
-			String dbPassword = "thals0416";
+			String dbPassword = "1234";
 
 			Class.forName("com.mysql.jdbc.Driver");
 
@@ -504,7 +504,7 @@ public class DBConnection {
 
 				if (date[0].equals(nYear)) {
 					int month = Integer.parseInt(date[1]);
-					costCnt[month] += rs.getInt("cost");
+					costCnt[month-1] += rs.getInt("cost");
 				}
 			}
 		} catch (Exception e) {

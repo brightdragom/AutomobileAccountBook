@@ -4,7 +4,7 @@
 <%@ page import="model.User"%>
 <!DOCTYPE html>
 <html>
-
+<%User user = (User) session.getAttribute("user");%>
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -48,28 +48,18 @@
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-yellows">
 		<a href="/AutomobileAccountBook/LoginAction"> <img
-			class="top-icon" src="/AutomobileAccountBook/img/pickup-car.png"></a>
-		<a class="navbar-brand"
-			href="/AutomobileAccountBook/LoginAction">Automobile
+			class="top-icon" src="/AutomobileAccountBook/img/car.png"></a>
+		<a class="navbar-brand" href="/AutomobileAccountBook/LoginAction">Automobile
 			Account Book</a>
 		<button class="btn btn-link btn-sm order-1 order-lg-0"
 			id="sidebarToggle" href="#">
 			<i class="fas fa-bars"></i>
 		</button>
 		<!-- Navbar Search-->
-		 <form
+		<form
 			class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-		
-			<!-- <div class="input-group">
-				<input class="form-control" type="text" placeholder="Search for..."
-					aria-label="Search" aria-describedby="basic-addon2" /> -->
-				<!-- <div class="input-group-append">
-					<button class="btn btn-primary" type="button">
-						<i class="fas fa-search"></i>
-					</button>
-				</div> -->
-			</div>
-		</form> 
+			<a><%=user.getCareer().equals("T")?"정비사":"운전자"%> <%=user.getName()%>님</a>
+		</form>
 		<!-- Navbar-->
 		<ul class="navbar-nav ml-auto ml-md-0">
 			<li class="nav-item dropdown"><a
@@ -104,8 +94,8 @@
 						<div class="collapse" id="collapseLayouts"
 							aria-labelledby="headingOne" data-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								 <a class="nav-link" href="/AutomobileAccountBook/LoginAction">CarkeepingBook</a>
-								 <a class="nav-link" href="/AutomobileAccountBook/RepairList">RepairingBook</a>
+								<a class="nav-link" href="/AutomobileAccountBook/LoginAction">CarkeepingBook</a>
+								<a class="nav-link" href="/AutomobileAccountBook/RepairList">RepairingBook</a>
 							</nav>
 						</div>
 
@@ -212,83 +202,5 @@
 		src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"
 		crossorigin="anonymous"></script>
 	<script src="assets/demo/datatables-demo.js"></script>
-	<!-- <div align="center">Repair List Page</div>
-
-	<table align="center">
-		<tr>
-			<td>
-				<div align="center">
-					<label>정비 번호</label>
-				</div>
-			</td>
-			<td>
-				<div align="center">
-					<label>운전자 ID</label>
-				</div>
-			</td>
-			<td>
-				<div align="center">
-					<label>운전자 이름</label>
-				</div>
-			</td>
-			<td>
-				<div align="center">
-					<label>정비사 ID</label>
-				</div>
-			</td>
-			<td>
-				<div align="center">
-					<label>정비사 </label>
-				</div>
-			</td>
-			<td>
-				<div align="center">
-					<label>수리 및 정비</label>
-				</div>
-			</td>
-			<td>
-				<div align="center">
-					<label>시작일</label>
-				</div>
-			</td>
-			<td>
-				<div align="center">
-					<label>예상 완료일</label>
-				</div>
-			</td>
-			<td>
-				<div align="center">
-					<label>종료일</label>
-				</div>
-			</td>
-			<td>
-				<div align="center">
-					<label>비용</label>
-				</div>
-			</td>
-		</tr> -->
-	<%-- <c:forEach items="${item }" var="item">
-		<tr align="center">
-			<td><label>${ item.repair_no }</label></td>
-			<td><label>${ item.driver_id }</label></td>
-			<td><label>${ item.driver_name }</label></td>
-			<td><label>${ item.technician_id }</label></td>
-			<td><label>${ item.technician_name }</label></td>
-			<td><label>${ item.contents }</label></td>
-			<td><label>${ item.start_date }</label></td>
-			<td><label>${ item.expect_date }</label></td>
-			<td><label>${ item.finish_date }</label></td>
-			<td><label>${ item.cost }</label></td>
-			<td><a
-				href="/AutomobileAccountBook/RepairProgress?item=${ item.repair_no}">into</a>
-			</td>
-		</tr>
-	</c:forEach> --%>
-	<!-- 	</table> -->
-	<!--  <div align="center">
-		<input type="button" name="add_repair" value="add_repair"
-			onclick="add_repair()">
-	</div> -->
-
 </body>
 </html>

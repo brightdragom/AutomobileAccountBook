@@ -25,13 +25,6 @@ public class EditList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	DBConnection db = null;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public EditList() {
-
-	}
-
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -39,7 +32,7 @@ public class EditList extends HttpServlet {
 		String todate = request.getParameter("item.todate");
 		String contents = request.getParameter("item.content");
 		int cost = Integer.parseInt(request.getParameter("item.cost"));
-		int mileage = Integer.parseInt(request.getParameter("item.cost"));
+		int mileage = Integer.parseInt(request.getParameter("item.mileage"));
 		String writer = request.getParameter("item.writer");
 
 		AutoAccountList aac = new AutoAccountList(line_no, todate, contents, cost, mileage, writer);
@@ -64,11 +57,6 @@ public class EditList extends HttpServlet {
 			rd.forward(request, response);
 		}
 	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub

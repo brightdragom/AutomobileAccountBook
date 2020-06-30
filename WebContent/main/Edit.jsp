@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="model.AutoAccountList"%>
+<%@ page import="model.User"%>
 
 <!DOCTYPE html>
 <html>
@@ -25,49 +26,45 @@
 <link href="<%=request.getContextPath()%>/css/styles.css"
 	rel="stylesheet" />
 
- <style>
- .sb-sidenav-dark{
- background-color:#369bc9;
- }
- .bg-dark{
- background-color:#70bfe4;
- } 
- .add-list{
- margin-left:30px;
- margin-right:30px;
- }
-  .top-icon{
-margin-left:15px;
-width:30px;
-height:30px;
- }
- </style>
+<style>
+.sb-sidenav-dark {
+	background-color: #369bc9;
+}
+
+.bg-dark {
+	background-color: #70bfe4;
+}
+
+.add-list {
+	margin-left: 30px;
+	margin-right: 30px;
+}
+
+.top-icon {
+	margin-left: 15px;
+	width: 30px;
+	height: 30px;
+}
+</style>
+<%
+	User user = (User) session.getAttribute("user");
+%>
+
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-yellows">
 		<a href="/AutomobileAccountBook/LoginAction"> <img
-			class="top-icon" src="/AutomobileAccountBook/img/pickup-car.png"></a>
-		<a class="navbar-brand"
-			href="/AutomobileAccountBook/LoginAction">Automobile
+			class="top-icon" src="/AutomobileAccountBook/img/car.png"></a>
+		<a class="navbar-brand" href="/AutomobileAccountBook/LoginAction">Automobile
 			Account Book</a>
 		<button class="btn btn-link btn-sm order-1 order-lg-0"
 			id="sidebarToggle" href="#">
 			<i class="fas fa-bars"></i>
 		</button>
 		<!-- Navbar Search-->
-		 <form
+		<form
 			class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-	      <%--  <a><%=user.getName()%>님 환영합니다</a> --%>
-			<!-- <div class="input-group">
-				<input class="form-control" type="text" placeholder="Search for..."
-					aria-label="Search" aria-describedby="basic-addon2" /> -->
-					User user = (User)request.getAttrute("user")
-				<!-- <div class="input-group-append">
-					<button class="btn btn-primary" type="button">
-						<i class="fas fa-search"></i>
-					</button>
-				</div> -->
-			</div>
-		</form> 
+			<a><%=user.getCareer().equals("T") ? "정비사" : "운전자"%> <%=user.getName()%>님</a>
+		</form>
 		<!-- Navbar-->
 		<ul class="navbar-nav ml-auto ml-md-0">
 			<li class="nav-item dropdown"><a
@@ -102,8 +99,8 @@ height:30px;
 						<div class="collapse" id="collapseLayouts"
 							aria-labelledby="headingOne" data-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								 <a class="nav-link" href="/AutomobileAccountBook/LoginAction">CarkeepingBook</a>
-								 <a class="nav-link" href="/AutomobileAccountBook/RepairList">RepairingBook</a>
+								<a class="nav-link" href="/AutomobileAccountBook/LoginAction">CarkeepingBook</a>
+								<a class="nav-link" href="/AutomobileAccountBook/RepairList">RepairingBook</a>
 							</nav>
 						</div>
 
@@ -125,97 +122,75 @@ height:30px;
 				</div>
 			</nav>
 		</div>
-		 <div id="layoutSidenav_content">
-                <main>
-                    <div class="container-fluid">
-                        <h1 class="mt-4">수정하기</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active"></li>
-                        </ol>
-                         </div>
-	<!-- <div>
-		<span> 라인 정보 </span>
-	</div> -->
-	<form action="/AutomobileAccountBook/Edit" method="post">
-		<table width="500" border="0" align="center" cellpadding="0"
-			cellspacing="1">
-			<!-- <tr align="center">
-				<td><span> 고유번호 </span></td>
-				<td><span> 날짜 </span></td>
-				<td><span> 사용내역 </span></td>
-				<td><span> 비용 </span></td>
-				<td><span> 현재Km </span></td>
-				<td><span> 작성자 </span></td>
-			</tr> -->
-			<div class="add-list">
-	            <div class="mb-3">
-	            <label for="date">고유번호</label>
-                <input type="hidden" class="form-control" name="item.line_no" value="${ item.line_no }">
-           			 </div>
+		<div id="layoutSidenav_content">
+			<main>
+				<div class="container-fluid">
+					<h1 class="mt-4">수정하기</h1>
+					<ol class="breadcrumb mb-4">
+						<li class="breadcrumb-item active"></li>
+					</ol>
+				</div>
+				<form action="/AutomobileAccountBook/Edit" method="post">
+					<table width="500" border="0" align="center" cellpadding="0"
+						cellspacing="1">
+						<div class="add-list">
+							<div class="mb-3">
+								<input type="hidden"
+									class="form-control" name="item.line_no"
+									value="${ item.line_no }">
+							</div>
 							<div class="mb-3">
 								<label for="date">날짜</label> <input type="date"
 									class="form-control" name="item.todate"
 									value="${ item.todate }">
- 									</div>
-								<div class="mb-3">
-									<label for="content">사용 내역</label> <input type="text"
-										class="form-control" name="item.content"
-										value="${ item.content }">
-								</div>
-								<div class="mb-3">
-									<label for="content">비용</label> <input type="text"
-										" name="item.cost" class="form-control"
-										/ value="${ item.cost }">
-								</div>
-								<div class="mb-3">
-									<label for="content">현재 km</label> <input type="text"
-										" name="item.mileage" class="form-control"
-										/ value="${ item.mileage }">
-								</div>
-								<div class="mb-3">
+							</div>
+							<div class="mb-3">
+								<label for="content">사용 내역</label> <input type="text"
+									class="form-control" name="item.content"
+									value="${ item.content }">
+							</div>
+							<div class="mb-3">
+								<label for="content">비용</label> <input type="text"
+									name="item.cost" class="form-control"
+									value="${ item.cost }">
+							</div>
+							<div class="mb-3">
+								<label for="content">현재 km</label> <input type="text"
+									name="item.mileage" class="form-control"
+									value="${ item.mileage }">
+							</div>
+							<div class="mb-3">
 								<label for="content">작성자</label> <input type="text"
-									" name="item.writer" class="form-control"
-									/ value="${ item.writer }">
-								</div>
-								<div align="right">
-		<input class="btn btnss-primary" type="submit" value="수정">
-		 </div>
+									name="item.writer" class="form-control"
+									value="${ item.writer }">
+							</div>
+							<div align="right">
+								<input class="btn btnss-primary" type="submit" value="수정">
+							</div>
 						</div>
-			<%-- <tr>
-				<td align="center"><input actionfocus name="item.line_no"
-					type="hidden" value="${ item.line_no }"></td>
-				<td align="center"><input actionfocus name="item.todate"
-					type="date" value="${ item.todate }"></td>
-				<td align="center"><input actionfocus name="item.content"
-					type="text" value="${ item.content }"></td>
-				<td align="center"><input actionfocus name="item.cost"
-					type="text" value="${ item.cost }"></td>
-				<td align="center"><input actionfocus name="item.mileage"
-					type="text" value="${ item.mileage }"></td>
-				<td align="center"><input actionfocus name="item.writer"
-					type="text" value="${ item.writer }"></td>
-			</tr> --%>
-		</table>
-		 
-	</form>
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
-		crossorigin="anonymous"></script>
-        <script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
-		crossorigin="anonymous"></script>
-        <script src="js/bootstrap.js"></script>
-        <script
-		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
-		crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
-        <script
-		src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"
-		crossorigin="anonymous"></script>
-        <script
-		src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"
-		crossorigin="anonymous"></script>
-        <script src="assets/demo/datatables-demo.js"></script>
-    
+					</table>
+
+				</form>
+				<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+					crossorigin="anonymous"></script>
+				<script
+					src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+					crossorigin="anonymous"></script>
+				<script src="js/bootstrap.js"></script>
+				<script
+					src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+					crossorigin="anonymous"></script>
+				<script src="assets/demo/chart-area-demo.js"></script>
+				<script src="assets/demo/chart-bar-demo.js"></script>
+				<script
+					src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"
+					crossorigin="anonymous"></script>
+				<script
+					src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"
+					crossorigin="anonymous"></script>
+				<script src="assets/demo/datatables-demo.js"></script>
+			</main>
+		</div>
+	</div>
 </body>
-</html> 
+</html>

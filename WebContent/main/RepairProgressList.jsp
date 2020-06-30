@@ -24,18 +24,20 @@
 <meta charset="UTF-8">
 <title>RepairProgressList</title>
 <style>
- .sb-sidenav-dark{
- background-color:#369bc9;
- }
- .bg-dark{
- background-color:#70bfe4;
- } 
-  .top-icon{
-margin-left:15px;
-width:30px;
-height:30px;
- }
- </style>
+.sb-sidenav-dark {
+	background-color: #369bc9;
+}
+
+.bg-dark {
+	background-color: #70bfe4;
+}
+
+.top-icon {
+	margin-left: 15px;
+	width: 30px;
+	height: 30px;
+}
+</style>
 <script type="text/javascript">
 	function add_repair() {
 		location.href = "/AutomobileAccountBook/main/RepairProgressAdd.jsp?item=${repair_no}"
@@ -44,30 +46,26 @@ height:30px;
 		location.href = "/AutomobileAccountBook/RepairList"
 	}
 </script>
+<%
+	User user = (User) session.getAttribute("user");
+%>
 </head>
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-yellows">
-	<a href="/AutomobileAccountBook/LoginAction">
-	<img class="top-icon" src="/AutomobileAccountBook/img/pickup-car.png" ></a>
-		<a class="navbar-brand" href="/AutomobileAccountBook/LoginAction">Automobile Account Book</a>
+		<a href="/AutomobileAccountBook/LoginAction"> <img
+			class="top-icon" src="/AutomobileAccountBook/img/car.png"></a>
+		<a class="navbar-brand" href="/AutomobileAccountBook/LoginAction">Automobile
+			Account Book</a>
 		<button class="btn btn-link btn-sm order-1 order-lg-0"
 			id="sidebarToggle" href="#">
 			<i class="fas fa-bars"></i>
 		</button>
 		<!-- Navbar Search-->
-		 <form
+		<form
 			class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-			<%--  <a><%=user.getName()%>님 환영합니다</a> --%>
-			<!-- <div class="input-group">
-				<input class="form-control" type="text" placeholder="Search for..."
-					aria-label="Search" aria-describedby="basic-addon2" /> -->
-				<!-- <div class="input-group-append">
-					<button class="btn btn-primary" type="button">
-						<i class="fas fa-search"></i>
-					</button>
-				</div> -->
+			<a><%=user.getCareer().equals("T") ? "정비사" : "운전자"%> <%=user.getName()%>님</a>
 			</div>
-		</form> 
+		</form>
 		<!-- Navbar-->
 		<ul class="navbar-nav ml-auto ml-md-0">
 			<li class="nav-item dropdown"><a
@@ -76,9 +74,11 @@ height:30px;
 				aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
 				<div class="dropdown-menu dropdown-menu-right"
 					aria-labelledby="userDropdown">
-					<a class="dropdown-item" href="/AutomobileAccountBook/main/myPages.jsp">My Pages</a>
+					<a class="dropdown-item"
+						href="/AutomobileAccountBook/main/myPages.jsp">My Pages</a>
 					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="/AutomobileAccountBook/login/logout.jsp">Logout</a>
+					<a class="dropdown-item"
+						href="/AutomobileAccountBook/login/logout.jsp">Logout</a>
 				</div></li>
 		</ul>
 	</nav>
@@ -91,8 +91,7 @@ height:30px;
 						<div class="sb-sidenav-menu-heading">My Car</div>
 						<a class="nav-link collapsed" href="#" data-toggle="collapse"
 							data-target="#collapseLayouts" aria-expanded="false"
-							aria-controls="collapseLayouts"><div
-								class="sb-nav-link-icon">
+							aria-controls="collapseLayouts"><div class="sb-nav-link-icon">
 								<i class="fas fa-columns"></i>
 							</div> Management
 							<div class="sb-sidenav-collapse-arrow">
@@ -105,12 +104,14 @@ height:30px;
 								<a class="nav-link" href="/AutomobileAccountBook/RepairList">RepairingBook</a>
 							</nav>
 						</div>
-						
+
 						<div class="sb-sidenav-menu-heading">Views</div>
-						<a class="nav-link" href="/AutomobileAccountBook/main/housekeepingBook_charts.jsp"><div
+						<a class="nav-link"
+							href="/AutomobileAccountBook/main/housekeepingBook_charts.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
-							</div> Charts</a><a class="nav-link" href="/AutomobileAccountBook/main/housekeepingBook_word.jsp"><div
+							</div> Charts</a><a class="nav-link"
+							href="/AutomobileAccountBook/main/housekeepingBook_word.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-table"></i>
 							</div> WordCloud</a>
@@ -133,7 +134,7 @@ height:30px;
 						<div class="card-header">
 							<i class="fas fa-table mr-1"></i>DataTable Example
 						</div>
-						
+
 						<div class="card-body">
 							<div class="table-responsive">
 								<table class="table table-bordered" id="dataTable" width="100%"
@@ -147,30 +148,29 @@ height:30px;
 											<th>img</th>
 										</tr>
 									<tbody>
-									<c:forEach items="${item }" var="item">
-					<tr align="center">
-						<td>${ item.repair_no }</td>
-						<td>${ item.contents }</td>
-						<td>${ item.doday }</td>
-						<td>${ item.writer_id }</td>
-						<td><img src="${ item.img }"></td>
-					</tr>
-				</c:forEach>
-				</tbody>
-					
+										<c:forEach items="${item }" var="item">
+											<tr align="center">
+												<td>${ item.repair_no }</td>
+												<td>${ item.contents }</td>
+												<td>${ item.doday }</td>
+												<td>${ item.writer_id }</td>
+												<td><img src="${ item.img }"></td>
+											</tr>
+										</c:forEach>
+									</tbody>
+
 								</table>
 							</div>
 						</div>
-					<div align="right" style="margin-right:15px">
-				<input class="btn btnss-primary"  type="button" name="add_repair" value="add_repair"
-					onclick="add_repair()">
-			
-				<input class="btn btnss-primary"  type="button" name="returnpage" value="returnpage"
-					onclick="returnpage()">
-				
-					</div>
+						<div align="right" style="margin-right: 15px">
+							<input class="btn btnss-primary" type="button" name="add_repair"
+								value="add_repair" onclick="add_repair()"> <input
+								class="btn btnss-primary" type="button" name="returnpage"
+								value="returnpage" onclick="returnpage()">
+
+						</div>
 						<br>
-				</div>
+					</div>
 			</main>
 			<footer class="py-4 bg-light mt-auto">
 				<div class="container-fluid">
@@ -203,60 +203,11 @@ height:30px;
 	<script
 		src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"
 		crossorigin="anonymous"></script>
-			<script src="assets/demo/datatables-demo.js"></script>
-			<div align="center">Repair Progress List Page</div>
-			<%
-				String no = (String) session.getAttribute("reno");
-			System.out.println(no);
-			%>
-			<%-- <div align="center"></div>
-			<table align="center">
-				<tr>
-					<td>
-						<div align="center">
-							<label>정비 번호</label>
-						</div>
-					</td>
-					<td>
-						<div align="center">
-							<label>수리 및 정비</label>
-						</div>
-					</td>
-					<td>
-						<div align="center">
-							<label>수리 및 정비 일</label>
-						</div>
-					</td>
-					<td>
-						<div align="center">
-							<label>작성자</label>
-						</div>
-					</td>
-					<td>
-						<div align="center">
-							<label>image</label>
-						</div>
-					</td>
-				</tr>
-		
-				<!-- 여기부터 에러 -->
-				<c:forEach items="${item }" var="item">
-					<tr align="center">
-						<td><label>${ item.repair_no }</label></td>
-						<td><label>${ item.contents }</label></td>
-						<td><label>${ item.doday }</label></td>
-						<td><label>${ item.writer_id }</label></td>
-						<td><img src="${ item.img }"></td>
-					</tr>
-				</c:forEach>
-			</table> --%>
-		<!-- 	<div align="center">
-				<input type="button" name="add_repair" value="add_repair"
-					onclick="add_repair()">
-			</div>
-			<div align="center">
-				<input type="button" name="returnpage" value="returnpage"
-					onclick="returnpage()">
-			</div> -->
+	<script src="assets/demo/datatables-demo.js"></script>
+	<div align="center">Repair Progress List Page</div>
+	<%
+		String no = (String) session.getAttribute("reno");
+		System.out.println(no);
+	%>
 </body>
 </html>

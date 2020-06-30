@@ -2,10 +2,6 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<%
-	//동작 안댐 수정해야됨
-	out.println("<script>alert('안녕히 가세요!'); history.back();</script>");
-%>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
