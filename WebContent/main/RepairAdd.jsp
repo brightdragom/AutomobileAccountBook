@@ -46,6 +46,29 @@
 </style>
 </head>
 <body class="sb-nav-fixed">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
+	<script src="js/bootstrap.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+		crossorigin="anonymous"></script>
+	<script src="assets/demo/chart-area-demo.js"></script>
+	<script src="assets/demo/chart-bar-demo.js"></script>
+	<script
+		src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"
+		crossorigin="anonymous"></script>
+	<script src="assets/demo/datatables-demo.js"></script>
+
+	<script src="https://www.amcharts.com/lib/4/core.js"></script>
+	<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+	<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+	<script src="https://www.amcharts.com/lib/4/plugins/wordCloud.js"></script>
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-yellows">
 		<a href="/AutomobileAccountBook/LoginAction"> <img
 			class="top-icon" src="/AutomobileAccountBook/img/car.png"></a>
@@ -125,19 +148,6 @@
 						<li class="breadcrumb-item active"></li>
 					</ol>
 				</div>
-				<div align="center">
-					<span> 등록할 정비 정보 </span>
-				</div>
-
-				<table width="500" border="1" align="center" cellpadding="0"
-					cellspacing="1">
-					<tr align="center">
-						<td><span> 운전자 ID </span></td>
-						<td><span> 정비 및 수리 내용 </span></td>
-						<td><span> 시작일 </span></td>
-						<td><span> 예상 종료일 </span></td>
-					</tr>
-				</table>
 				<form action="/AutomobileAccountBook/AddRepair" method="post">
 					<div class="add-list">
 						<div class="mb-3">
@@ -153,12 +163,12 @@
 						<div class="mb-3">
 							<label for="date">시작일</label> <input type="date"
 								name="item_list.start_time" class="form-control"
-								/ value="${ item_list.start_time}">
+								value="${ item_list.start_time}">
 						</div>
 						<div class="mb-3">
 							<label for="date">예상 종료일</label> <input type="date"
-								name="item_list.start_time" class="form-control"
-								/ value="${ item_list.expect_time}">
+								name="item_list.expect_time" class="form-control"
+								value="${ item_list.expect_time}">
 						</div>
 						<div align="right">
 							<input class="btn btnss-primary" type="submit" value="Save">

@@ -48,6 +48,7 @@
 </script>
 <%
 	User user = (User) session.getAttribute("user");
+	
 %>
 </head>
 <body class="sb-nav-fixed">
@@ -167,7 +168,6 @@
 								value="add_repair" onclick="add_repair()"> <input
 								class="btn btnss-primary" type="button" name="returnpage"
 								value="returnpage" onclick="returnpage()">
-
 						</div>
 						<br>
 					</div>

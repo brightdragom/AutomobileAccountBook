@@ -139,11 +139,9 @@
 											<th>운전자이름</th>
 											<th>정비사ID</th>
 											<th>정비사이름</th>
-											<th>수리 및 정비날짜</th>
+											<th>수리 및 정비 내용</th>
 											<th>시작날짜</th>
 											<th>완료예상날짜</th>
-											<th>완료 날짜</th>
-											<th>비용</th>
 											<th>상세정보</th>
 										</tr>
 									<tbody>
@@ -157,14 +155,16 @@
 												<td>${ item.contents }</td>
 												<td>${ item.start_date }</td>
 												<td>${ item.expect_date }</td>
-												<td>${ item.finish_date }</td>
-												<td>>${ item.cost }</td>
 												<td><a
 													href="/AutomobileAccountBook/RepairProgress?item=${ item.repair_no}">into</a>
 												</td>
 											</tr>
 										</c:forEach>
 								</table>
+								<div align="right">
+		<input class="btn btnss-primary" type="button" name="add_repair" value="add_repair"
+			onclick="add_repair()">
+	</div>
 							</div>
 						</div>
 					</div>
@@ -202,28 +202,6 @@
 		src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"
 		crossorigin="anonymous"></script>
 	<script src="assets/demo/datatables-demo.js"></script>
-	<c:forEach items="${item }" var="item">
-		<tr align="center">
-			<td><label>${ item.repair_no }</label></td>
-			<td><label>${ item.driver_id }</label></td>
-			<td><label>${ item.driver_name }</label></td>
-			<td><label>${ item.technician_id }</label></td>
-			<td><label>${ item.technician_name }</label></td>
-			<td><label>${ item.contents }</label></td>
-			<td><label>${ item.start_date }</label></td>
-			<td><label>${ item.expect_date }</label></td>
-			<td><label>${ item.finish_date }</label></td>
-			<td><label>${ item.cost }</label></td>
-			<td><a
-				href="/AutomobileAccountBook/RepairProgress?item=${ item.repair_no}">into</a>
-			</td>
-		</tr>
-	</c:forEach>
-	<!-- 	</table> -->
-	<div align="center">
-		<input type="button" name="add_repair" value="add_repair"
-			onclick="add_repair()">
-	</div>
-
+	
 </body>
 </html>

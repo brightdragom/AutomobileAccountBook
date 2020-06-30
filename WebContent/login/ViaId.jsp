@@ -61,12 +61,19 @@ body {
 				</div>
 				<div class="form-group" style="text-align: center;">
 					<h4><%=id%></h4>
+					
+					<div class="form-group" style="text-align: center;">
+					<button id="idChkBtn" class="btn btn-primary"
+						style="color: #fff; background-color: #70bfe4; border-color: #70bfe4;"
+						onclick="location.href='index.jsp'">확인</button>
+					</div>
 					<%
 						} else {
 					%>
 					<h3><%=name%>님의 아이디<span class="label label-default"></span>
 					</h3>
 				</div>
+				
 				<div class="form-group" style="text-align: center;">
 					<h4>가입 정보가 없습니다.</h4>
 				</div>

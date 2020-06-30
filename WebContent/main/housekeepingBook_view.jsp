@@ -309,11 +309,12 @@
 		series.accuracy = 4;
 		series.step = 15;
 		series.rotationThreshold = 0.7;
-		series.maxCount = 200;
-		series.minWordLength = 2;
+		series.maxCount = 50;
+		series.minWordLength = 1;
 		series.labels.template.tooltipText = "{word}: {value}";
 		series.fontFamily = "Courier New";
-		series.maxFontSize = am4core.percent(30);
+		series.maxFontSize = am4core.percent(50);
+		series.minFontSize = am4core.percent(15);
 		console.log(texts);
 		series.text = texts;
 	</script>
@@ -333,13 +334,11 @@
 					// Add data
 					chart.data = [ {
 						"month" : "Jan",
-						"cost" :
-	<%=monthCost[0]%>
-		}, {
+						"cost" : <%=monthCost[0]%>
+						}, {
 						"month" : "Feb",
-						"cost" :
-	<%=monthCost[1]%>
-		}, {
+						"cost" : <%=monthCost[1]%>
+							}, {
 						"month" : "Mar",
 						"cost" :
 	<%=monthCost[2]%>

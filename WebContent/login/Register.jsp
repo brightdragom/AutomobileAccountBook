@@ -140,23 +140,21 @@ body {
 					<div class="form-group" style="text-align: center;">
 						<div class="btn-group" data-toggle="buttons">
 							<label class="btn btn-primary active"
-								style="color: #fff; background-color: #70bfe4; border-color: #70bfe4;">
+								>
 								<input type="radio" name="career" autocomplete="off" value="정비사"
 								checked>정비사
 							</label> <label class="btn btn-primary"
-								style="color: #fff; background-color: #a3dae8; border-color: #a3dae8;">
+								>
 								<input type="radio" name="career" autocomplete="off" value="운전자">운전자
 							</label>
 						</div>
 					</div>
 					<div class="form-group" style="text-align: center;">
 						<div class="btn-group" data-toggle="buttons">
-							<label class="btn btn-primary active"
-								style="color: #fff; background-color: #70bfe4; border-color: #70bfe4;">
-								<input type="radio" name="gender" autocomplete="off" value="M"
-								checked>남자
-							</label> <label class="btn btn-primary"
-								style="color: #fff; background-color: #a3dae8; border-color: #a3dae8;">
+							<label class="btn btn-primary active" ><!-- style="color: #fff; background-color: #70bfe4; border-color: #70bfe4;" -->
+								<input type="radio" name="gender" autocomplete="off" value="M"checked>남자
+							</label> 
+							<label class="btn btn-primary" ><!-- style="color: #fff; background-color: #a3dae8; border-color: #a3dae8;" -->
 								<input type="radio" name="gneder" autocomplete="off" value="F">여자
 							</label>
 						</div>

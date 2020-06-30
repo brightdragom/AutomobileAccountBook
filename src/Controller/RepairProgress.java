@@ -62,7 +62,7 @@ public class RepairProgress extends HttpServlet {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 
-		int maxSize = 1024 * 1024 * 10;
+		int maxSize = 256 * 256 * 10;
 		//SavePath(ex : /home/tour/web/ROOT/upload)
 		String savePath = "C:\\Users\\Gwang\\Desktop\\AutomobileAccountBook\\WebContent\\upload";
 		System.out.println("Save File Path > > " + savePath);
@@ -117,18 +117,10 @@ public class RepairProgress extends HttpServlet {
 		}
 		System.out.println("");
 		db.Add_RepairProgressline(Integer.parseInt(repair_no), contents, doday, user.getId(), fullpath);
-
-		List<Repair> list = db.getRepairProgressList(repair_no + "");
-		int i =0;
-		System.out.println("----------------------");
-		while(i < list.size()) {
-			System.out.println("-"+list.get(i).getRepair_no()+"|"+list.get(i).getContents()+"|"+list.get(i).getImg()+"-");
-			i++;
-		}
-		System.out.println("--------------------------");
-		request.setAttribute("item", list);
+		request.setAttribute("reno", repair_no);
 		session.removeAttribute("reno");
-		RequestDispatcher rd = request.getRequestDispatcher("main/RepairProgressList.jsp");
+		
+		RequestDispatcher rd = request.getRequestDispatcher("main/PageChange.jsp");
 		rd.forward(request, response);
 	}
 
