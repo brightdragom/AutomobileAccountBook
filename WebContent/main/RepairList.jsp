@@ -149,7 +149,7 @@
 											<th>운전자이름</th>
 											<th>정비사ID</th>
 											<th>정비사이름</th>
-											<th>수리 및 정비날짜</th>
+											<th>수리 및 정비내역</th>
 											<th>시작날짜</th>
 											<th>완료예상날짜</th>
 											<th>완료 날짜</th>
@@ -267,7 +267,7 @@
 				</div>
 			</td>
 		</tr> -->
-	<c:forEach items="${item }" var="item">
+	<%-- <c:forEach items="${item }" var="item">
 		<tr align="center">
 			<td><label>${ item.repair_no }</label></td>
 			<td><label>${ item.driver_id }</label></td>
@@ -283,12 +283,12 @@
 				href="/AutomobileAccountBook/RepairProgress?item=${ item.repair_no}">into</a>
 			</td>
 		</tr>
-	</c:forEach>
+	</c:forEach> --%>
 	<!-- 	</table> -->
-	<div align="center">
+	<!--  <div align="center">
 		<input type="button" name="add_repair" value="add_repair"
 			onclick="add_repair()">
-	</div>
+	</div> -->
 
 </body>
 </html>

@@ -13,7 +13,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<title>아이디 찾기</title>
+<title>비밀번호 찾기</title>
+<style>
+body{
+background-color: #70bfe4;
+}
+.container{
+margin-top:15%;
+}
+.container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+</style>
 </head>
 
 <%
