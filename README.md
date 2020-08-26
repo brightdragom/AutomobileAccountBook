@@ -2,11 +2,17 @@
 Open Source Software Project 7 Team
 
 ** Sunmoon University **
+
 subject : Open Source Software Project
+
 Topic : Car Management Web Service
+
 Member : GwangYong Kim, YongHun Lee, MinKyu Joo, SoMin Jo
+
 Using API : AmChart
+
 DB : MySQL
+
 
 
 Function
